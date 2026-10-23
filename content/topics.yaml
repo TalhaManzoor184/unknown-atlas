@@ -1,0 +1,101 @@
+# Topic queue — the pipeline takes the first long-form topic not yet in state/published.json.
+# Each topic has 2 Short angles; Shorts are made after the documentary is out so they can link to it.
+# Set `skip: true` to hold a topic. Add your own freely; when the queue runs out, Gemini proposes new ones.
+# Angles are briefs for the researcher, not facts to copy — every claim is re-verified with Google Search.
+topics:
+- id: dyatlov-pass
+  title: "The Dyatlov Pass Incident: What Really Happened in 1959?"
+  pillar: mysteries
+  angle: >-
+    Nine experienced hikers died in the northern Ural Mountains in February 1959 after leaving their tent in the night.
+    Walk through the evidence, the decades of wild theories, and how recent official reviews and a 2021 avalanche
+    modelling study changed the debate — while being honest about what is still argued.
+  shorts:
+  - Why the hikers' tent was cut open from the inside
+  - How animation software used for a famous animated film helped scientists model the avalanche theory
+- id: voynich-manuscript
+  title: "The Voynich Manuscript: The Book Nobody Can Read"
+  pillar: history
+  angle: >-
+    A medieval manuscript full of unknown script and strange plants, held at Yale's Beinecke Library. Cover its known
+    history, the radiocarbon dating of its vellum, the major decipherment claims, and why experts reject most of them.
+  shorts:
+  - What radiocarbon dating revealed about when the Voynich vellum was made
+  - The famous 'solutions' to the Voynich Manuscript and why experts reject them
+- id: wow-signal
+  title: "The Wow! Signal: 72 Seconds From Deep Space"
+  pillar: places-space
+  angle: >-
+    In August 1977 Ohio State's Big Ear radio telescope recorded an unusually strong narrowband signal and an astronomer
+    circled it with "Wow!". Explain what was actually detected, why it was never seen again, and the newer natural
+    explanations proposed by researchers.
+  shorts:
+  - The night an astronomer wrote "Wow!" on a computer printout
+  - The newer natural explanation for the Wow! signal and how scientists are testing it
+- id: sailing-stones
+  title: "Death Valley's Moving Rocks: A Mystery Finally Solved"
+  pillar: places-space
+  angle: >-
+    Heavy rocks on Racetrack Playa left long trails across the desert floor, yet no one had seen them move.
+    Tell the story of the old theories and the field study with GPS-tracked stones and time-lapse cameras that
+    finally caught them in motion.
+  shorts:
+  - Rocks that leave trails across the desert — and nobody saw them move
+  - The surprisingly simple mechanism scientists finally caught on camera
+- id: franklin-expedition
+  title: "The Lost Franklin Expedition: Arctic Ships Found After 170 Years"
+  pillar: history
+  angle: >-
+    In 1845 Sir John Franklin's two Royal Navy ships, HMS Erebus and HMS Terror, vanished in the Canadian Arctic searching
+    for the Northwest Passage. Cover the disappearance, the evidence about the crew's fate, the role of Inuit testimony,
+    the discovery of the wrecks by Parks Canada and partners, and recent DNA identifications of crew members.
+  shorts:
+  - How Inuit oral history helped find the lost Franklin ships
+  - The Franklin Expedition officer identified by DNA more than 170 years later
+- id: tunguska-event
+  title: "The Tunguska Event: The Explosion That Left No Crater"
+  pillar: science
+  angle: >-
+    In June 1908 a massive explosion flattened forest over a huge area of remote Siberia. Explain the eyewitness reports,
+    the first scientific expedition decades later, why there is no crater, and what scientists think caused it.
+  shorts:
+  - The giant explosion in Siberia that left no crater
+  - The strangely bright night skies seen across Europe after Tunguska
+- id: mary-celeste
+  title: "The Mary Celeste: The Ghost Ship Myth vs. The Real Story"
+  pillar: mysteries
+  angle: >-
+    In December 1872 the brigantine Mary Celeste was found drifting in the Atlantic with no one aboard. Separate the real
+    evidence from the myths (including those spread by fiction), and weigh the main explanations.
+  shorts:
+  - How a young Arthur Conan Doyle accidentally created the Mary Celeste myth
+  - What the ship that found the Mary Celeste actually saw on board
+- id: antikythera-mechanism
+  title: "The Antikythera Mechanism: An Ancient Greek Computer"
+  pillar: science
+  angle: >-
+    Sponge divers found corroded bronze fragments in an ancient shipwreck off the Greek island of Antikythera.
+    Explain how modern imaging revealed a geared astronomical calculator, what it could predict, and what
+    researchers are still reconstructing.
+  shorts:
+  - The 2,000-year-old device that could predict eclipses
+  - How X-ray CT scans revealed hidden text inside the Antikythera fragments
+- id: roanoke-colony
+  title: "The Lost Colony of Roanoke: One Word Carved in Wood"
+  pillar: history
+  angle: >-
+    More than a hundred English colonists vanished from Roanoke Island after John White sailed back to England. Cover
+    the delayed return, the carved word CROATOAN, the leading theories, and what modern archaeology has (and hasn't) found.
+  shorts:
+  - The single word carved at the abandoned Roanoke settlement
+  - Virginia Dare, the first English child born in the Americas, and what happened to her
+- id: gobekli-tepe
+  title: "Göbekli Tepe: The Temple Older Than Civilization"
+  pillar: history
+  angle: >-
+    In southeastern Turkey, massive carved stone pillars were raised by hunter-gatherers thousands of years before
+    Stonehenge or the pyramids. Explain the dating, the discoveries, why it challenged ideas about the origins of
+    civilization, and which popular claims about it are not supported by evidence.
+  shorts:
+  - The stone monument thousands of years older than Stonehenge
+  - The carved animals on Göbekli Tepe's pillars and what they might mean

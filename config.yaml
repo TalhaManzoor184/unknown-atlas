@@ -1,0 +1,69 @@
+# Unknown Atlas — channel + pipeline settings.
+# Secrets (API keys, tokens) never go here; they come from GitHub Actions secrets / env vars.
+
+channel:
+  name: "Unknown Atlas"
+  tagline: "The World Is Stranger Than You Think."
+  handle_url: ""            # e.g. https://www.youtube.com/@UnknownAtlas — used in descriptions
+  category_id: "27"         # 27 = Education (YouTube category)
+  language: "en"
+  playlist_long: ""         # optional playlist ID for documentaries
+  playlist_shorts: ""       # optional playlist ID for Shorts
+
+models:
+  # Override any of these with env vars GEMINI_TEXT_MODEL / GEMINI_TTS_MODEL / GEMINI_IMAGE_MODEL
+  text: "gemini-3.8-flash"
+  tts: "gemini-3.8-flash-tts"
+  image: "gemini-nano-banana-2.1"
+
+voice:
+  name: "Charon"            # Gemini prebuilt voice ("Informative"). Alternatives: Sadaltager, Gacrux, Iapetus
+  style: >-
+    calm, warm, cinematic documentary narrator; measured pace with natural pauses;
+    curious and intriguing but never sensational; clear American English
+  scene_gap_seconds: 0.35   # silence added between scenes
+
+long_form:
+  target_words_min: 900
+  target_words_max: 1400
+  scenes_min: 12
+  scenes_max: 20
+  width: 1920
+  height: 1080
+
+shorts:
+  target_words_min: 55
+  target_words_max: 110
+  max_seconds: 58
+  width: 1080
+  height: 1920
+
+visuals:
+  ai_images: true            # allow Gemini-generated illustrations for scenes with no real footage
+  max_ai_images_per_video: 4
+  disclose_ai_images: true   # if any AI image is used, set YouTube "altered or synthetic content" flag
+  allowed_wikimedia_licenses:  # matched against LicenseShortName (case-insensitive prefix)
+    - "public domain"
+    - "pd"
+    - "cc0"
+    - "cc by"
+    - "cc-by"
+    - "cc by-sa"
+    - "cc-by-sa"
+
+music:
+  volume: 0.10              # background music level under narration (0–1)
+  # Put licensed tracks (e.g. YouTube Audio Library, no-attribution ones) in assets/music/*.mp3
+
+publishing:
+  # private   -> upload as private, you publish manually from YouTube Studio
+  # scheduled -> upload private with publishAt (auto-goes-public; gives you a review window)
+  # public    -> publish immediately
+  # Override with repo variable PUBLISH_MODE
+  mode: "scheduled"
+  min_review_hours: 3
+  long_publish_utc: "20:00"   # 4 PM ET / 8 PM UK (during EDT) — good US+UK overlap
+  short_publish_utc: "17:00"  # 1 PM ET / 5 PM UK
+
+quality:
+  max_factcheck_rounds: 2   # revise script at most this many times; then fail instead of uploading

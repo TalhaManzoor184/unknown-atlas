@@ -1,0 +1,88 @@
+name: Long-form documentary
+
+on:
+  schedule:
+    # Tue & Fri 15:41 UTC (8:41 PM PKT). Render takes ~15-25 min; upload is scheduled for 20:00 UTC (see config.yaml).
+    - cron: "41 15 * * 2,5"
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Topic id from content/topics.yaml (blank = next in queue)"
+        required: false
+      upload:
+        description: "Upload to YouTube"
+        type: boolean
+        default: true
+      publish_mode:
+        description: "private / scheduled / public (blank = repo variable or config.yaml)"
+        required: false
+
+concurrency:
+  group: unknown-atlas-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  documentary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Build and publish documentary
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          PUBLISH_MODE: ${{ inputs.publish_mode || vars.PUBLISH_MODE }}
+          GEMINI_TEXT_MODEL: ${{ vars.GEMINI_TEXT_MODEL }}
+          GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
+          GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+          VOICE_NAME: ${{ vars.VOICE_NAME }}
+          AI_IMAGES: ${{ vars.AI_IMAGES }}
+          TOPIC: ${{ inputs.topic }}
+          UPLOAD: ${{ inputs.upload }}
+        run: |
+          ARGS=(long)
+          if [ -n "$TOPIC" ]; then ARGS+=(--topic "$TOPIC"); fi
+          if [ "$UPLOAD" = "false" ]; then ARGS+=(--no-upload); fi
+          python -m pipeline.main "${ARGS[@]}"
+
+      - name: Keep video package as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentary-${{ github.run_number }}
+          path: |
+            output/**/*.mp4
+            output/**/thumbnail.jpg
+            output/**/package.md
+            output/**/package.json
+            output/**/description.txt
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Commit state, research and package log
+        if: success()
+        run: |
+          git config user.name "unknown-atlas-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state content
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: publish log (long-form) [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
