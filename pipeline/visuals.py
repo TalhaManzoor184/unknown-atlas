@@ -36,15 +36,22 @@ class AssetPicker:
         self.pexels_key = "" if mock else env("PEXELS_API_KEY", required=False)
         vc = cfg()["visuals"]
         self.ai_enabled = vc["ai_images"] and not mock
-        self.ai_cap = int(vc["max_ai_images_per_video"])
+        # Without a Pexels key, Gemini illustrations replace stock footage, so allow many more of them.
+        self.ai_cap = int(vc["max_ai_images_per_video"] if self.pexels_key else vc["max_ai_images_without_stock"])
         self.licenses = [l.lower() for l in vc["allowed_wikimedia_licenses"]]
+        self.ai_failures = 0
 
     # ---------- public ----------
     def pick(self, visual, scene_text: str) -> dict:
         if self.mock:
             return self._card(visual.query, scene_text)
+        stock = (
+            [self._pexels_video, self._pexels_photo, self._wikimedia, self._ai]
+            if self.pexels_key else
+            [self._ai, self._wikimedia]   # atmosphere shots: AI first; real archive as fallback
+        )
         order = {
-            "stock_video": [self._pexels_video, self._pexels_photo, self._wikimedia, self._ai],
+            "stock_video": stock,
             "archival_image": [self._wikimedia, self._pexels_photo, self._ai],
             "map": [self._wikimedia, self._ai, self._pexels_photo],
             "ai_image": [self._ai, self._wikimedia, self._pexels_photo],
@@ -162,13 +169,19 @@ class AssetPicker:
         return None
 
     def _ai(self, v):
-        if not self.ai_enabled or self.ai_count >= self.ai_cap:
+        if not self.ai_enabled or self.ai_count >= self.ai_cap or self.ai_failures >= 3:
             return None
         prompt = (
             f"{v.ai_prompt}\n\nStyle: cinematic documentary illustration, painterly realism, moody natural lighting, "
             "subtle film grain. No text, no letters, no logos, no watermarks, no real identifiable people."
         )
-        data = gemini.image(prompt, aspect_ratio="9:16" if self.portrait else "16:9")
+        try:
+            data = gemini.image(prompt, aspect_ratio="9:16" if self.portrait else "16:9")
+        except Exception:
+            self.ai_failures += 1
+            if self.ai_failures == 3:
+                log.error("Gemini image generation failed 3 times — disabling AI images for this video")
+            raise
         path = self.dir / (hashlib.sha1(prompt.encode()).hexdigest()[:16] + "_ai.jpg")
         path.write_bytes(data)
         self.ai_count += 1

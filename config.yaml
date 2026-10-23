@@ -40,7 +40,8 @@ shorts:
 
 visuals:
   ai_images: true            # allow Gemini-generated illustrations for scenes with no real footage
-  max_ai_images_per_video: 4
+  max_ai_images_per_video: 4        # when Pexels stock footage is available
+  max_ai_images_without_stock: 40   # when PEXELS_API_KEY is not set (Gemini replaces stock footage)
   disclose_ai_images: true   # if any AI image is used, set YouTube "altered or synthetic content" flag
   allowed_wikimedia_licenses:  # matched against LicenseShortName (case-insensitive prefix)
     - "public domain"

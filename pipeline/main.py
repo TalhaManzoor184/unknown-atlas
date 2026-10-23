@@ -257,9 +257,9 @@ def preflight(upload: bool):
     if missing:
         raise RuntimeError("Missing GitHub secrets: " + ", ".join(missing) + " (repo Settings → Secrets and variables → Actions)")
     if not os.getenv("PEXELS_API_KEY", "").strip():
-        log.warning("PEXELS_API_KEY not set — stock footage disabled (Wikimedia + AI images only)")
+        log.warning("PEXELS_API_KEY not set — using Gemini illustrations + Wikimedia archival images instead of stock footage")
         if os.getenv("GITHUB_ACTIONS"):
-            print("::warning title=Pexels key missing::PEXELS_API_KEY not set — no stock footage in this video")
+            print("::warning title=Pexels key missing::PEXELS_API_KEY not set — Gemini illustrations replace stock footage")
 
 
 if __name__ == "__main__":
