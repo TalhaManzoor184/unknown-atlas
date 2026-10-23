@@ -231,12 +231,35 @@ def main(argv=None):
     args = ap.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", stream=sys.stdout)
 
-    if args.mode == "topics":
-        new = tq.refill()
-        print(json.dumps([t["title"] for t in new], indent=2))
-        return
-    out = run_long(args) if args.mode == "long" else run_short(args)
-    print(f"OUTPUT_DIR={out}")
+    try:
+        if not args.mock:
+            preflight(upload=not args.no_upload)
+        if args.mode == "topics":
+            new = tq.refill()
+            print(json.dumps([t["title"] for t in new], indent=2))
+            return
+        out = run_long(args) if args.mode == "long" else run_short(args)
+        print(f"OUTPUT_DIR={out}")
+    except Exception as e:
+        log.exception("Pipeline failed")
+        if os.getenv("GITHUB_ACTIONS"):
+            # surfaces in the run's annotations (readable without downloading logs)
+            msg = f"{type(e).__name__}: {e}".replace("%", "%25").replace("\r", "").replace("\n", "%0A")[:3000]
+            print(f"::error title=Unknown Atlas pipeline failed::{msg}")
+        sys.exit(1)
+
+
+def preflight(upload: bool):
+    needed = ["GEMINI_API_KEY"]
+    if upload:
+        needed += ["YOUTUBE_CLIENT_ID", "YOUTUBE_CLIENT_SECRET", "YOUTUBE_REFRESH_TOKEN"]
+    missing = [n for n in needed if not os.getenv(n, "").strip()]
+    if missing:
+        raise RuntimeError("Missing GitHub secrets: " + ", ".join(missing) + " (repo Settings → Secrets and variables → Actions)")
+    if not os.getenv("PEXELS_API_KEY", "").strip():
+        log.warning("PEXELS_API_KEY not set — stock footage disabled (Wikimedia + AI images only)")
+        if os.getenv("GITHUB_ACTIONS"):
+            print("::warning title=Pexels key missing::PEXELS_API_KEY not set — no stock footage in this video")
 
 
 if __name__ == "__main__":
