@@ -23,6 +23,7 @@ from . import visuals, voice, writer
 from .config import ROOT, OUTPUT_DIR, cfg
 from .package_md import render_md
 from .render import render
+from .captions import write_srt
 from .schemas import LongPackage, ShortPackage
 from .thumbnail import make_thumbnail
 
@@ -163,6 +164,7 @@ def run_long(args):
     narration, timeline = voice.narrate(pkg.scenes, workdir, mock=args.mock)
     picker, per_scene = collect_assets(pkg, workdir, portrait=False, mock=args.mock, timeline=timeline)
     video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=False, slug=slug)
+    srt = write_srt(pkg.scenes, timeline, workdir, workdir / "captions.en.srt")
     thumb = make_thumbnail(thumbnail_background(pkg, per_scene, workdir, args.mock, picker.ai_failures < 3), pkg.thumbnail.text, workdir / "thumbnail.jpg")
 
     synthetic = cfg()["visuals"]["disclose_ai_images"] and picker.used_ai
@@ -173,7 +175,7 @@ def run_long(args):
     if not (args.no_upload or args.mock):
         from . import youtube
 
-        up = youtube.upload(video, pkg.final_title, desc, pkg.tags, "long", thumb, synthetic=synthetic)
+        up = youtube.upload(video, pkg.final_title, desc, pkg.tags, "long", thumb, synthetic=synthetic, captions=srt)
         tq.record("long", slug, {"title": pkg.final_title, **up, "seconds": round(total)})
         drop_draft(f"long-{slug}")
 
@@ -221,6 +223,7 @@ def run_short(args):
     picker, per_scene = collect_assets(pkg, workdir, portrait=True, mock=args.mock, timeline=timeline)
     video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=True, slug=slug)
 
+    srt = write_srt(pkg.scenes, timeline, workdir, workdir / "captions.en.srt")
     synthetic = cfg()["visuals"]["disclose_ai_images"] and picker.used_ai
     if not any(h.lower() == "#shorts" for h in pkg.hashtags):
         pkg.hashtags = ["#shorts", *pkg.hashtags][:3]
@@ -231,7 +234,7 @@ def run_short(args):
     if not (args.no_upload or args.mock):
         from . import youtube
 
-        up = youtube.upload(video, pkg.title, desc, pkg.tags, "short", None, synthetic=synthetic)
+        up = youtube.upload(video, pkg.title, desc, pkg.tags, "short", None, synthetic=synthetic, captions=srt)
         tq.record("short", key, {"title": pkg.title, **up, "seconds": round(total), "parent": topic["id"]})
         drop_draft(f"short-{slug}")
 

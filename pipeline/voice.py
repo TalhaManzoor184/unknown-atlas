@@ -60,7 +60,7 @@ def _silences(path: Path) -> list[float]:
     return [(a + b) / 2 for a, b in zip(starts, ends)]
 
 
-def _split_points(group, total: float, pauses: list[float]) -> list[float]:
+def _split_points(group, total: float, pauses: list[float], quiet: bool = False) -> list[float]:
     """Pick one pause near each expected scene boundary (expected = proportional to characters)."""
     chars = [len(s.narration) + 1 for s in group]
     whole = sum(chars)
@@ -71,7 +71,7 @@ def _split_points(group, total: float, pauses: list[float]) -> list[float]:
         window = max(1.5, total * 0.08)
         near = [p for p in pauses if p > last + 0.5 and abs(p - guess) <= window]
         best = min(near, key=lambda p: abs(p - guess)) if near else guess
-        if not near:
+        if not near and not quiet:
             log.warning("No pause found near %.1fs — using estimated scene boundary", guess)
         points.append(best)
         last = best

@@ -33,8 +33,11 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Install ffmpeg (prebuilt, cached)
-        uses: AnimMouse/setup-ffmpeg@v1
+      - name: Install ffmpeg (with libass for burned-in captions)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fontconfig
+          ffmpeg -hide_banner -filters | grep -q " ass " || (echo "ffmpeg has no ass filter" && exit 1)
 
       - name: Install Python deps
         run: pip install -r requirements.txt
@@ -70,6 +73,7 @@ jobs:
             output/*/*.mp4
             output/**/package.md
             output/**/description.txt
+            output/*/captions.en.srt
           retention-days: 14
           if-no-files-found: ignore
 

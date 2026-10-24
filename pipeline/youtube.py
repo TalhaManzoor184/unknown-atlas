@@ -21,7 +21,7 @@ def _service():
         client_id=env("YOUTUBE_CLIENT_ID"),
         client_secret=env("YOUTUBE_CLIENT_SECRET"),
         token_uri="https://oauth2.googleapis.com/token",
-        scopes=SCOPES,
+        # no explicit scopes: use whatever the refresh token was granted (youtube + force-ssl for captions)
     )
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
@@ -41,7 +41,7 @@ def publish_time(kind: str, now: dt.datetime | None = None) -> dt.datetime | Non
 
 
 def upload(video_path, title: str, description: str, tags: list[str], kind: str,
-           thumbnail_path=None, synthetic: bool = False) -> dict:
+           thumbnail_path=None, synthetic: bool = False, captions=None) -> dict:
     from googleapiclient.errors import HttpError
     from googleapiclient.http import MediaFileUpload
 
@@ -89,6 +89,17 @@ def upload(video_path, title: str, description: str, tags: list[str], kind: str,
             yt.thumbnails().set(videoId=vid, media_body=MediaFileUpload(str(thumbnail_path), mimetype="image/jpeg")).execute()
         except HttpError as e:  # needs a verified channel; don't fail the run
             log.warning("Thumbnail upload failed (is the channel phone-verified?): %s", e)
+
+    if captions:
+        try:  # 400 quota units; gives viewers a proper CC track (and helps search)
+            yt.captions().insert(
+                part="snippet",
+                body={"snippet": {"videoId": vid, "language": "en", "name": "English", "isDraft": False}},
+                media_body=MediaFileUpload(str(captions), mimetype="application/octet-stream"),
+            ).execute()
+            log.info("Uploaded English captions")
+        except HttpError as e:
+            log.warning("Caption upload failed: %s", e)
 
     pl = cfg()["channel"]["playlist_long" if kind == "long" else "playlist_shorts"]
     if pl:

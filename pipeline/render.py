@@ -9,6 +9,7 @@ from pathlib import Path
 
 from PIL import Image, ImageFilter, ImageOps
 
+from . import captions
 from .config import FONTS_DIR, MUSIC_DIR, cfg
 
 log = logging.getLogger(__name__)
@@ -96,17 +97,10 @@ def build_ass(scenes, timeline, w: int, h: int, portrait: bool, brand: str, path
     total = timeline[-1]["start"] + timeline[-1]["duration"] + 1.0
     lines.append(f"Dialogue: 0,{_ts(0.5)},{_ts(total - 0.5)},Brand,,0,0,0,,{_esc(brand.upper())}")
 
+    for a, b, c in captions.cues(scenes, timeline, path.parent, words_per):
+        text = c.upper() if portrait else c
+        lines.append(f"Dialogue: 1,{_ts(a)},{_ts(b)},Cap,,0,0,0,,{_esc(text)}")
     for s, tl in zip(scenes, timeline):
-        words = s.narration.split()
-        chunks = [" ".join(words[i : i + words_per]) for i in range(0, len(words), words_per)]
-        span = tl["end"] - tl["start"]
-        total_chars = sum(len(c) + 1 for c in chunks) or 1
-        t = tl["start"]
-        for c in chunks:
-            d = span * (len(c) + 1) / total_chars
-            text = c.upper() if portrait else c
-            lines.append(f"Dialogue: 1,{_ts(t)},{_ts(t + d)},Cap,,0,0,0,,{_esc(text)}")
-            t += d
         if s.on_screen_text.strip():
             end = min(tl["start"] + 3.8, tl["start"] + tl["duration"])
             ost = s.on_screen_text.strip().upper()
@@ -117,11 +111,33 @@ def build_ass(scenes, timeline, w: int, h: int, portrait: bool, brand: str, path
 
 # ---------------- main render ----------------
 
+def caption_selftest(workdir: Path):
+    """Burn a test caption onto a black frame and make sure white pixels appear.
+    Some ffmpeg builds ship libass without working fonts and silently render NO captions."""
+    from PIL import Image
+
+    test = workdir / "selftest.ass"
+    test.write_text(
+        "[Script Info]\nScriptType: v4.00+\nPlayResX: 640\nPlayResY: 360\n\n[V4+ Styles]\n"
+        "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n"
+        "Style: T,Montserrat SemiBold,60,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,10,10,10,1\n\n"
+        "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
+        "Dialogue: 0,0:00:00.00,0:00:05.00,T,,0,0,0,,CAPTION TEST\n", encoding="utf-8")
+    png = workdir / "selftest.png"
+    _run(["ffmpeg", "-y", "-f", "lavfi", "-i", "color=black:s=640x360:d=1", "-vf", f"ass='{test}':fontsdir='{FONTS_DIR}'",
+          "-frames:v", "1", str(png)])
+    if Image.open(png).convert("L").getextrema()[1] < 128:
+        raise RuntimeError("Caption self-test failed: this ffmpeg build renders no subtitles (libass/fonts). "
+                           "Install ffmpeg from apt (see workflow).")
+    log.info("Caption self-test passed")
+
+
 def render(scenes, timeline, assets_per_scene, narration: Path, workdir: Path, out: Path, portrait: bool, slug: str):
     fmt = cfg()["shorts" if portrait else "long_form"]
     w, h = fmt["width"], fmt["height"]
     seg_dir = workdir / "segments"
     seg_dir.mkdir(parents=True, exist_ok=True)
+    caption_selftest(workdir)
     min_shot = 2.0 if portrait else 2.8
 
     segs, idx = [], 0
