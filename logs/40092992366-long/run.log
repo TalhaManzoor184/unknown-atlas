@@ -1,0 +1,112 @@
+2026-10-24 12:13:31,180 INFO atlas: LONG-FORM: The Dyatlov Pass Incident: What Really Happened in 1959?
+2026-10-24 12:13:31,185 INFO atlas: Reusing fact-checked draft long-dyatlov-pass.json
+2026-10-24 12:13:31,185 INFO atlas: Script: 828 words, 14 scenes
+2026-10-24 12:13:31,186 INFO pipeline.voice: TTS: 14 scenes in 2 request(s)
+2026-10-24 12:13:31,186 INFO pipeline.voice: TTS chunk 1/2 (469 words, scenes 1-8)
+2026-10-24 12:13:32,086 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 12:13:32,089 WARNING pipeline.voice: Daily TTS quota used up on gemini-3.8-flash-tts — trying next TTS model
+2026-10-24 12:13:54,322 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 12:13:55,525 INFO pipeline.voice: TTS chunk 2/2 (359 words, scenes 9-14)
+2026-10-24 12:14:13,623 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 12:14:16,207 INFO pipeline.voice: Narration: 349.1s across 14 scenes
+2026-10-24 12:14:17,363 INFO pipeline.visuals: Shot 'snow blizzard winter night' -> Pixabay video
+2026-10-24 12:14:18,458 INFO pipeline.visuals: Shot 'Dyatlov Pass tent discovery' -> Wikimedia Commons image
+2026-10-24 12:14:19,078 INFO pipeline.visuals: Shot 'snow blizzard winter night' -> Pixabay video
+2026-10-24 12:14:19,593 INFO pipeline.visuals: Shot 'Dyatlov Pass tent discovery' -> Wikimedia Commons image
+2026-10-24 12:14:20,415 INFO pipeline.visuals: Shot 'Igor Dyatlov group hikers' -> Wikimedia Commons image
+2026-10-24 12:14:20,992 INFO pipeline.visuals: Shot 'Ural Mountains map 1959' -> Wikimedia Commons image
+2026-10-24 12:14:21,497 INFO pipeline.visuals: Shot 'Igor Dyatlov group hikers' -> Wikimedia Commons image
+2026-10-24 12:14:22,446 INFO pipeline.visuals: Shot 'Ural Mountains map 1959' -> Wikimedia Commons image
+2026-10-24 12:14:22,807 INFO pipeline.visuals: Shot 'Igor Dyatlov group hikers' -> Wikimedia Commons image
+2026-10-24 12:14:23,734 INFO pipeline.visuals: Shot 'mountain winter slope snow' -> Pixabay video
+2026-10-24 12:14:24,191 INFO pipeline.visuals: Shot 'mountain winter slope snow' -> Pixabay video
+2026-10-24 12:14:24,715 INFO pipeline.visuals: Shot 'mountain winter slope snow' -> Pixabay video
+2026-10-24 12:14:25,426 INFO pipeline.visuals: Shot 'mountain winter slope snow' -> Pixabay video
+2026-10-24 12:14:25,681 INFO pipeline.visuals: Shot 'mountain winter slope snow' -> Pixabay video
+2026-10-24 12:14:26,546 INFO pipeline.visuals: Shot 'Dyatlov pass abandoned tent' -> Wikimedia Commons image
+2026-10-24 12:14:27,036 INFO pipeline.visuals: Shot 'Dyatlov pass abandoned tent' -> Wikimedia Commons image
+2026-10-24 12:14:27,420 INFO pipeline.visuals: Shot 'Dyatlov pass abandoned tent' -> Wikimedia Commons image
+2026-10-24 12:14:28,141 INFO pipeline.visuals: Shot 'Dyatlov pass abandoned tent' -> Wikimedia Commons image
+2026-10-24 12:14:28,598 INFO pipeline.visuals: Shot 'Dyatlov pass abandoned tent' -> Wikimedia Commons image
+2026-10-24 12:14:29,032 INFO pipeline.visuals: Shot 'Dyatlov pass abandoned tent' -> Wikimedia Commons image
+2026-10-24 12:14:29,516 INFO pipeline.visuals: Shot 'footprints in deep snow' -> Pixabay video
+2026-10-24 12:14:29,872 INFO pipeline.visuals: Shot 'footprints in deep snow' -> Pixabay video
+2026-10-24 12:14:30,138 INFO pipeline.visuals: Shot 'footprints in deep snow' -> Pixabay video
+2026-10-24 12:14:30,379 INFO pipeline.visuals: Shot 'footprints in deep snow' -> Pixabay video
+2026-10-24 12:14:31,380 INFO pipeline.visuals: Shot 'pine tree winter forest russia' -> Wikimedia Commons image
+2026-10-24 12:14:31,991 INFO pipeline.visuals: Shot 'pine tree winter forest russia' -> Wikimedia Commons image
+2026-10-24 12:14:32,695 INFO pipeline.visuals: Shot 'pine tree winter forest russia' -> Wikimedia Commons image
+2026-10-24 12:14:33,443 INFO pipeline.visuals: Shot 'pine tree winter forest russia' -> Wikimedia Commons image
+2026-10-24 12:14:34,609 INFO pipeline.visuals: Shot 'search party snow winter 1959' -> Wikimedia Commons image
+2026-10-24 12:14:34,969 INFO pipeline.visuals: Shot 'search party snow winter 1959' -> Wikimedia Commons image
+2026-10-24 12:14:35,367 INFO pipeline.visuals: Shot 'search party snow winter 1959' -> Wikimedia Commons image
+2026-10-24 12:14:36,008 INFO pipeline.visuals: Shot 'search party snow winter 1959' -> Wikimedia Commons image
+2026-10-24 12:14:36,965 INFO pipeline.visuals: Shot 'snow melting spring forest' -> Wikimedia Commons image
+2026-10-24 12:14:37,620 INFO pipeline.visuals: Shot 'snow melting spring forest' -> Wikimedia Commons image
+2026-10-24 12:14:38,000 INFO pipeline.visuals: Shot 'snow melting spring forest' -> Wikimedia Commons image
+2026-10-24 12:14:38,408 INFO pipeline.visuals: Shot 'snow melting spring forest' -> Wikimedia Commons image
+2026-10-24 12:14:38,963 INFO pipeline.visuals: Shot 'snow melting spring forest' -> Wikimedia Commons image
+2026-10-24 12:14:39,323 INFO pipeline.visuals: Shot 'medical forensic laboratory research' -> Pixabay video
+2026-10-24 12:14:39,554 INFO pipeline.visuals: Shot 'medical forensic laboratory research' -> Pixabay video
+2026-10-24 12:14:39,762 INFO pipeline.visuals: Shot 'medical forensic laboratory research' -> Pixabay video
+2026-10-24 12:14:39,981 INFO pipeline.visuals: Shot 'medical forensic laboratory research' -> Pixabay video
+2026-10-24 12:14:40,174 INFO pipeline.visuals: Shot 'medical forensic laboratory research' -> Pixabay video
+2026-10-24 12:14:40,577 INFO pipeline.visuals: Shot 'cold stream water flowing rocks' -> Pixabay video
+2026-10-24 12:14:40,842 INFO pipeline.visuals: Shot 'cold stream water flowing rocks' -> Pixabay video
+2026-10-24 12:14:41,255 INFO pipeline.visuals: Shot 'cold stream water flowing rocks' -> Pixabay video
+2026-10-24 12:14:41,513 INFO pipeline.visuals: Shot 'cold stream water flowing rocks' -> Pixabay video
+2026-10-24 12:14:41,908 INFO pipeline.visuals: Shot 'night sky stars cinematic' -> Pixabay video
+2026-10-24 12:14:42,156 INFO pipeline.visuals: Shot 'night sky stars cinematic' -> Pixabay video
+2026-10-24 12:14:42,617 INFO pipeline.visuals: Shot 'night sky stars cinematic' -> Pixabay video
+2026-10-24 12:14:42,859 INFO pipeline.visuals: Shot 'night sky stars cinematic' -> Pixabay video
+2026-10-24 12:14:43,279 INFO pipeline.visuals: Shot 'night sky stars cinematic' -> Pixabay video
+2026-10-24 12:14:44,161 INFO pipeline.visuals: Shot 'vintage winter photography people' -> Wikimedia Commons image
+2026-10-24 12:14:44,658 INFO pipeline.visuals: Shot 'vintage winter photography people' -> Wikimedia Commons image
+2026-10-24 12:14:45,184 INFO pipeline.visuals: Shot 'vintage winter photography people' -> Wikimedia Commons image
+2026-10-24 12:14:45,500 INFO pipeline.visuals: Shot 'vintage winter photography people' -> Wikimedia Commons image
+2026-10-24 12:14:46,224 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 12:14:46,466 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 12:14:46,737 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 12:14:46,972 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 12:14:47,319 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 12:14:47,843 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 12:14:48,427 INFO pipeline.visuals: Shot 'lonely mountain peak sunset' -> Pixabay video
+2026-10-24 12:14:48,634 INFO pipeline.visuals: Shot 'lonely mountain peak sunset' -> Pixabay video
+2026-10-24 12:14:48,847 INFO pipeline.visuals: Shot 'lonely mountain peak sunset' -> Pixabay video
+2026-10-24 12:14:49,181 INFO pipeline.visuals: Shot 'lonely mountain peak sunset' -> Pixabay video
+2026-10-24 12:14:49,414 INFO pipeline.visuals: Shot 'lonely mountain peak sunset' -> Pixabay video
+2026-10-24 12:14:49,496 INFO pipeline.render: Caption self-test passed
+2026-10-24 12:20:10,142 INFO pipeline.render: Rendered 66 shot segments
+2026-10-24 12:20:12,545 INFO pipeline.render: No music in assets/music — rendering narration only
+2026-10-24 12:24:06,538 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/long-dyatlov-pass/dyatlov-pass.mp4 (350.1s)
+2026-10-24 12:24:07,547 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 12:24:07,548 WARNING atlas: AI thumbnail background failed: Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 requests per day on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-10-24 12:24:10,403 INFO pipeline.youtube: Upload 3%
+2026-10-24 12:24:11,109 INFO pipeline.youtube: Upload 7%
+2026-10-24 12:24:11,818 INFO pipeline.youtube: Upload 11%
+2026-10-24 12:24:12,477 INFO pipeline.youtube: Upload 15%
+2026-10-24 12:24:13,306 INFO pipeline.youtube: Upload 19%
+2026-10-24 12:24:14,158 INFO pipeline.youtube: Upload 23%
+2026-10-24 12:24:14,800 INFO pipeline.youtube: Upload 27%
+2026-10-24 12:24:15,459 INFO pipeline.youtube: Upload 31%
+2026-10-24 12:24:16,159 INFO pipeline.youtube: Upload 35%
+2026-10-24 12:24:16,805 INFO pipeline.youtube: Upload 39%
+2026-10-24 12:24:17,454 INFO pipeline.youtube: Upload 43%
+2026-10-24 12:24:18,106 INFO pipeline.youtube: Upload 47%
+2026-10-24 12:24:18,771 INFO pipeline.youtube: Upload 51%
+2026-10-24 12:24:19,415 INFO pipeline.youtube: Upload 55%
+2026-10-24 12:24:20,064 INFO pipeline.youtube: Upload 59%
+2026-10-24 12:24:20,870 INFO pipeline.youtube: Upload 63%
+2026-10-24 12:24:21,745 INFO pipeline.youtube: Upload 67%
+2026-10-24 12:24:22,441 INFO pipeline.youtube: Upload 71%
+2026-10-24 12:24:23,101 INFO pipeline.youtube: Upload 75%
+2026-10-24 12:24:23,797 INFO pipeline.youtube: Upload 79%
+2026-10-24 12:24:24,537 INFO pipeline.youtube: Upload 83%
+2026-10-24 12:24:25,244 INFO pipeline.youtube: Upload 87%
+2026-10-24 12:24:25,943 INFO pipeline.youtube: Upload 91%
+2026-10-24 12:24:26,611 INFO pipeline.youtube: Upload 95%
+2026-10-24 12:24:27,268 INFO pipeline.youtube: Upload 99%
+2026-10-24 12:24:28,297 INFO pipeline.youtube: Uploaded video kYsBN7gSkhQ (private, publishAt 2026-10-24T20:00:00.000Z)
+2026-10-24 12:24:30,731 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-10-24 12:24:30,731 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/long-dyatlov-pass
