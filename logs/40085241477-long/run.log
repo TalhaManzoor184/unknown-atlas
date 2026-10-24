@@ -1,0 +1,116 @@
+2026-10-24 10:16:41,277 INFO atlas: LONG-FORM: The Dyatlov Pass Incident: What Really Happened in 1959?
+2026-10-24 10:16:42,448 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:16:42,451 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-24 10:17:12,577 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:17:12,578 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-10-24 10:17:26,973 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-24 10:17:26,974 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-24 10:20:35,466 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:20:35,476 INFO pipeline.research: Wikipedia research brief: 12708 chars from Dyatlov Pass incident — Wikipedia, Devil's Pass — Wikipedia, Khamar-Daban incident — Wikipedia
+2026-10-24 10:24:18,567 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:28:52,571 ERROR atlas: Pipeline failed
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 136, in handle_request
+    raise exc
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpcore/_sync/http11.py", line 231, in _receive_event
+    raise RemoteProtocolError(msg)
+httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/basesdk.py", line 270, in do
+    http_res = client.send(req, stream=stream)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
+    return client().interactions.create(**body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 291, in create
+    response = wrap_sdk_call(
+               ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 576, in create
+    http_res = self.do_request(
+               ^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/basesdk.py", line 292, in do_request
+    http_res = utils.retry(do, utils.Retries(retry_config[0], retry_config[1]))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/retries.py", line 267, in retry
+    return retry_with_attempt_count_backoff(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/retries.py", line 404, in retry_with_attempt_count_backoff
+    raise exception.inner
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/retries.py", line 233, in do_request
+    res = func(attempt)
+          ^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/basesdk.py", line 275, in do
+    raise e
+google.genai._gaos.lib.compat_errors.APIConnectionError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 241, in main
+    out = run_long(args) if args.mode == "long" else run_short(args)
+          ^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 137, in run_long
+    pkg, report = writer.checked(pkg, research)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/writer.py", line 172, in checked
+    fc = fact_check(pkg, research)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/writer.py", line 142, in fact_check
+    return gemini.structured(prompt, FactCheck, system=FACTCHECK_SYSTEM, search=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 180, in structured
+    it = _call(**body)
+         ^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 86, in _call
+    raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
+RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Server disconnected without sending a response.
+::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Server disconnected without sending a response.
