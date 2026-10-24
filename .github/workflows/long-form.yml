@@ -62,7 +62,9 @@ jobs:
           ARGS=(long)
           if [ -n "$TOPIC" ]; then ARGS+=(--topic "$TOPIC"); fi
           if [ "$UPLOAD" = "false" ]; then ARGS+=(--no-upload); fi
-          python -m pipeline.main "${ARGS[@]}"
+          mkdir -p output
+          set -o pipefail
+          PYTHONUNBUFFERED=1 python -m pipeline.main "${ARGS[@]}" 2>&1 | tee output/run.log
 
       - name: Keep video package as artifact
         if: always()
@@ -77,6 +79,23 @@ jobs:
             output/**/description.txt
           retention-days: 14
           if-no-files-found: ignore
+
+      - name: Save run log to run-logs branch
+        if: always()
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          D="$RUNNER_TEMP/run-logs" && mkdir -p "$D" && cd "$D"
+          git init -q && git config user.name "unknown-atlas-bot" && git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:$TOKEN@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin run-logs; then git checkout -q -B run-logs FETCH_HEAD; else git checkout -q --orphan run-logs; fi
+          N="${{ github.run_id }}-long"
+          mkdir -p "logs/$N"
+          cp "$GITHUB_WORKSPACE/output/run.log" "logs/$N/run.log" 2>/dev/null || echo "no log produced" > "logs/$N/run.log"
+          find "$GITHUB_WORKSPACE/output" -maxdepth 2 \( -name package.md -o -name description.txt \) -exec cp {} "logs/$N/" \; 2>/dev/null
+          git add -A && git commit -qm "run log $N" && git push -q origin run-logs
+          exit 0
 
       - name: Commit state, research and package log
         if: success()

@@ -67,6 +67,7 @@ class AssetPicker:
                 asset = None
             if asset:
                 self.credits.append(asset)
+                log.info("Shot %r -> %s %s", visual.query, asset["source"], asset["type"])
                 return asset
         return self._card(visual.query, scene_text)
 

@@ -42,6 +42,7 @@ def narrate(scenes, workdir: Path, mock: bool = False) -> tuple[Path, list[dict]
     for s in scenes:
         wav = adir / f"scene_{s.id:02d}.wav"
         if not wav.exists():
+            log.info("TTS scene %d/%d (%d words)", s.id, len(scenes), len(s.narration.split()))
             if mock:
                 _mock_voice(wav, s.narration)
             else:
