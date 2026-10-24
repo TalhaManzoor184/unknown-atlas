@@ -192,7 +192,7 @@ def word_count(pkg) -> int:
 def fit_length(pkg, lo: int, hi: int, research: dict, research_text_only: bool = False):
     """One corrective pass if narration is clearly outside the target word range."""
     wc = word_count(pkg)
-    if lo * 0.85 <= wc <= hi * 1.1:
+    if lo * 0.95 <= wc <= hi * 1.1:
         return pkg
     direction = "Expand" if wc < lo else "Tighten"
     log.info("Narration is %d words (target %d-%d); asking for one %s pass", wc, lo, hi, direction.lower())

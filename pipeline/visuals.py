@@ -55,8 +55,8 @@ class AssetPicker:
             stock = [self._ai, self._wikimedia]   # atmosphere shots: AI first; real archive as fallback
         order = {
             "stock_video": stock,
-            "archival_image": [self._wikimedia, *photos, self._ai],
-            "map": [self._wikimedia, self._ai, *photos],
+            "archival_image": [self._wikimedia, self._wikimedia_short, self._ai, *([] if _about_people(visual.query) else photos)],
+            "map": [self._wikimedia, self._wikimedia_short, self._ai],
             "ai_image": [self._ai, self._wikimedia, *photos],
         }[visual.kind]
         for fn in order:
@@ -175,6 +175,13 @@ class AssetPicker:
                     "license": "Pixabay Content License (free, no attribution required)", "url": hit.get("pageURL", ""), "ai": False}
         return None
 
+    def _wikimedia_short(self, v):
+        """Retry Commons with just the leading key words (e.g. 'Dyatlov Pass tent discovery' -> 'Dyatlov Pass')."""
+        words = [w for w in v.query.split() if w.lower() not in STOP]
+        if len(words) <= 2:
+            return None
+        return self._wikimedia(type(v)(kind=v.kind, query=" ".join(words[:2]), ai_prompt=v.ai_prompt))
+
     def _wikimedia(self, v):
         q = v.query
         r = requests.get(
@@ -253,6 +260,14 @@ class AssetPicker:
         path = self.dir / f"card_{seed}.jpg"
         img.save(path, quality=92)
         return {"path": str(path), "type": "image", "source": "card", "author": "", "license": "", "url": "", "ai": False}
+
+
+PEOPLE = re.compile(r"\b(group|people|hikers?|portrait|man|men|woman|women|crew|team|family|soldiers?|students?|"
+                    r"members?|victims?|scientists?|explorers?|colonists?|sailors?|captain|person|faces?)\b", re.I)
+
+
+def _about_people(query: str) -> bool:
+    return bool(PEOPLE.search(query))
 
 
 def _meta(meta: dict, key: str) -> str:

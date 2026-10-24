@@ -29,8 +29,9 @@ voice:
   chunk_words: 520          # words per TTS request (fewer requests = fits free-tier TTS quotas)
 
 long_form:
-  target_words_min: 900
+  target_words_min: 1000     # ~150 words/min -> 6.5-9 min
   target_words_max: 1400
+  shot_seconds: 6.0          # aim for a new shot about every 6 s
   scenes_min: 12
   scenes_max: 20
   width: 1920
@@ -40,6 +41,7 @@ shorts:
   target_words_min: 55
   target_words_max: 110
   max_seconds: 58
+  shot_seconds: 3.5
   width: 1080
   height: 1920
 

@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import math
 import os
 import subprocess
 import sys
@@ -75,11 +76,26 @@ def build_description(pkg, credits, kind: str, timeline, long_url: str | None = 
     return "\n\n".join(parts)
 
 
-def collect_assets(pkg, workdir: Path, portrait: bool, mock: bool):
+def collect_assets(pkg, workdir: Path, portrait: bool, mock: bool, timeline=None):
+    """Enough distinct shots per scene that no single image/clip stays on screen too long."""
     picker = visuals.AssetPicker(workdir, portrait=portrait, mock=mock)
+    shot_len = float(cfg()["shorts" if portrait else "long_form"].get("shot_seconds", 3.5 if portrait else 6.0))
     per_scene = []
-    for s in pkg.scenes:
-        per_scene.append([picker.pick(v, s.narration) for v in s.visuals[:3]] or [picker._card(s.narration[:30], "")])
+    for i, s in enumerate(pkg.scenes):
+        vis = s.visuals[:3]
+        if not vis:
+            per_scene.append([picker._card(s.narration[:30], "")])
+            continue
+        dur = timeline[i]["duration"] if timeline else shot_len * len(vis)
+        need = max(len(vis), min(8, math.ceil(dur / shot_len)))
+        shots, seen = [], set()
+        for n in range(need):
+            a = picker.pick(vis[n % len(vis)], s.narration)
+            if a["path"] in seen:   # library ran out of fresh results for this query
+                continue
+            seen.add(a["path"])
+            shots.append(a)
+        per_scene.append(shots or [picker._card(s.narration[:30], "")])
     return picker, per_scene
 
 
@@ -145,7 +161,7 @@ def run_long(args):
     log.info("Script: %d words, %d scenes", writer.word_count(pkg), len(pkg.scenes))
 
     narration, timeline = voice.narrate(pkg.scenes, workdir, mock=args.mock)
-    picker, per_scene = collect_assets(pkg, workdir, portrait=False, mock=args.mock)
+    picker, per_scene = collect_assets(pkg, workdir, portrait=False, mock=args.mock, timeline=timeline)
     video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=False, slug=slug)
     thumb = make_thumbnail(thumbnail_background(pkg, per_scene, workdir, args.mock, picker.ai_failures < 3), pkg.thumbnail.text, workdir / "thumbnail.jpg")
 
@@ -202,7 +218,7 @@ def run_short(args):
     spoken = timeline[-1]["start"] + timeline[-1]["duration"]
     if spoken > cfg()["shorts"]["max_seconds"]:
         raise RuntimeError(f"Short narration is {spoken:.0f}s — over the {cfg()['shorts']['max_seconds']}s limit")
-    picker, per_scene = collect_assets(pkg, workdir, portrait=True, mock=args.mock)
+    picker, per_scene = collect_assets(pkg, workdir, portrait=True, mock=args.mock, timeline=timeline)
     video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=True, slug=slug)
 
     synthetic = cfg()["visuals"]["disclose_ai_images"] and picker.used_ai
