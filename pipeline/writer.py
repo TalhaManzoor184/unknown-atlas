@@ -128,9 +128,17 @@ FACTCHECK_SYSTEM = (
 )
 
 
-def fact_check(pkg) -> FactCheck:
+def fact_check(pkg, research: dict) -> FactCheck:
     script = "\n".join(f"[scene {s.id}] {s.narration}" for s in pkg.scenes)
     prompt = f"Fact-check this narration script.\n\nTITLE: {getattr(pkg, 'final_title', None) or pkg.title}\n\n{script}"
+    if research.get("method") == "wikipedia" or not gemini.search_available():
+        # No Google Search on this key: check every claim against the source articles themselves.
+        prompt += (
+            "\n\nGoogle Search is not available. Verify each claim ONLY against the SOURCE ARTICLES below. "
+            "Any specific fact (date, number, name, quote, finding) that the articles do not support counts as "
+            "'high' severity (unsupported) unless it is common knowledge.\n\nSOURCE ARTICLES:\n"
+            + research.get("corpus", research["brief"])
+        )
     return gemini.structured(prompt, FactCheck, system=FACTCHECK_SYSTEM, search=True)
 
 
@@ -161,7 +169,7 @@ def checked(pkg, research: dict):
     rounds = cfg()["quality"]["max_factcheck_rounds"]
     report = []
     for r in range(rounds + 1):
-        fc = fact_check(pkg)
+        fc = fact_check(pkg, research)
         report.append(fc.model_dump())
         serious = [i for i in fc.issues if i.severity in ("high", "medium")]
         log.info("Fact-check round %d: verdict=%s, %d serious / %d total issues", r + 1, fc.verdict, len(serious), len(fc.issues))

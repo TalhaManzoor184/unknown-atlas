@@ -1,9 +1,10 @@
 """Finds licensed visuals for every shot and logs where each one came from.
 
 Order of preference per shot:
-  archival_image / map -> Wikimedia Commons (PD / CC0 / CC BY / CC BY-SA only) -> Pexels photo -> AI -> card
-  stock_video          -> Pexels video -> Pexels photo -> Wikimedia -> AI -> card
-  ai_image             -> Gemini image (if enabled & under cap) -> Wikimedia -> Pexels photo -> card
+  archival_image / map -> Wikimedia Commons (PD / CC0 / CC BY / CC BY-SA only) -> Pexels/Pixabay photo -> AI -> card
+  stock_video          -> Pexels video -> Pixabay video -> Pexels/Pixabay photo -> Wikimedia -> AI -> card
+  ai_image             -> Gemini image (if enabled & under cap) -> Wikimedia -> Pexels/Pixabay photo -> card
+Sources whose API key is not set are skipped automatically.
 """
 from __future__ import annotations
 
@@ -34,10 +35,12 @@ class AssetPicker:
         self.ai_count = 0
         self.credits: list[dict] = []
         self.pexels_key = "" if mock else env("PEXELS_API_KEY", required=False)
+        self.pixabay_key = "" if mock else env("PIXABAY_API_KEY", required=False)
         vc = cfg()["visuals"]
         self.ai_enabled = vc["ai_images"] and not mock
-        # Without a Pexels key, Gemini illustrations replace stock footage, so allow many more of them.
-        self.ai_cap = int(vc["max_ai_images_per_video"] if self.pexels_key else vc["max_ai_images_without_stock"])
+        has_stock = bool(self.pexels_key or self.pixabay_key)
+        # Without any stock library, Gemini illustrations replace stock footage, so allow many more of them.
+        self.ai_cap = int(vc["max_ai_images_per_video"] if has_stock else vc["max_ai_images_without_stock"])
         self.licenses = [l.lower() for l in vc["allowed_wikimedia_licenses"]]
         self.ai_failures = 0
 
@@ -45,16 +48,16 @@ class AssetPicker:
     def pick(self, visual, scene_text: str) -> dict:
         if self.mock:
             return self._card(visual.query, scene_text)
-        stock = (
-            [self._pexels_video, self._pexels_photo, self._wikimedia, self._ai]
-            if self.pexels_key else
-            [self._ai, self._wikimedia]   # atmosphere shots: AI first; real archive as fallback
-        )
+        photos = [self._pexels_photo, self._pixabay_photo]
+        if self.pexels_key or self.pixabay_key:
+            stock = [self._pexels_video, self._pixabay_video, *photos, self._wikimedia, self._ai]
+        else:
+            stock = [self._ai, self._wikimedia]   # atmosphere shots: AI first; real archive as fallback
         order = {
             "stock_video": stock,
-            "archival_image": [self._wikimedia, self._pexels_photo, self._ai],
-            "map": [self._wikimedia, self._ai, self._pexels_photo],
-            "ai_image": [self._ai, self._wikimedia, self._pexels_photo],
+            "archival_image": [self._wikimedia, *photos, self._ai],
+            "map": [self._wikimedia, self._ai, *photos],
+            "ai_image": [self._ai, self._wikimedia, *photos],
         }[visual.kind]
         for fn in order:
             try:
@@ -126,6 +129,51 @@ class AssetPicker:
                     "license": "Pexels License (free, no attribution required)", "url": p.get("url", ""), "ai": False}
         return None
 
+    # Pixabay Content License: free for commercial use, no attribution required. Files are downloaded (no hotlinking).
+    def _pixabay(self, endpoint: str, v, extra: dict) -> list[dict]:
+        if not self.pixabay_key:
+            return []
+        r = requests.get(
+            f"https://pixabay.com/api/{endpoint}",
+            params={"key": self.pixabay_key, "q": v.query[:100], "safesearch": "true", "per_page": 20, "order": "popular", **extra},
+            headers=UA, timeout=30,
+        )
+        r.raise_for_status()
+        return r.json().get("hits", [])
+
+    def _pixabay_video(self, v):
+        target = 1080 if self.portrait else 1920
+        for hit in self._pixabay("videos/", v, {"video_type": "film"}):
+            key = f"pixabay-video-{hit['id']}"
+            if key in self.used or hit.get("duration", 0) < 4:
+                continue
+            files = [f for f in (hit.get("videos") or {}).values() if f.get("url") and f.get("width")]
+            if self.portrait:
+                files = [f for f in files if f["height"] >= f["width"]] or files
+            if not files:
+                continue
+            files.sort(key=lambda f: (abs(max(f["width"], f["height"]) - max(target, 1920)), -f["width"]))
+            self.used.add(key)
+            path = self._download(files[0]["url"], ".mp4")
+            return {"path": str(path), "type": "video", "source": "Pixabay", "author": hit.get("user", ""),
+                    "license": "Pixabay Content License (free, no attribution required)", "url": hit.get("pageURL", ""), "ai": False}
+        return None
+
+    def _pixabay_photo(self, v):
+        extra = {"image_type": "photo", "orientation": "vertical" if self.portrait else "horizontal", "min_width": 1280}
+        for hit in self._pixabay("", v, extra):
+            key = f"pixabay-photo-{hit['id']}"
+            if key in self.used:
+                continue
+            url = hit.get("largeImageURL") or hit.get("webformatURL")
+            if not url:
+                continue
+            self.used.add(key)
+            path = self._download(url, ".jpg")
+            return {"path": str(path), "type": "image", "source": "Pixabay", "author": hit.get("user", ""),
+                    "license": "Pixabay Content License (free, no attribution required)", "url": hit.get("pageURL", ""), "ai": False}
+        return None
+
     def _wikimedia(self, v):
         q = v.query
         r = requests.get(
@@ -177,9 +225,11 @@ class AssetPicker:
         )
         try:
             data = gemini.image(prompt, aspect_ratio="9:16" if self.portrait else "16:9")
-        except Exception:
-            self.ai_failures += 1
-            if self.ai_failures == 3:
+        except Exception as e:
+            m = str(e).lower()
+            # quota / not-on-free-tier won't recover within this run: stop trying straight away
+            self.ai_failures += 3 if ("quota" in m or "too_many_requests" in m or "429" in m) else 1
+            if self.ai_failures >= 3:
                 log.error("Gemini image generation failed 3 times — disabling AI images for this video")
             raise
         path = self.dir / (hashlib.sha1(prompt.encode()).hexdigest()[:16] + "_ai.jpg")
@@ -215,8 +265,8 @@ def attribution_lines(credits: list[dict]) -> list[str]:
     for c in credits:
         if c["source"] == "Wikimedia Commons":
             line = f"• \"{c.get('title', 'Image')}\" by {c['author']} — {c['license']} — {c['url']}"
-        elif c["source"] == "Pexels":
-            line = f"• Footage/photo by {c['author'] or 'Pexels contributor'} on Pexels — {c['url']}"
+        elif c["source"] in ("Pexels", "Pixabay"):
+            line = f"• Footage/photo by {c['author'] or c['source'] + ' contributor'} on {c['source']} — {c['url']}"
         elif c.get("ai"):
             line = "• Some illustrative reconstructions were generated with AI (Google Gemini)."
         else:

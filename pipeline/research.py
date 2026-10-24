@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import re
 
 import requests
 
@@ -33,13 +34,7 @@ def _resolve(url: str) -> str:
         return url
 
 
-def research(topic: dict) -> dict:
-    prompt = f"""Research this documentary topic for a 6-10 minute YouTube mini-documentary.
-
-Topic: {topic['title']}
-Angle: {topic.get('angle', '')}
-
-Produce a research brief with these sections:
+BRIEF_SECTIONS = """Produce a research brief with these sections:
 1. Core story timeline (dates, places, people) — verified facts only.
 2. Key evidence and discoveries (who found what, when, how we know).
 3. Competing explanations/theories, each labelled VERIFIED / DISPUTED / THEORY / LEGEND, with which
@@ -48,7 +43,24 @@ Produce a research brief with these sections:
 5. Surprising, little-known but verifiable details useful as hooks or YouTube Shorts.
 6. Common myths or misinformation about this topic that the video should NOT repeat as fact.
 7. Pronunciation of unusual names.
-Be specific and concise. Cite sources."""
+Be specific and concise."""
+
+
+def research(topic: dict) -> dict:
+    try:
+        return _grounded(topic)
+    except gemini.QuotaError as e:
+        log.warning("Google Search grounding not available (%s) — researching from Wikipedia instead", str(e)[:160])
+        return _wikipedia(topic)
+
+
+def _grounded(topic: dict) -> dict:
+    prompt = f"""Research this documentary topic for a 6-10 minute YouTube mini-documentary.
+
+Topic: {topic['title']}
+Angle: {topic.get('angle', '')}
+
+{BRIEF_SECTIONS} Cite sources."""
     text, cites = gemini.grounded_text(prompt, system=RESEARCH_SYSTEM)
     sources = []
     seen = set()
@@ -61,4 +73,62 @@ Be specific and concise. Cite sources."""
     log.info("Research brief: %d chars, %d sources", len(text), len(sources))
     if len(sources) < 3:
         log.warning("Only %d grounded sources found — fact quality may be weak", len(sources))
-    return {"brief": text, "sources": sources}
+    return {"brief": text, "sources": sources, "method": "google_search"}
+
+
+# ---------------------------------------------------------------- Wikipedia fallback (free, no search quota)
+
+WIKI_API = "https://en.wikipedia.org/w/api.php"
+
+
+def _wiki_search(query: str, limit: int = 4) -> list[str]:
+    r = requests.get(WIKI_API, params={"action": "query", "list": "search", "srsearch": query, "srlimit": limit,
+                                       "format": "json", "formatversion": 2}, headers=UA, timeout=30)
+    r.raise_for_status()
+    return [h["title"] for h in r.json().get("query", {}).get("search", [])]
+
+
+def _wiki_article(title: str, max_chars: int = 14000) -> dict | None:
+    r = requests.get(WIKI_API, params={"action": "query", "prop": "extracts|info", "explaintext": 1, "inprop": "url",
+                                       "titles": title, "redirects": 1, "format": "json", "formatversion": 2},
+                     headers=UA, timeout=30)
+    r.raise_for_status()
+    pages = r.json().get("query", {}).get("pages", [])
+    if not pages or pages[0].get("missing"):
+        return None
+    p = pages[0]
+    text = p.get("extract", "")
+    # drop reference-ish tail sections
+    text = re.split(r"\n==\s*(See also|References|Notes|Further reading|External links|Bibliography)\s*==", text)[0]
+    if len(text) < 800:
+        return None
+    return {"title": f"{p['title']} — Wikipedia", "url": p.get("fullurl") or f"https://en.wikipedia.org/wiki/{p['title'].replace(' ', '_')}",
+            "text": text[:max_chars]}
+
+
+def _wikipedia(topic: dict) -> dict:
+    queries = [topic.get("wiki") or "", topic["title"].split(":")[0], topic["id"].replace("-", " ")]
+    titles: list[str] = []
+    for q in filter(None, queries):
+        for t in _wiki_search(q):
+            if t not in titles:
+                titles.append(t)
+        if len(titles) >= 4:
+            break
+    articles = [a for a in (_wiki_article(t) for t in titles[:4]) if a][:3]
+    if not articles:
+        raise RuntimeError(f"No usable Wikipedia articles found for {topic['title']!r}; add a `wiki:` search term to the topic")
+    corpus = "\n\n".join(f"### SOURCE: {a['title']} ({a['url']})\n{a['text']}" for a in articles)
+    prompt = f"""Write a research brief for a 6-10 minute YouTube mini-documentary.
+
+Topic: {topic['title']}
+Angle: {topic.get('angle', '')}
+
+Use ONLY the source articles below. If something in the angle is not supported by them, say "not covered by sources".
+{BRIEF_SECTIONS} After each fact, name the source article in brackets.
+
+{corpus}"""
+    brief = gemini.text(prompt, system=RESEARCH_SYSTEM.replace("Use Google Search. ", ""))
+    sources = [{"title": a["title"], "url": a["url"]} for a in articles]
+    log.info("Wikipedia research brief: %d chars from %s", len(brief), ", ".join(a["title"] for a in articles))
+    return {"brief": brief, "sources": sources, "method": "wikipedia", "corpus": corpus}

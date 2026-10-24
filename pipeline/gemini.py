@@ -39,28 +39,64 @@ def _get(obj: Any, name: str, default=None):
     return getattr(obj, name, default)
 
 
+class QuotaError(RuntimeError):
+    """Quota / free-tier limit that won't clear during this run."""
+
+
+_text_fallback_active = False  # once the main text model is out of quota, stay on the fallback for this run
+_search_blocked = False   # set once Google Search grounding hits a quota; later calls skip straight to fallbacks
+
+
+def search_available() -> bool:
+    return not _search_blocked
+
+
 def _call(**body):
-    """Call interactions.create with retries on rate limits / transient errors."""
+    """Call interactions.create with retries on transient errors.
+
+    Quota errors:
+      * calls with google_search -> one short retry, then QuotaError (callers fall back to non-search paths)
+      * plain text calls          -> switch to models.text_fallback (e.g. a Flash-Lite model with a bigger free quota)
+    """
+    global _search_blocked, _text_fallback_active
+    if _text_fallback_active and body.get("model") == cfg()["models"]["text"] and cfg()["models"].get("text_fallback"):
+        body["model"] = cfg()["models"]["text_fallback"]
     delay = 8.0
-    last: Exception | None = None
-    for attempt in range(6):
+    quota_hits = 0
+    switched = False
+    for attempt in range(8):
         try:
             return client().interactions.create(**body)
         except Exception as e:  # SDK raises various error types; inspect message
-            last = e
             msg = str(e).lower()
             model = body.get("model")
+            tool = " + google_search" if body.get("tools") else ""
             quota = "quota" in msg or "too_many_requests" in msg or "resource_exhausted" in msg
             transient = quota or any(k in msg for k in ("429", "rate", "500", "503", "unavailable", "deadline", "timeout", "overloaded"))
-            # Quota errors: retry only twice (covers per-minute limits); daily / not-on-free-tier limits won't clear.
-            if not transient or attempt == 5 or (quota and attempt >= 2):
-                tool = " + google_search" if body.get("tools") else ""
+            if not transient or attempt == 7:
                 raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
-            wait = 35.0 * (attempt + 1) if quota else delay
-            log.warning("Gemini %s on %s; retry %d in %.0fs", "quota limit" if quota else "transient error", model, attempt + 1, wait)
+            if quota:
+                quota_hits += 1
+                fallback = cfg()["models"].get("text_fallback")
+                if body.get("tools"):
+                    if quota_hits >= 2:
+                        _search_blocked = True
+                        raise QuotaError(f"Google Search grounding quota [model={model}]: {e}") from e
+                elif model == cfg()["models"]["text"] and fallback and not switched:
+                    log.warning("Quota hit on %s — switching to fallback text model %s", model, fallback)
+                    body["model"] = fallback
+                    switched = True
+                    _text_fallback_active = True
+                    continue
+                elif quota_hits >= 3:
+                    raise QuotaError(f"Gemini quota [model={model}]: {e}") from e
+                wait = 30.0 * quota_hits
+            else:
+                wait = delay
+                delay = min(delay * 2, 120)
+            log.warning("Gemini %s on %s%s; retry %d in %.0fs", "quota limit" if quota else "transient error", model, tool, attempt + 1, wait)
             time.sleep(wait)
-            delay = min(delay * 2, 120)
-    raise last  # pragma: no cover
+    raise RuntimeError("unreachable")  # pragma: no cover
 
 
 def _output_text(interaction) -> str:
@@ -105,7 +141,9 @@ def _extract_json(text: str) -> str:
 
 
 def grounded_text(prompt: str, system: str | None = None) -> tuple[str, list[dict]]:
-    """Text answer grounded with Google Search. Returns (text, citations)."""
+    """Text answer grounded with Google Search. Returns (text, citations). Raises QuotaError if search is unavailable."""
+    if not search_available():
+        raise QuotaError("Google Search grounding unavailable earlier in this run")
     body = dict(model=cfg()["models"]["text"], input=prompt, tools=[{"type": "google_search"}])
     if system:
         body["system_instruction"] = system
@@ -122,12 +160,21 @@ def structured(prompt: str, schema: Type[T], system: str | None = None, search: 
     )
     if system:
         body["system_instruction"] = system
+    if search and not search_available():
+        search = False
     if search:
         body["tools"] = [{"type": "google_search"}]
     last_err: Exception | None = None
     for attempt in range(3):
         try:
             it = _call(**body)
+        except QuotaError:
+            if not search:
+                raise
+            log.warning("Google Search grounding unavailable (quota / free tier) — continuing without search")
+            search = False
+            body.pop("tools", None)
+            continue
         except Exception as e:
             # Structured output + search is a preview combo; fall back to free text + JSON extraction.
             if search and "response_format" in body:
@@ -146,6 +193,13 @@ def structured(prompt: str, schema: Type[T], system: str | None = None, search: 
                 last_err = e
                 log.warning("Schema validation failed (attempt %d): %s", attempt + 1, str(e)[:300])
     raise RuntimeError(f"Gemini returned invalid JSON for {schema.__name__}: {last_err}")
+
+
+def text(prompt: str, system: str | None = None) -> str:
+    body = dict(model=cfg()["models"]["text"], input=prompt)
+    if system:
+        body["system_instruction"] = system
+    return _output_text(_call(**body))
 
 
 def tts(text: str, voice: str, style: str) -> bytes:

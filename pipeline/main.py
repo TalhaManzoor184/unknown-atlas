@@ -87,8 +87,8 @@ def _frame(video: str, out: Path) -> str:
     return str(out)
 
 
-def thumbnail_background(pkg, per_scene, workdir: Path, mock: bool) -> str:
-    if cfg()["visuals"]["ai_images"] and not mock:
+def thumbnail_background(pkg, per_scene, workdir: Path, mock: bool, ai_ok: bool = True) -> str:
+    if cfg()["visuals"]["ai_images"] and not mock and ai_ok:
         try:
             from . import gemini
 
@@ -98,7 +98,7 @@ def thumbnail_background(pkg, per_scene, workdir: Path, mock: bool) -> str:
         except Exception as e:
             log.warning("AI thumbnail background failed: %s", e)
     flat = [a for scene in per_scene for a in scene]
-    for want in ("Wikimedia Commons", "Pexels"):
+    for want in ("Wikimedia Commons", "Pexels", "Pixabay"):
         for a in flat:
             if a["source"] == want and a["type"] == "image":
                 return a["path"]
@@ -141,7 +141,7 @@ def run_long(args):
     narration, timeline = voice.narrate(pkg.scenes, workdir, mock=args.mock)
     picker, per_scene = collect_assets(pkg, workdir, portrait=False, mock=args.mock)
     video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=False, slug=slug)
-    thumb = make_thumbnail(thumbnail_background(pkg, per_scene, workdir, args.mock), pkg.thumbnail.text, workdir / "thumbnail.jpg")
+    thumb = make_thumbnail(thumbnail_background(pkg, per_scene, workdir, args.mock, picker.ai_failures < 3), pkg.thumbnail.text, workdir / "thumbnail.jpg")
 
     synthetic = cfg()["visuals"]["disclose_ai_images"] and picker.used_ai
     desc = build_description(pkg, picker.credits, "long", timeline, synthetic=synthetic)
@@ -256,10 +256,10 @@ def preflight(upload: bool):
     missing = [n for n in needed if not os.getenv(n, "").strip()]
     if missing:
         raise RuntimeError("Missing GitHub secrets: " + ", ".join(missing) + " (repo Settings → Secrets and variables → Actions)")
-    if not os.getenv("PEXELS_API_KEY", "").strip():
-        log.warning("PEXELS_API_KEY not set — using Gemini illustrations + Wikimedia archival images instead of stock footage")
+    if not (os.getenv("PEXELS_API_KEY", "").strip() or os.getenv("PIXABAY_API_KEY", "").strip()):
+        log.warning("No PEXELS_API_KEY / PIXABAY_API_KEY — using Gemini illustrations + Wikimedia images instead of stock footage")
         if os.getenv("GITHUB_ACTIONS"):
-            print("::warning title=Pexels key missing::PEXELS_API_KEY not set — Gemini illustrations replace stock footage")
+            print("::warning title=No stock footage key::Set PIXABAY_API_KEY or PEXELS_API_KEY for stock footage")
 
 
 if __name__ == "__main__":

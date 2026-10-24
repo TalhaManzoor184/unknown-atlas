@@ -39,7 +39,7 @@ Add these under repo → **Settings → Secrets and variables → Actions → Se
 | Secret | Where to get it |
 |---|---|
 | `GEMINI_API_KEY` | https://aistudio.google.com/apikey |
-| `PEXELS_API_KEY` *(optional)* | https://www.pexels.com/api/ (free). Without it, Gemini illustrations replace stock footage. |
+| `PIXABAY_API_KEY` and/or `PEXELS_API_KEY` *(optional)* | https://pixabay.com/api/docs/ · https://www.pexels.com/api/ (both free). Without either, Gemini illustrations replace stock footage. |
 | `YOUTUBE_CLIENT_ID` / `YOUTUBE_CLIENT_SECRET` | Google Cloud OAuth client (Desktop app) with **YouTube Data API v3** enabled. You can reuse the client from the Sunny project. |
 | `YOUTUBE_REFRESH_TOKEN` | Run `python scripts/get_refresh_token.py client_secret.json` on your PC. When it asks, choose the **Unknown Atlas** channel. |
 
