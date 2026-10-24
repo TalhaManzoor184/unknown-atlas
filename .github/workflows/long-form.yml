@@ -98,7 +98,7 @@ jobs:
           exit 0
 
       - name: Commit state, research and package log
-        if: success()
+        if: always()
         run: |
           git config user.name "unknown-atlas-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -69,7 +69,7 @@ RESEARCH BRIEF:
 RESEARCH SOURCES (the only URLs you may cite):
 {_sources_block(research)}
 """
-    pkg = gemini.structured(prompt, LongPackage, system=WRITER_SYSTEM)
+    pkg = gemini.structured(prompt, LongPackage, system=WRITER_SYSTEM, thinking=cfg()["models"].get("writing_thinking_level"))
     return _clean(pkg, research)
 
 

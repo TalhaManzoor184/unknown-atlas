@@ -22,6 +22,7 @@ from . import visuals, voice, writer
 from .config import ROOT, OUTPUT_DIR, cfg
 from .package_md import render_md
 from .render import render
+from .schemas import LongPackage, ShortPackage
 from .thumbnail import make_thumbnail
 
 log = logging.getLogger("atlas")
@@ -132,9 +133,14 @@ def run_long(args):
     else:
         research = tq.cached_research(slug) or research_mod.research(topic)
         tq.save_research(slug, research)
-        pkg = writer.write_long(topic, research)
-        pkg = writer.fit_length(pkg, lf["target_words_min"], lf["target_words_max"], research)
-        pkg, report = writer.checked(pkg, research)
+        draft = load_draft(f"long-{slug}", LongPackage)
+        if draft:
+            pkg, report = draft
+        else:
+            pkg = writer.write_long(topic, research)
+            pkg = writer.fit_length(pkg, lf["target_words_min"], lf["target_words_max"], research)
+            pkg, report = writer.checked(pkg, research)
+            save_draft(f"long-{slug}", pkg, report)
     (workdir / "package.json").write_text(pkg.model_dump_json(indent=2))
     log.info("Script: %d words, %d scenes", writer.word_count(pkg), len(pkg.scenes))
 
@@ -153,6 +159,7 @@ def run_long(args):
 
         up = youtube.upload(video, pkg.final_title, desc, pkg.tags, "long", thumb, synthetic=synthetic)
         tq.record("long", slug, {"title": pkg.final_title, **up, "seconds": round(total)})
+        drop_draft(f"long-{slug}")
 
     md = render_md(pkg, timeline, per_scene, report, "long", up)
     (workdir / "package.md").write_text(md)
@@ -180,10 +187,15 @@ def run_short(args):
     else:
         research = tq.cached_research(topic["id"]) or research_mod.research(topic)
         tq.save_research(topic["id"], research)
-        pkg = writer.write_short(angle, topic, research, long_entry["title"] if long_entry else None)
-        sh = cfg()["shorts"]
-        pkg = writer.fit_length(pkg, sh["target_words_min"], sh["target_words_max"], research)
-        pkg, report = writer.checked(pkg, research)
+        draft = load_draft(f"short-{slug}", ShortPackage)
+        if draft:
+            pkg, report = draft
+        else:
+            pkg = writer.write_short(angle, topic, research, long_entry["title"] if long_entry else None)
+            sh = cfg()["shorts"]
+            pkg = writer.fit_length(pkg, sh["target_words_min"], sh["target_words_max"], research)
+            pkg, report = writer.checked(pkg, research)
+            save_draft(f"short-{slug}", pkg, report)
     (workdir / "package.json").write_text(pkg.model_dump_json(indent=2))
 
     narration, timeline = voice.narrate(pkg.scenes, workdir, mock=args.mock)
@@ -205,12 +217,35 @@ def run_short(args):
 
         up = youtube.upload(video, pkg.title, desc, pkg.tags, "short", None, synthetic=synthetic)
         tq.record("short", key, {"title": pkg.title, **up, "seconds": round(total), "parent": topic["id"]})
+        drop_draft(f"short-{slug}")
 
     md = render_md(pkg, timeline, per_scene, report, "short", up)
     (workdir / "package.md").write_text(md)
     _archive(slug, "short", md, args)
     summary(f"## 📱 Short: {pkg.title}\n- Length: {total:.0f}s\n- Upload: {up['url'] if up else 'skipped'}\n- Linked documentary: {long_entry['url'] if long_entry else 'none yet'}\n")
     return workdir
+
+
+DRAFTS = ROOT / "content" / "drafts"
+
+
+def load_draft(name: str, schema):
+    """A fact-checked script saved by an earlier run (so a retry skips the slow writing steps)."""
+    p = DRAFTS / f"{name}.json"
+    if not p.exists():
+        return None
+    data = json.loads(p.read_text())
+    log.info("Reusing fact-checked draft %s", p.name)
+    return schema.model_validate(data["package"]), data["factcheck"]
+
+
+def save_draft(name: str, pkg, report):
+    DRAFTS.mkdir(parents=True, exist_ok=True)
+    (DRAFTS / f"{name}.json").write_text(json.dumps({"package": pkg.model_dump(), "factcheck": report}, indent=2, ensure_ascii=False) + "\n")
+
+
+def drop_draft(name: str):
+    (DRAFTS / f"{name}.json").unlink(missing_ok=True)
 
 
 def _archive(slug: str, kind: str, md: str, args):

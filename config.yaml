@@ -14,6 +14,8 @@ models:
   # Override any of these with env vars GEMINI_TEXT_MODEL / GEMINI_TTS_MODEL / GEMINI_IMAGE_MODEL
   text: "gemini-3.8-flash"
   text_fallback: "gemini-3.5-flash-lite"   # used automatically when the main text model's quota runs out
+  thinking_level: "low"            # research, fact-check, revisions (faster; long calls were timing out)
+  writing_thinking_level: "medium" # the main documentary script
   tts: "gemini-3.8-flash-tts"
   image: "gemini-nano-banana-2.1"
 

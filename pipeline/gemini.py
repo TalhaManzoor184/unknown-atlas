@@ -81,7 +81,12 @@ def _call(**body):
             model = body.get("model")
             tool = " + google_search" if body.get("tools") else ""
             quota = "quota" in msg or "too_many_requests" in msg or "resource_exhausted" in msg
-            transient = quota or any(k in msg for k in ("429", "rate", "500", "503", "unavailable", "deadline", "timeout", "overloaded"))
+            transient = quota or any(k in msg for k in ("429", "rate", "500", "502", "503", "504", "unavailable", "deadline", "timeout", "timed out",
+                                             "overloaded", "disconnect", "connection", "reset by peer", "eof", "remoteprotocol"))
+            if not transient and "thinking" in msg and body.get("generation_config", {}).get("thinking_level"):
+                log.warning("%s rejected thinking_level — retrying without it", model)
+                body["generation_config"] = {k: v for k, v in body["generation_config"].items() if k != "thinking_level"}
+                continue
             if not transient or attempt == 7:
                 raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
             if quota:
@@ -150,23 +155,29 @@ def _extract_json(text: str) -> str:
     return text[start : end + 1]
 
 
-def grounded_text(prompt: str, system: str | None = None) -> tuple[str, list[dict]]:
+def _thinking(level: str | None) -> dict:
+    level = level or cfg()["models"].get("thinking_level")
+    return {"generation_config": {"thinking_level": level}} if level else {}
+
+
+def grounded_text(prompt: str, system: str | None = None, thinking: str | None = None) -> tuple[str, list[dict]]:
     """Text answer grounded with Google Search. Returns (text, citations). Raises QuotaError if search is unavailable."""
     if not search_available():
         raise QuotaError("Google Search grounding unavailable earlier in this run")
-    body = dict(model=cfg()["models"]["text"], input=prompt, tools=[{"type": "google_search"}])
+    body = dict(model=cfg()["models"]["text"], input=prompt, tools=[{"type": "google_search"}], **_thinking(thinking))
     if system:
         body["system_instruction"] = system
     it = _call(**body)
     return _output_text(it), citations(it)
 
 
-def structured(prompt: str, schema: Type[T], system: str | None = None, search: bool = False) -> T:
+def structured(prompt: str, schema: Type[T], system: str | None = None, search: bool = False, thinking: str | None = None) -> T:
     """Structured JSON output validated against a pydantic model."""
     body = dict(
         model=cfg()["models"]["text"],
         input=prompt,
         response_format={"type": "text", "mime_type": "application/json", "schema": schema.model_json_schema()},
+        **_thinking(thinking),
     )
     if system:
         body["system_instruction"] = system
@@ -205,8 +216,8 @@ def structured(prompt: str, schema: Type[T], system: str | None = None, search: 
     raise RuntimeError(f"Gemini returned invalid JSON for {schema.__name__}: {last_err}")
 
 
-def text(prompt: str, system: str | None = None) -> str:
-    body = dict(model=cfg()["models"]["text"], input=prompt)
+def text(prompt: str, system: str | None = None, thinking: str | None = None) -> str:
+    body = dict(model=cfg()["models"]["text"], input=prompt, **_thinking(thinking))
     if system:
         body["system_instruction"] = system
     return _output_text(_call(**body))
