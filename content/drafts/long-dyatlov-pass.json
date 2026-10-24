@@ -1,0 +1,350 @@
+{
+  "package": {
+    "title_options": [
+      "What Really Happened at Dyatlov Pass in 1959?",
+      "The Mystery of Dyatlov Pass: Solved?",
+      "Inside the 1959 Dyatlov Pass Tragedy"
+    ],
+    "final_title": "What Really Happened at Dyatlov Pass in 1959?",
+    "title_reason": "Clear, direct, and accurately frames the investigation into the historical event without clickbait exaggeration.",
+    "hook": "In February 1959, nine experienced hikers cut their own tent open from the inside and fled into sub-zero darkness. None of them survived.",
+    "scenes": [
+      {
+        "id": 1,
+        "section": "hook",
+        "narration": "In February 1959, nine experienced hikers cut their own tent open from the inside and fled into sub-zero darkness. None of them survived. For decades, this tragedy in the northern Ural Mountains has baffled investigators, spawning wild theories of UFOs, secret military weapons, and Yeti attacks. But what does the actual evidence tell us about those final hours?",
+        "on_screen_text": "February 1959",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "snow blizzard winter night",
+            "ai_prompt": "Cinematic 16:9 shot of a severe snowstorm at night over a desolate mountain slope, dark and eerie.",
+            "note": ""
+          },
+          {
+            "kind": "archival_image",
+            "query": "Dyatlov Pass tent discovery",
+            "ai_prompt": "Historical photograph of a snow-covered tent half-buried in winter conditions.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Howling wind sound effect fading into a low, tense documentary drone.",
+        "pronunciation": "Dyatlov = DYAHT-lov"
+      },
+      {
+        "id": 2,
+        "section": "intro",
+        "narration": "The story began in January 1959. A group of ten students and graduates from the Ural Polytechnical Institute set out on a challenging trek across the Ural Mountains. Their destination was Gora Otorten, a peak known for harsh, unpredictable weather. Led by twenty-three-year-old Igor Dyatlov, the group was seasoned and well-prepared for winter expedition conditions.",
+        "on_screen_text": "January 1959",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "Igor Dyatlov group hikers",
+            "ai_prompt": "Historical group portrait of young Soviet hikers smiling outdoors in winter gear.",
+            "note": ""
+          },
+          {
+            "kind": "map",
+            "query": "Ural Mountains map 1959",
+            "ai_prompt": "Vintage 1950s map highlighting the Ural mountain range in Russia.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Subtle vintage projector hum.",
+        "pronunciation": "Otorten = oh-tor-TEN"
+      },
+      {
+        "id": 3,
+        "section": "context",
+        "narration": "On January 28, group member Yuri Yudin had to turn back due to sudden joint pain and a heart condition. His departure left nine hikers to continue alone. Days later, on January 31, the group cached surplus equipment and started through the pass. Caught in deteriorating weather and low visibility, they accidentally deviated from their route toward the slopes of Kholat Syakhl, a mountain whose indigenous Mansi name translates chillingly to Dead Mountain.",
+        "on_screen_text": "Kholat Syakhl",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "mountain winter slope snow",
+            "ai_prompt": "Cinematic footage of a desolate, snow-covered mountain slope under a gray winter sky.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Wind blowing over snow.",
+        "pronunciation": "Kholat Syakhl = kho-LAT syakh-L"
+      },
+      {
+        "id": 4,
+        "section": "context",
+        "narration": "When the group failed to return by mid-February, a search party was launched. On February 26, searchers made a grim discovery on the slope of Kholat Syakhl. The hikers' tent was found half-torn down, heavily weighted with snow. It had been sliced open from the inside with knives. All their boots, warm clothing, and survival gear were left behind, abandoned in freezing temperatures that dropped to minus forty degrees Celsius.",
+        "on_screen_text": "February 26, 1959",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "Dyatlov pass abandoned tent",
+            "ai_prompt": "Archival black and white photo of searchers inspecting a damaged tent in deep snow.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Distant crunching of footsteps in deep snow.",
+        "pronunciation": ""
+      },
+      {
+        "id": 5,
+        "section": "evidence",
+        "narration": "Investigators traced nine sets of footprints leading away from the tent. Made by socks, a single shoe, or bare feet, the tracks headed down toward the edge of a nearby forest one point five kilometers away. After about five hundred meters, the footprints became covered in snow, leaving searchers to follow the trail blindly into the timberline.",
+        "on_screen_text": "1.5 Kilometers",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "footprints in deep snow",
+            "ai_prompt": "Cinematic shot of lonely footprints disappearing into a snowy pine forest.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Soft ambient winter wind.",
+        "pronunciation": ""
+      },
+      {
+        "id": 6,
+        "section": "evidence",
+        "narration": "The first bodies were found beneath a large Siberian pine tree near the remains of a small fire. Georgiy Krivonishenko and Yuri Doroshenko were shoeless and dressed only in their underwear. Noticeably, branches on the tree were broken up to five meters high, suggesting someone had climbed it to look for something in the distance.",
+        "on_screen_text": "",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "pine tree winter forest russia",
+            "ai_prompt": "Archival photo of a large pine tree in a snowy winter forest.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Low, unsettling ambient tone.",
+        "pronunciation": ""
+      },
+      {
+        "id": 7,
+        "section": "evidence",
+        "narration": "Between the pine tree and the campsite, searchers found three more bodies. Igor Dyatlov, Zinaida Kolmogorova, and Rustem Slobodin were discovered at varying distances, in positions that suggested they were desperately trying to crawl back up the slope toward the safety of the tent.",
+        "on_screen_text": "",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "search party snow winter 1959",
+            "ai_prompt": "Historical photograph of rescue workers searching a snowy mountain terrain.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Subtle tension strings.",
+        "pronunciation": ""
+      },
+      {
+        "id": 8,
+        "section": "evidence",
+        "narration": "The remaining four hikers were missing for months. It wasn't until May, when the spring snow melted, that searchers discovered Lyudmila Dubinina, Semyon Zolotaryov, Nicolas Thibeaux-Brignolles, and Alexander Kolevatov buried under four meters of snow in a ravine deeper in the woods. Remarkably, some of these bodies wore clothing scavenged from their companions who had already died.",
+        "on_screen_text": "May 1959",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "snow melting spring forest",
+            "ai_prompt": "Archival photo of a forest ravine in spring with melting snow patches.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Dripping water and melting snow sounds.",
+        "pronunciation": ""
+      },
+      {
+        "id": 9,
+        "section": "evidence",
+        "narration": "While six of the hikers died of hypothermia, forensic examinations revealed horrifying injuries on the others. Thibeaux-Brignolles suffered major skull damage. Dubinina and Zolotaryov had massive chest fractures. Medical experts noted that inflicting such severe internal trauma required a mechanical force comparable to a severe car crash, yet there were no external soft tissue wounds matching those blows.",
+        "on_screen_text": "",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "medical forensic laboratory research",
+            "ai_prompt": "Moody cinematic shot of an old analytical laboratory setting with vintage instruments.",
+            "note": ""
+          }
+        ],
+        "sound_design": "A sharp, discordant musical chord.",
+        "pronunciation": ""
+      },
+      {
+        "id": 10,
+        "section": "evidence",
+        "narration": "Adding to the horror, the four bodies found in the creek bed in May were missing their eyes, tongues, and facial tissue. For years, conspiracy theorists pointed to these mutilations as proof of foul play or secret government experiments. However, the lead forensic expert, Vladimir Vozrozhdenny, established that this missing soft tissue was caused post-mortem by running stream water over the course of several weeks.",
+        "on_screen_text": "",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "cold stream water flowing rocks",
+            "ai_prompt": "Close-up cinematic shot of cold stream water flowing over rocks in winter.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Flowing water sound effect.",
+        "pronunciation": ""
+      },
+      {
+        "id": 11,
+        "section": "twist",
+        "narration": "The lack of clear answers in nineteen fifty-nine opened the door to decades of speculation. Some theories suggested a clash with indigenous Mansi people, though police investigations found no signs of a struggle. Others blamed military rocket tests, infrasound-induced panic, or even ball lightning. Popular culture eventually embraced even wilder ideas, inspiring fictional films about secret teleportation experiments.",
+        "on_screen_text": "Decades of Theories",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "night sky stars cinematic",
+            "ai_prompt": "Cinematic shot of a starry night sky over dark mountains.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Mysterious synth pad.",
+        "pronunciation": ""
+      },
+      {
+        "id": 12,
+        "section": "twist",
+        "narration": "Observers at the hikers' funerals noted another strange detail. Friends and relatives recalled that the victims' skin possessed a deep brown tan or orange hue. Modern medical analysis notes this discoloration can occur in individuals who succumb to extreme cold, adding another piece to the physiological puzzle of the disaster.",
+        "on_screen_text": "",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "vintage winter photography people",
+            "ai_prompt": "Archival photo of people gathered outdoors in winter, high contrast.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Quiet, solemn string arrangement.",
+        "pronunciation": ""
+      },
+      {
+        "id": 13,
+        "section": "conclusion",
+        "narration": "In recent years, authorities and scientists revisited the case. Russian officials officially reopened the investigation in twenty-nineteen, concluding in twenty-twenty that an avalanche forced the group to flee their tent in low visibility without proper gear. Furthermore, a twenty-twenty-one scientific study published by researchers from EPFL and ETH Zurich demonstrated mathematically that a small slab avalanche could indeed occur on that slope, generating unusual injuries without leaving typical avalanche debris.",
+        "on_screen_text": "2021 Scientific Study",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "snow avalanche mountain slope",
+            "ai_prompt": "Cinematic simulation of a small snow slab release on a steep mountain slope.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Deep, resonant low-frequency rumble.",
+        "pronunciation": ""
+      },
+      {
+        "id": 14,
+        "section": "conclusion",
+        "narration": "While questions and skepticism still linger among researchers who doubt snow conditions on that specific gradient, modern science offers a plausible natural explanation for a tragedy that haunted the Urals for generations. What theory do you find most convincing? Let us know in the comments below, and subscribe to Unknown Atlas for more journeys into history's strangest mysteries.",
+        "on_screen_text": "",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "lonely mountain peak sunset",
+            "ai_prompt": "Cinematic drone shot of a lonely mountain peak at dusk under a clear sky.",
+            "note": ""
+          }
+        ],
+        "sound_design": "Resolved, calm documentary outro music.",
+        "pronunciation": ""
+      }
+    ],
+    "description": "In February 1959, nine experienced hikers died in the northern Ural Mountains under bizarre circumstances. Walk through the evidence, the decades of wild theories, and how recent official reviews and a 2021 avalanche modelling study changed our understanding of the Dyatlov Pass incident.\n\nDiscover the truth behind the abandoned tent, the severe trauma, and what really happened on Dead Mountain.",
+    "tags": [
+      "Dyatlov Pass",
+      "1959 mystery",
+      "Ural Mountains",
+      "historical mystery",
+      "unsolved mysteries",
+      "Dyatlov Pass incident",
+      "documentary",
+      "true story",
+      "Kholat Syakhl",
+      "avalanche study",
+      "history documentary",
+      "unknown atlas"
+    ],
+    "hashtags": [
+      "#dyatlovpass",
+      "#mystery",
+      "#history"
+    ],
+    "pinned_comment": "Which theory do you think best explains the physical trauma and sudden evacuation of the Dyatlov group? Share your thoughts below.",
+    "thumbnail": {
+      "text": "WHAT HAPPENED?",
+      "concept": "A vintage sepia-toned archival look at the snow-covered tent on a dark mountain slope.",
+      "ai_prompt": "Cinematic 16:9 thumbnail background, dark snowy mountain slope at night, vintage 1950s aesthetic, mysterious atmosphere, no text."
+    },
+    "sources": [
+      {
+        "title": "Dyatlov Pass incident — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Dyatlov_Pass_incident",
+        "used_for": "Timeline, evidence, injuries, theories, and recent investigations."
+      },
+      {
+        "title": "Devil's Pass — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Devil%27s_Pass",
+        "used_for": "Fictional film adaptation context."
+      },
+      {
+        "title": "Khamar-Daban incident — Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Khamar-Daban_incident",
+        "used_for": "Reference background."
+      }
+    ],
+    "claims": [
+      {
+        "claim": "Nine hikers died after cutting their tent open and fleeing in February 1959.",
+        "status": "verified",
+        "source_url": "https://en.wikipedia.org/wiki/Dyatlov_Pass_incident"
+      },
+      {
+        "claim": "Three hikers suffered major skull and chest fractures requiring extreme force.",
+        "status": "verified",
+        "source_url": "https://en.wikipedia.org/wiki/Dyatlov_Pass_incident"
+      },
+      {
+        "claim": "Missing soft tissue on bodies found in the creek was caused post-mortem by running water.",
+        "status": "verified",
+        "source_url": "https://en.wikipedia.org/wiki/Dyatlov_Pass_incident"
+      },
+      {
+        "claim": "A 2021 EPFL and ETH Zurich study suggested a slab avalanche could explain the unusual injuries.",
+        "status": "verified",
+        "source_url": "https://en.wikipedia.org/wiki/Dyatlov_Pass_incident"
+      },
+      {
+        "claim": "UFOs, secret military tests, or yeti attacks caused the disaster.",
+        "status": "theory",
+        "source_url": "https://en.wikipedia.org/wiki/Dyatlov_Pass_incident"
+      }
+    ],
+    "shorts_ideas": [
+      {
+        "hook": "Why did nine experienced hikers slice open their own tent in minus forty degree weather?",
+        "idea": "Focus on the initial panic and abandonment of gear on Kholat Syakhl.",
+        "payoff": "They fled into the freezing night with inadequate clothing, leading to hypothermia."
+      },
+      {
+        "hook": "Were the missing eyes and tongues of the Dyatlov hikers proof of a monster?",
+        "idea": "Address the gruesome post-mortem discoveries in the spring snowmelt.",
+        "payoff": "Forensic experts proved running stream water caused the tissue damage weeks after death."
+      },
+      {
+        "hook": "How can an avalanche break human ribs like a high-speed car crash?",
+        "idea": "Explore the physics of slab avalanches proposed in the 2021 scientific study.",
+        "payoff": "Dense snow blocks crushing the tent against rigid ski equipment underneath."
+      }
+    ],
+    "qc_checklist": [
+      "Used only facts from the provided research brief",
+      "Separated verified facts from theories and speculation",
+      "Maintained natural, conversational documentary tone",
+      "Speakable narration text without brackets or emojis",
+      "All word counts and structural requirements met"
+    ]
+  },
+  "factcheck": [
+    {
+      "verdict": "pass",
+      "issues": []
+    }
+  ]
+}
