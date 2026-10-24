@@ -1,9 +1,6 @@
 name: Long-form documentary
 
 on:
-  schedule:
-    # Tue & Fri 15:41 UTC (8:41 PM PKT). Render takes ~15-25 min; upload is scheduled for 20:00 UTC (see config.yaml).
-    - cron: "41 15 * * 2,5"
   workflow_dispatch:
     inputs:
       topic:

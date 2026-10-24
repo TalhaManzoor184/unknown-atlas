@@ -1,0 +1,125 @@
+name: Daily video (alternating documentary / Short)
+
+on:
+  schedule:
+    # Every day 11:37 UTC (4:37 PM PKT). Documentary days go public 20:00 UTC, Short days 17:00 UTC (config.yaml),
+    # which leaves the 3-hour review window after the ~40-60 min build.
+    - cron: "37 11 * * *"
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: "auto (alternate by date) / long / short"
+        type: choice
+        options: [auto, long, short]
+        default: auto
+      upload:
+        description: "Upload to YouTube"
+        type: boolean
+        default: true
+      publish_mode:
+        description: "private / scheduled / public (blank = repo variable or config.yaml)"
+        required: false
+
+concurrency:
+  group: unknown-atlas-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install ffmpeg (with libass for burned-in captions)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fontconfig
+          ffmpeg -hide_banner -filters | grep -q " ass " || (echo "ffmpeg has no ass filter" && exit 1)
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Decide today's video (alternating days)
+        id: plan
+        env:
+          FORCE: ${{ inputs.kind }}
+        run: |
+          # Even day number (since 1970-01-01, UTC) = documentary, odd = Short.  2026-10-24 was a documentary day.
+          DAY=$(( $(date -u +%s) / 86400 ))
+          if [ -n "$FORCE" ] && [ "$FORCE" != "auto" ]; then KIND="$FORCE"
+          elif [ $(( DAY % 2 )) -eq 0 ]; then KIND=long; else KIND=short; fi
+          echo "kind=$KIND" >> "$GITHUB_OUTPUT"
+          echo "Today's video: $KIND" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Build and publish
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          PUBLISH_MODE: ${{ inputs.publish_mode || vars.PUBLISH_MODE }}
+          GEMINI_TEXT_MODEL: ${{ vars.GEMINI_TEXT_MODEL }}
+          GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
+          GEMINI_IMAGE_MODEL: ${{ vars.GEMINI_IMAGE_MODEL }}
+          VOICE_NAME: ${{ vars.VOICE_NAME }}
+          AI_IMAGES: ${{ vars.AI_IMAGES }}
+          UPLOAD: ${{ inputs.upload }}
+        run: |
+          ARGS=(${{ steps.plan.outputs.kind }})
+          if [ "$UPLOAD" = "false" ]; then ARGS+=(--no-upload); fi
+          mkdir -p output
+          set -o pipefail
+          PYTHONUNBUFFERED=1 python -m pipeline.main "${ARGS[@]}" 2>&1 | tee output/run.log
+
+      - name: Keep video package as artifact
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ steps.plan.outputs.kind }}-${{ github.run_number }}
+          path: |
+            output/*/*.mp4
+            output/*/thumbnail.jpg
+            output/**/package.md
+            output/**/package.json
+            output/**/description.txt
+            output/*/captions.en.srt
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Save run log to run-logs branch
+        if: always()
+        env:
+          TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          D="$RUNNER_TEMP/run-logs" && mkdir -p "$D" && cd "$D"
+          git init -q && git config user.name "unknown-atlas-bot" && git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:$TOKEN@github.com/${{ github.repository }}.git"
+          if git fetch -q --depth 1 origin run-logs; then git checkout -q -B run-logs FETCH_HEAD; else git checkout -q --orphan run-logs; fi
+          N="${{ github.run_id }}-${{ steps.plan.outputs.kind }}"
+          mkdir -p "logs/$N"
+          cp "$GITHUB_WORKSPACE/output/run.log" "logs/$N/run.log" 2>/dev/null || echo "no log produced" > "logs/$N/run.log"
+          find "$GITHUB_WORKSPACE/output" -maxdepth 2 \( -name package.md -o -name description.txt \) -exec cp {} "logs/$N/" \; 2>/dev/null
+          git add -A && git commit -qm "run log $N" && git push -q origin run-logs
+          exit 0
+
+      - name: Commit state, research and package log
+        if: always()
+        run: |
+          git config user.name "unknown-atlas-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state content
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: publish log (${{ steps.plan.outputs.kind }}) [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

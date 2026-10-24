@@ -12,12 +12,12 @@ topic queue ─► Gemini + Google Search research ─► script package (Gemini
             ─► thumbnail ─► YouTube upload (scheduled) ─► state + package log committed back to the repo
 ```
 
-| Schedule (UTC) | Workflow | Output |
+| Schedule | Workflow | Output |
 |---|---|---|
-| Tue & Fri 15:41 | `long-form.yml` | A 6–10 min documentary, scheduled to go public at 20:00 UTC |
-| Sun, Mon, Wed, Sat 12:47 | `shorts.yml` | A 20–45 s Short, scheduled to go public at 17:00 UTC |
+| Daily 11:37 UTC (4:37 PM PKT), alternating days | `daily.yml` | **Documentary day**: 6–10 min documentary, public at 20:00 UTC (1 AM PKT). **Short day**: 20–45 s Short, public at 17:00 UTC (10 PM PKT) |
+| Manual only | `long-form.yml`, `shorts.yml` | Make an extra documentary or Short whenever you want |
 
-That works out to about 9 documentaries and 17 Shorts a month. The first 30 days come from the 10 topics in `content/topics.yaml`. When the queue runs out, Gemini proposes new topics.
+That's about 15 documentaries and 15 Shorts a month. Shorts use the documentaries already published and link back to them.
 
 ## What every video gets (`output/<video>/package.md`, also archived in `content/packages/`)
 
