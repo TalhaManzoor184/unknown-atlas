@@ -166,6 +166,7 @@ def render(scenes, timeline, assets_per_scene, narration: Path, workdir: Path, o
         "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-t", f"{total:.2f}", "-movflags", "+faststart", str(out),
     ]
     _run(cmd)
+    visual.unlink(missing_ok=True)  # intermediate; keeps the artifact small
     log.info("Final video: %s (%.1fs)", out, total)
     return out, total
 

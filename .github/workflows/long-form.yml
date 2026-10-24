@@ -72,8 +72,8 @@ jobs:
         with:
           name: documentary-${{ github.run_number }}
           path: |
-            output/**/*.mp4
-            output/**/thumbnail.jpg
+            output/*/*.mp4
+            output/*/thumbnail.jpg
             output/**/package.md
             output/**/package.json
             output/**/description.txt

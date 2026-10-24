@@ -67,7 +67,7 @@ jobs:
         with:
           name: short-${{ github.run_number }}
           path: |
-            output/**/*.mp4
+            output/*/*.mp4
             output/**/package.md
             output/**/description.txt
           retention-days: 14
