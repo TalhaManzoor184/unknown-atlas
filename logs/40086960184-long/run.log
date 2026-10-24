@@ -1,0 +1,30 @@
+2026-10-24 10:42:36,339 INFO atlas: LONG-FORM: The Dyatlov Pass Incident: What Really Happened in 1959?
+2026-10-24 10:42:36,345 INFO atlas: Reusing fact-checked draft long-dyatlov-pass.json
+2026-10-24 10:42:36,345 INFO atlas: Script: 915 words, 16 scenes
+2026-10-24 10:42:36,346 INFO pipeline.voice: TTS: 16 scenes in 2 request(s)
+2026-10-24 10:42:36,346 INFO pipeline.voice: TTS chunk 1/2 (487 words, scenes 1-9)
+2026-10-24 10:43:11,896 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:43:12,615 INFO pipeline.voice: TTS chunk 2/2 (428 words, scenes 10-16)
+2026-10-24 10:43:12,814 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:43:12,819 WARNING pipeline.voice: Daily TTS quota used up on gemini-3.8-flash-tts — trying next TTS model
+2026-10-24 10:43:35,316 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:43:36,853 INFO pipeline.voice: Narration: 387.5s across 16 scenes
+2026-10-24 10:43:37,801 INFO pipeline.visuals: Shot 'snow blizzard winter forest' -> Pixabay video
+2026-10-24 10:43:38,700 INFO pipeline.visuals: Shot 'Ural mountains map topography' -> Wikimedia Commons image
+2026-10-24 10:43:39,269 INFO pipeline.visuals: Shot 'Soviet hikers winter ski 1950s' -> Pixabay image
+2026-10-24 10:43:39,900 INFO pipeline.visuals: Shot 'Soviet hikers 1959 expedition group' -> Pixabay image
+2026-10-24 10:43:40,118 INFO pipeline.visuals: Shot 'winter mountain ridge snow' -> Pixabay video
+2026-10-24 10:43:40,788 INFO pipeline.visuals: Shot 'search party winter snow 1959' -> Pixabay image
+2026-10-24 10:43:41,588 INFO pipeline.visuals: Shot 'Dyatlov pass tent discovery 1959' -> Pixabay image
+2026-10-24 10:43:42,088 INFO pipeline.visuals: Shot 'footprints in snow winter' -> Wikimedia Commons image
+2026-10-24 10:43:42,305 INFO pipeline.visuals: Shot 'pine tree winter snow forest' -> Pixabay video
+2026-10-24 10:43:42,499 INFO pipeline.visuals: Shot 'snowy ravine winter stream' -> Pixabay video
+2026-10-24 10:43:42,702 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:43:42,703 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-10-24 10:43:42,703 WARNING pipeline.visuals: _ai failed for 'medical forensic documents 1950s': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 requests per day on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-10-24 10:43:43,366 INFO pipeline.visuals: Shot 'medical forensic documents 1950s' -> Pixabay image
+2026-10-24 10:43:43,877 INFO pipeline.visuals: Shot 'old soviet winter clothing' -> Wikimedia Commons image
+2026-10-24 10:43:44,118 INFO pipeline.visuals: Shot 'orange light night sky phenomenon' -> Pixabay video
+2026-10-24 10:43:44,529 INFO pipeline.visuals: Shot 'mountain wind snowstorm' -> Pixabay video
+2026-10-24 10:43:44,702 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 10:43:45,216 INFO pipeline.visuals: Shot 'winter mountain sunrise peaceful' -> Pixabay video
