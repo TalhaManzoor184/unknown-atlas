@@ -1,0 +1,47 @@
+2026-10-24 10:47:13,522 INFO atlas: LONG-FORM: The Dyatlov Pass Incident: What Really Happened in 1959?
+2026-10-24 10:47:14,561 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:47:14,563 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-24 10:47:44,799 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:47:44,801 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-10-24 10:47:47,424 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-24 10:47:47,425 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-24 10:47:58,282 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-24 10:47:58,283 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-10-24 10:48:14,463 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:48:14,464 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-10-24 10:48:28,246 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:48:28,251 INFO pipeline.research: Wikipedia research brief: 7311 chars from Dyatlov Pass incident — Wikipedia, Devil's Pass — Wikipedia, Khamar-Daban incident — Wikipedia
+2026-10-24 10:48:46,213 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:48:55,412 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:48:55,420 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-10-24 10:48:55,421 INFO atlas: Script: 828 words, 14 scenes
+2026-10-24 10:48:55,421 INFO pipeline.voice: TTS: 14 scenes in 2 request(s)
+2026-10-24 10:48:55,421 INFO pipeline.voice: TTS chunk 1/2 (469 words, scenes 1-8)
+2026-10-24 10:48:55,500 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:48:55,501 WARNING pipeline.voice: Daily TTS quota used up on gemini-3.8-flash-tts — trying next TTS model
+2026-10-24 10:49:18,105 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:49:18,645 INFO pipeline.voice: TTS chunk 2/2 (359 words, scenes 9-14)
+2026-10-24 10:49:36,484 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 10:49:37,348 INFO pipeline.voice: Narration: 357.4s across 14 scenes
+2026-10-24 10:49:38,483 INFO pipeline.visuals: Shot 'snow blizzard winter night' -> Pixabay video
+2026-10-24 10:49:39,823 INFO pipeline.visuals: Shot 'Dyatlov Pass tent discovery' -> Pixabay image
+2026-10-24 10:49:40,625 INFO pipeline.visuals: Shot 'Igor Dyatlov group hikers' -> Pixabay image
+2026-10-24 10:49:41,321 INFO pipeline.visuals: Shot 'Ural Mountains map 1959' -> Wikimedia Commons image
+2026-10-24 10:49:41,704 INFO pipeline.visuals: Shot 'mountain winter slope snow' -> Pixabay video
+2026-10-24 10:49:42,620 INFO pipeline.visuals: Shot 'Dyatlov pass abandoned tent' -> Pixabay image
+2026-10-24 10:49:43,171 INFO pipeline.visuals: Shot 'footprints in deep snow' -> Pixabay video
+2026-10-24 10:49:44,203 INFO pipeline.visuals: Shot 'pine tree winter forest russia' -> Wikimedia Commons image
+2026-10-24 10:49:44,964 INFO pipeline.visuals: Shot 'search party snow winter 1959' -> Pixabay image
+2026-10-24 10:49:45,874 INFO pipeline.visuals: Shot 'snow melting spring forest' -> Wikimedia Commons image
+2026-10-24 10:49:46,254 INFO pipeline.visuals: Shot 'medical forensic laboratory research' -> Pixabay video
+2026-10-24 10:49:46,713 INFO pipeline.visuals: Shot 'cold stream water flowing rocks' -> Pixabay video
+2026-10-24 10:49:47,025 INFO pipeline.visuals: Shot 'night sky stars cinematic' -> Pixabay video
+2026-10-24 10:49:47,919 INFO pipeline.visuals: Shot 'vintage winter photography people' -> Wikimedia Commons image
+2026-10-24 10:49:48,186 INFO pipeline.visuals: Shot 'snow avalanche mountain slope' -> Pixabay video
+2026-10-24 10:49:48,687 INFO pipeline.visuals: Shot 'lonely mountain peak sunset' -> Pixabay video
+2026-10-24 10:53:21,023 INFO pipeline.render: Rendered 16 shot segments
+2026-10-24 10:53:21,467 INFO pipeline.render: No music in assets/music — rendering narration only
+2026-10-24 10:56:33,585 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/long-dyatlov-pass/dyatlov-pass.mp4 (358.4s)
+2026-10-24 10:56:33,843 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 10:56:33,845 WARNING atlas: AI thumbnail background failed: Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 requests per day on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/long-dyatlov-pass
