@@ -12,6 +12,7 @@ import hashlib
 import html
 import logging
 import re
+import time
 from pathlib import Path
 
 import requests
@@ -80,11 +81,16 @@ class AssetPicker:
         name = hashlib.sha1(url.encode()).hexdigest()[:16] + suffix
         path = self.dir / name
         if not path.exists():
-            with requests.get(url, headers=UA, timeout=60, stream=True) as r:
-                r.raise_for_status()
-                with open(path, "wb") as f:
-                    for chunk in r.iter_content(1 << 16):
-                        f.write(chunk)
+            for attempt in range(4):
+                with requests.get(url, headers=UA, timeout=60, stream=True) as r:
+                    if r.status_code == 429 and attempt < 3:  # CDN rate limit on rapid downloads
+                        time.sleep(4 * (attempt + 1))
+                        continue
+                    r.raise_for_status()
+                    with open(path, "wb") as f:
+                        for chunk in r.iter_content(1 << 16):
+                            f.write(chunk)
+                break
         return path
 
     def _pexels_video(self, v):
