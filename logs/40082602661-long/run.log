@@ -1,0 +1,27 @@
+2026-10-24 09:36:55,014 INFO atlas: LONG-FORM: The Dyatlov Pass Incident: What Really Happened in 1959?
+2026-10-24 09:36:56,330 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:37:26,521 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:37:56,739 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:38:26,950 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:38:26,953 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-24 09:38:57,159 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:39:27,340 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:39:57,542 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:40:27,741 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-24 09:40:27,742 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-10-24 09:40:32,070 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-24 09:43:57,633 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 09:43:57,642 INFO pipeline.research: Wikipedia research brief: 11820 chars from Dyatlov Pass incident — Wikipedia, Devil's Pass — Wikipedia, Khamar-Daban incident — Wikipedia
+2026-10-24 09:46:51,668 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 09:46:56,114 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-24 09:50:35,438 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 09:50:35,481 INFO pipeline.writer: Fact-check round 1: verdict=revise, 3 serious / 3 total issues
+2026-10-24 09:50:38,249 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-24 09:54:08,120 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 09:57:11,948 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 09:57:12,030 INFO pipeline.writer: Fact-check round 2: verdict=pass, 0 serious / 0 total issues
+2026-10-24 09:57:12,030 INFO atlas: Script: 1106 words, 16 scenes
+2026-10-24 09:57:12,031 INFO pipeline.voice: TTS scene 1/16 (24 words)
+2026-10-24 09:57:17,232 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-24 09:57:18,564 INFO pipeline.voice: TTS scene 2/16 (73 words)
+2026-10-24 09:57:18,736 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
