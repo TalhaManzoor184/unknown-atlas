@@ -17,6 +17,7 @@ models:
   thinking_level: "low"            # research, fact-check, revisions (faster; long calls were timing out)
   writing_thinking_level: "medium" # the main documentary script
   tts: "gemini-3.8-flash-tts"
+  tts_fallbacks: ["gemini-3.8-flash-lite-tts", "gemini-3.1-flash-tts-preview"]  # each has its own daily quota
   image: "gemini-nano-banana-2.1"
 
 voice:
@@ -25,7 +26,7 @@ voice:
     calm, warm, cinematic documentary narrator; measured pace with natural pauses;
     curious and intriguing but never sensational; clear American English
   scene_gap_seconds: 0.35   # silence added between scenes
-  chunk_words: 350          # words per TTS request (fewer requests = fits free-tier TTS quotas)
+  chunk_words: 520          # words per TTS request (fewer requests = fits free-tier TTS quotas)
 
 long_form:
   target_words_min: 900

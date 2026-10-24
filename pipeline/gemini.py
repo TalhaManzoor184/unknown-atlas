@@ -102,7 +102,7 @@ def _call(**body):
                     switched = True
                     _text_fallback_active = True
                     continue
-                elif model in (cfg()["models"]["tts"], cfg()["models"]["image"]) or quota_hits >= 3:
+                elif "tts" in str(model) or model == cfg()["models"]["image"] or quota_hits >= 3:
                     # TTS / image quotas: let the caller decide (voice.py waits for the minute window; visuals skip AI)
                     raise QuotaError(f"Gemini quota [model={model}]: {e}") from e
                 wait = 30.0 * quota_hits
@@ -223,10 +223,10 @@ def text(prompt: str, system: str | None = None, thinking: str | None = None) ->
     return _output_text(_call(**body))
 
 
-def tts(text: str, voice: str, style: str) -> bytes:
+def tts(text: str, voice: str, style: str, model: str | None = None) -> bytes:
     """Synthesize speech. Returns WAV bytes (24 kHz mono 16-bit PCM)."""
     it = _call(
-        model=cfg()["models"]["tts"],
+        model=model or cfg()["models"]["tts"],
         input=[{
             "type": "user_input",
             "content": [{

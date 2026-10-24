@@ -78,20 +78,34 @@ def _split_points(group, total: float, pauses: list[float]) -> list[float]:
     return points
 
 
+_tts_models: list[str] = []
+
+
 def _tts_with_patience(text: str, voice: str, style: str) -> bytes:
-    """TTS free tier is limited per minute; wait for the window to reset a few times before giving up."""
-    for attempt in range(5):
+    """Free-tier TTS is limited per minute AND per day (10/day per model at the time of writing).
+    Per-minute limit -> wait for the window. Daily limit -> move to the next TTS model (each has its own quota)."""
+    if not _tts_models:
+        m = cfg()["models"]
+        _tts_models.extend([m["tts"], *[x for x in m.get("tts_fallbacks", []) if x != m["tts"]]])
+    waits = 0
+    while _tts_models:
+        model = _tts_models[0]
         try:
-            return gemini.tts(text, voice, style)
+            return gemini.tts(text, voice, style, model=model)
         except gemini.QuotaError as e:
-            if attempt == 4:
-                raise RuntimeError(
-                    "Gemini TTS quota exhausted (likely the daily free-tier limit). Try again tomorrow, "
-                    "or enable billing on the Gemini API key. Details: " + str(e)[:300]
-                ) from e
-            log.warning("TTS quota hit — waiting 65s for the per-minute window (attempt %d/5)", attempt + 1)
+            msg = str(e).lower()
+            if "per day" in msg or "requests per day" in msg or waits >= 4:
+                log.warning("Daily TTS quota used up on %s — trying next TTS model", model)
+                _tts_models.pop(0)
+                waits = 0
+                continue
+            waits += 1
+            log.warning("TTS per-minute limit on %s — waiting 65s (%d/4)", model, waits)
             time.sleep(65)
-    raise RuntimeError("unreachable")
+    raise RuntimeError(
+        "All Gemini TTS models are out of quota for today (free tier). The next scheduled run will continue, "
+        "or enable billing on the Gemini API key for higher limits."
+    )
 
 
 def narrate(scenes, workdir: Path, mock: bool = False) -> tuple[Path, list[dict]]:
