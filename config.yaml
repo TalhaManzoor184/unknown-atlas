@@ -60,7 +60,7 @@ visuals:
     - "cc-by-sa"
 
 music:
-  volume: 0.10              # background music level under narration (0–1)
+  volume: 0.32              # music bed level (tracks are -20 LUFS; ducked further under the voice)
   # Put licensed tracks (e.g. YouTube Audio Library, no-attribution ones) in assets/music/*.mp3
 
 publishing:

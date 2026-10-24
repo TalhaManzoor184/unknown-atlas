@@ -132,7 +132,8 @@ def caption_selftest(workdir: Path):
     log.info("Caption self-test passed")
 
 
-def render(scenes, timeline, assets_per_scene, narration: Path, workdir: Path, out: Path, portrait: bool, slug: str):
+def render(scenes, timeline, assets_per_scene, narration: Path, workdir: Path, out: Path, portrait: bool, slug: str,
+           pillar: str = ""):
     fmt = cfg()["shorts" if portrait else "long_form"]
     w, h = fmt["width"], fmt["height"]
     seg_dir = workdir / "segments"
@@ -162,7 +163,7 @@ def render(scenes, timeline, assets_per_scene, narration: Path, workdir: Path, o
     ass = build_ass(scenes, timeline, w, h, portrait, cfg()["channel"]["name"], workdir / "captions.ass")
     total = timeline[-1]["start"] + timeline[-1]["duration"] + 1.0
 
-    music = _pick_music(slug)
+    music = _pick_music(slug, pillar)
     vf = f"[0:v]ass='{ass}':fontsdir='{FONTS_DIR}',fade=t=in:st=0:d=0.6,fade=t=out:st={total - 1.2:.2f}:d=1.2[v]"
     cmd = ["ffmpeg", "-y", "-i", str(visual), "-i", str(narration)]
     if music:
@@ -187,10 +188,22 @@ def render(scenes, timeline, assets_per_scene, narration: Path, workdir: Path, o
     return out, total
 
 
-def _pick_music(slug: str) -> Path | None:
+MOODS = {  # topic pillar -> preferred music beds (file name prefixes in assets/music)
+    "mysteries": ["atlas-unknown", "atlas-tension"],
+    "history": ["atlas-unknown", "atlas-tension", "atlas-discovery"],
+    "science": ["atlas-discovery", "atlas-deep-field"],
+    "places-space": ["atlas-deep-field", "atlas-discovery"],
+}
+
+
+def _pick_music(slug: str, pillar: str = "") -> Path | None:
     tracks = sorted(p for p in MUSIC_DIR.glob("*") if p.suffix.lower() in (".mp3", ".wav", ".m4a", ".ogg"))
     if not tracks:
         log.info("No music in assets/music — rendering narration only")
         return None
+    preferred = [t for t in tracks if any(t.stem.startswith(m) for m in MOODS.get(pillar, []))]
+    pool = preferred or tracks
     rnd = random.Random(int(hashlib.md5(slug.encode()).hexdigest()[:8], 16))
-    return rnd.choice(tracks)
+    choice = rnd.choice(pool)
+    log.info("Music: %s", choice.name)
+    return choice

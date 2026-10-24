@@ -163,7 +163,8 @@ def run_long(args):
 
     narration, timeline = voice.narrate(pkg.scenes, workdir, mock=args.mock)
     picker, per_scene = collect_assets(pkg, workdir, portrait=False, mock=args.mock, timeline=timeline)
-    video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=False, slug=slug)
+    video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=False, slug=slug,
+                          pillar=topic.get("pillar", ""))
     srt = write_srt(pkg.scenes, timeline, workdir, workdir / "captions.en.srt")
     thumb = make_thumbnail(thumbnail_background(pkg, per_scene, workdir, args.mock, picker.ai_failures < 3), pkg.thumbnail.text, workdir / "thumbnail.jpg")
 
@@ -221,7 +222,8 @@ def run_short(args):
     if spoken > cfg()["shorts"]["max_seconds"]:
         raise RuntimeError(f"Short narration is {spoken:.0f}s — over the {cfg()['shorts']['max_seconds']}s limit")
     picker, per_scene = collect_assets(pkg, workdir, portrait=True, mock=args.mock, timeline=timeline)
-    video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=True, slug=slug)
+    video, total = render(pkg.scenes, timeline, per_scene, narration, workdir, workdir / f"{slug}.mp4", portrait=True, slug=slug,
+                          pillar=topic.get("pillar", ""))
 
     srt = write_srt(pkg.scenes, timeline, workdir, workdir / "captions.en.srt")
     synthetic = cfg()["visuals"]["disclose_ai_images"] and picker.used_ai
