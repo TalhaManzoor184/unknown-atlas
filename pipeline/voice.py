@@ -1,7 +1,13 @@
-"""Per-scene narration with Gemini TTS. Per-scene audio gives exact timings for cuts and captions."""
+"""Narration with Gemini TTS.
+
+TTS quotas are small (requests per minute/day), so scenes are grouped into a few chunks of ~350 words
+and each chunk is one TTS request. Each chunk is then split back into per-scene clips at the natural
+pauses between paragraphs (ffmpeg silencedetect), so cuts and captions stay in sync with the voice.
+"""
 from __future__ import annotations
 
 import logging
+import re
 import subprocess
 import time
 import wave
@@ -29,6 +35,65 @@ def _silence(path: Path, seconds: float, rate: int = 24000):
         w.writeframes(b"\x00\x00" * int(rate * seconds))
 
 
+def _chunks(scenes, max_words: int) -> list[list]:
+    groups, cur, n = [], [], 0
+    for s in scenes:
+        w = len(s.narration.split())
+        if cur and n + w > max_words:
+            groups.append(cur)
+            cur, n = [], 0
+        cur.append(s)
+        n += w
+    if cur:
+        groups.append(cur)
+    return groups
+
+
+def _silences(path: Path) -> list[float]:
+    """Midpoints of pauses >= 0.3 s."""
+    r = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-i", str(path), "-af", "silencedetect=noise=-38dB:d=0.3", "-f", "null", "-"],
+        capture_output=True, text=True,
+    )
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", r.stderr)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", r.stderr)]
+    return [(a + b) / 2 for a, b in zip(starts, ends)]
+
+
+def _split_points(group, total: float, pauses: list[float]) -> list[float]:
+    """Pick one pause near each expected scene boundary (expected = proportional to characters)."""
+    chars = [len(s.narration) + 1 for s in group]
+    whole = sum(chars)
+    points, acc, last = [], 0, 0.0
+    for c in chars[:-1]:
+        acc += c
+        guess = total * acc / whole
+        window = max(1.5, total * 0.08)
+        near = [p for p in pauses if p > last + 0.5 and abs(p - guess) <= window]
+        best = min(near, key=lambda p: abs(p - guess)) if near else guess
+        if not near:
+            log.warning("No pause found near %.1fs — using estimated scene boundary", guess)
+        points.append(best)
+        last = best
+    return points
+
+
+def _tts_with_patience(text: str, voice: str, style: str) -> bytes:
+    """TTS free tier is limited per minute; wait for the window to reset a few times before giving up."""
+    for attempt in range(5):
+        try:
+            return gemini.tts(text, voice, style)
+        except gemini.QuotaError as e:
+            if attempt == 4:
+                raise RuntimeError(
+                    "Gemini TTS quota exhausted (likely the daily free-tier limit). Try again tomorrow, "
+                    "or enable billing on the Gemini API key. Details: " + str(e)[:300]
+                ) from e
+            log.warning("TTS quota hit — waiting 65s for the per-minute window (attempt %d/5)", attempt + 1)
+            time.sleep(65)
+    raise RuntimeError("unreachable")
+
+
 def narrate(scenes, workdir: Path, mock: bool = False) -> tuple[Path, list[dict]]:
     """Returns (narration.wav, timeline) — timeline has start/end/duration for each scene."""
     vc = cfg()["voice"]
@@ -38,21 +103,37 @@ def narrate(scenes, workdir: Path, mock: bool = False) -> tuple[Path, list[dict]
     gap_wav = adir / "gap.wav"
     _silence(gap_wav, gap)
 
+    groups = _chunks(scenes, int(vc.get("chunk_words", 350)))
+    log.info("TTS: %d scenes in %d request(s)", len(scenes), len(groups))
+    for gi, group in enumerate(groups, 1):
+        if all((adir / f"scene_{s.id:02d}.wav").exists() for s in group):
+            continue
+        chunk = adir / f"chunk_{gi:02d}.wav"
+        if not chunk.exists():
+            text = "\n\n".join(s.narration for s in group)
+            log.info("TTS chunk %d/%d (%d words, scenes %d-%d)", gi, len(groups), len(text.split()), group[0].id, group[-1].id)
+            if mock:
+                _mock_voice(chunk, group)
+            else:
+                style = vc["style"] + ". Pause briefly between paragraphs."
+                pron = "; ".join(s.pronunciation for s in group if s.pronunciation)
+                if pron:
+                    style += f" Pronunciation: {pron}"
+                chunk.write_bytes(_tts_with_patience(text, vc["name"], style))
+        total = duration(chunk)
+        cuts = [0.0, *_split_points(group, total, _silences(chunk)), total]
+        for s, a, b in zip(group, cuts[:-1], cuts[1:]):
+            subprocess.run(
+                ["ffmpeg", "-y", "-loglevel", "error", "-i", str(chunk), "-ss", f"{a:.3f}", "-to", f"{b:.3f}",
+                 "-c:a", "pcm_s16le", str(adir / f"scene_{s.id:02d}.wav")],
+                check=True,
+            )
+
     parts, timeline, t = [], [], 0.0
     for s in scenes:
         wav = adir / f"scene_{s.id:02d}.wav"
-        if not wav.exists():
-            log.info("TTS scene %d/%d (%d words)", s.id, len(scenes), len(s.narration.split()))
-            if mock:
-                _mock_voice(wav, s.narration)
-            else:
-                style = vc["style"]
-                if s.pronunciation:
-                    style += f". Pronunciation: {s.pronunciation}"
-                wav.write_bytes(gemini.tts(s.narration, vc["name"], style))
-                time.sleep(1.0)  # be gentle with free-tier rate limits
-        # normalise every clip to the same format so concat is sample-accurate
         norm = adir / f"scene_{s.id:02d}_n.wav"
+        # trim leading/trailing silence and normalise format so concat is sample-accurate
         subprocess.run(
             ["ffmpeg", "-y", "-loglevel", "error", "-i", str(wav),
              "-af", "silenceremove=start_periods=1:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_threshold=-50dB,areverse",
@@ -72,11 +153,16 @@ def narrate(scenes, workdir: Path, mock: bool = False) -> tuple[Path, list[dict]
     return out, timeline
 
 
-def _mock_voice(path: Path, text: str):
-    """Offline stand-in: a quiet tone lasting roughly as long as the text would take to speak (150 wpm)."""
-    secs = max(1.5, len(text.split()) / 2.5)
-    subprocess.run(
-        ["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"sine=frequency=220:duration={secs}",
-         "-af", "volume=0.05", "-ar", "24000", "-ac", "1", str(path)],
-        check=True,
-    )
+def _mock_voice(path: Path, group):
+    """Offline stand-in: a tone per scene (150 wpm) separated by 0.8 s pauses, like real paragraph breaks."""
+    pieces = []
+    for i, s in enumerate(group):
+        secs = max(1.5, len(s.narration.split()) / 2.5)
+        pieces.append(f"sine=frequency={200 + 40 * (i % 3)}:duration={secs}")
+    inputs, filt = [], []
+    for i, src in enumerate(pieces):
+        inputs += ["-f", "lavfi", "-i", src]
+        filt.append(f"[{i}:a]volume=0.3,apad=pad_dur=0.8[a{i}]")
+    filt.append("".join(f"[a{i}]" for i in range(len(pieces))) + f"concat=n={len(pieces)}:v=0:a=1[o]")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(filt), "-map", "[o]",
+                    "-ar", "24000", "-ac", "1", str(path)], check=True)

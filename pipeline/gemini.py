@@ -26,8 +26,17 @@ def client():
     global _client
     if _client is None:
         from google import genai
+        from google.genai import types
 
-        _client = genai.Client(api_key=env("GEMINI_API_KEY"))
+        # The SDK retries 429/5xx itself and honours Retry-After (which can be hours on a daily quota) —
+        # that silently hung runs. Disable it; _call() does its own retries with logging. Hard 10-min timeout.
+        _client = genai.Client(
+            api_key=env("GEMINI_API_KEY"),
+            http_options=types.HttpOptions(
+                timeout=600_000,
+                retry_options=types.HttpRetryOptions(attempts=1, http_status_codes=[599]),
+            ),
+        )
     return _client
 
 
@@ -88,7 +97,8 @@ def _call(**body):
                     switched = True
                     _text_fallback_active = True
                     continue
-                elif quota_hits >= 3:
+                elif model in (cfg()["models"]["tts"], cfg()["models"]["image"]) or quota_hits >= 3:
+                    # TTS / image quotas: let the caller decide (voice.py waits for the minute window; visuals skip AI)
                     raise QuotaError(f"Gemini quota [model={model}]: {e}") from e
                 wait = 30.0 * quota_hits
             else:

@@ -23,6 +23,7 @@ voice:
     calm, warm, cinematic documentary narrator; measured pace with natural pauses;
     curious and intriguing but never sensational; clear American English
   scene_gap_seconds: 0.35   # silence added between scenes
+  chunk_words: 350          # words per TTS request (fewer requests = fits free-tier TTS quotas)
 
 long_form:
   target_words_min: 900
