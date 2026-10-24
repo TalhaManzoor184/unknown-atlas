@@ -49,11 +49,16 @@ def _call(**body):
         except Exception as e:  # SDK raises various error types; inspect message
             last = e
             msg = str(e).lower()
-            transient = any(k in msg for k in ("429", "resource_exhausted", "rate", "500", "503", "unavailable", "deadline", "timeout", "overloaded"))
-            if not transient or attempt == 5:
-                raise
-            log.warning("Gemini transient error (%s); retry %d in %.0fs", e.__class__.__name__, attempt + 1, delay)
-            time.sleep(delay)
+            model = body.get("model")
+            quota = "quota" in msg or "too_many_requests" in msg or "resource_exhausted" in msg
+            transient = quota or any(k in msg for k in ("429", "rate", "500", "503", "unavailable", "deadline", "timeout", "overloaded"))
+            # Quota errors: retry only twice (covers per-minute limits); daily / not-on-free-tier limits won't clear.
+            if not transient or attempt == 5 or (quota and attempt >= 2):
+                tool = " + google_search" if body.get("tools") else ""
+                raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
+            wait = 35.0 * (attempt + 1) if quota else delay
+            log.warning("Gemini %s on %s; retry %d in %.0fs", "quota limit" if quota else "transient error", model, attempt + 1, wait)
+            time.sleep(wait)
             delay = min(delay * 2, 120)
     raise last  # pragma: no cover
 
