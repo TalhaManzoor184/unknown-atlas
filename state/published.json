@@ -10,5 +10,16 @@
       "at": "2026-10-24T12:24:30+00:00"
     }
   },
-  "shorts": {}
+  "shorts": {
+    "dyatlov-pass#0": {
+      "title": "Why Did Dyatlov Hikers Cut Their Tent?",
+      "video_id": "511xwAMdios",
+      "url": "https://youtu.be/511xwAMdios",
+      "privacy": "private",
+      "publish_at": "2026-10-26T17:00:00.000Z",
+      "seconds": 38,
+      "parent": "dyatlov-pass",
+      "at": "2026-10-25T16:54:28+00:00"
+    }
+  }
 }
