@@ -1,0 +1,62 @@
+2026-10-25 15:01:50,643 INFO atlas: SHORT: The Dyatlov Pass Incident: What Really Happened in 1959? — Why the hikers' tent was cut open from the inside (linked: True)
+2026-10-25 15:01:52,152 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:01:52,156 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-25 15:02:02,325 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:02:02,326 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-10-25 15:02:18,890 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:02:18,895 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 3 in 32s
+2026-10-25 15:02:54,912 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:02:54,928 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 4 in 64s
+2026-10-25 15:03:59,647 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:03:59,648 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 5 in 120s
+2026-10-25 15:06:00,241 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:06:00,242 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 6 in 120s
+2026-10-25 15:08:01,903 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:08:01,925 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 7 in 120s
+2026-10-25 15:10:02,481 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-25 15:10:02,485 ERROR atlas: Pipeline failed
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 618, in create
+    return _speakeasy_parse_response(http_res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 549, in _speakeasy_parse_response
+    raise errors.CreateInteractionServerError(
+google.genai._gaos.errors.createinteraction.CreateInteractionServerError: gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
+    return client().interactions.create(**body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 291, in create
+    response = wrap_sdk_call(
+               ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 620, in create
+    response_helpers.raise_parse_error(
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
+    raise parse_error from exc
+google.genai._gaos.lib.compat_errors.InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 297, in main
+    out = run_long(args) if args.mode == "long" else run_short(args)
+                                                     ^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 213, in run_short
+    pkg = writer.write_short(angle, topic, research, long_entry["title"] if long_entry else None)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/writer.py", line 103, in write_short
+    pkg = gemini.structured(prompt, ShortPackage, system=WRITER_SYSTEM)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 191, in structured
+    it = _call(**body)
+         ^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 91, in _call
+    raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
+RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
