@@ -14,10 +14,10 @@ topic queue ─► Gemini + Google Search research ─► script package (Gemini
 
 | Schedule | Workflow | Output |
 |---|---|---|
-| Daily 11:37 UTC (4:37 PM PKT), alternating days | `daily.yml` | **Documentary day**: 6–10 min documentary, public at 20:00 UTC (1 AM PKT). **Short day**: 20–45 s Short, public at 17:00 UTC (10 PM PKT) |
+| Daily 05:37 UTC (10:37 AM PKT) | `daily.yml` | **One Short a day** (20–45 s), public at 17:00 UTC (10 PM PKT). Documentaries are paused; set repo variable `DAILY_MODE=alternate` to bring back alternating documentary/Short days. |
 | Manual only | `long-form.yml`, `shorts.yml` | Make an extra documentary or Short whenever you want |
 
-That's about 15 documentaries and 15 Shorts a month. Shorts use the documentaries already published and link back to them.
+About 30 Shorts a month. Shorts link to a documentary when one exists for that topic.
 
 ## What every video gets (`output/<video>/package.md`, also archived in `content/packages/`)
 

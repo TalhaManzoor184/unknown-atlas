@@ -107,6 +107,13 @@ def _call(**body):
                     raise QuotaError(f"Gemini quota [model={model}]: {e}") from e
                 wait = 30.0 * quota_hits
             else:
+                overloaded = "high demand" in msg or "503" in msg or "overloaded" in msg or "unavailable" in msg
+                fallback = cfg()["models"].get("text_fallback")
+                if overloaded and attempt >= 2 and model == cfg()["models"]["text"] and fallback and not body.get("tools"):
+                    log.warning("%s overloaded — switching to fallback text model %s", model, fallback)
+                    body["model"] = fallback
+                    _text_fallback_active = True
+                    continue
                 wait = delay
                 delay = min(delay * 2, 120)
             log.warning("Gemini %s on %s%s; retry %d in %.0fs", "quota limit" if quota else "transient error", model, tool, attempt + 1, wait)

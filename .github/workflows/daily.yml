@@ -1,14 +1,14 @@
-name: Daily video (alternating documentary / Short)
+name: Daily video (Shorts; documentaries paused)
 
 on:
   schedule:
-    # Every day 11:37 UTC (4:37 PM PKT). Documentary days go public 20:00 UTC, Short days 17:00 UTC (config.yaml),
-    # which leaves the 3-hour review window after the ~40-60 min build.
-    - cron: "37 11 * * *"
+    # Every day 05:37 UTC (10:37 AM PKT). GitHub often starts scheduled runs hours late, so start early:
+    # the Short still goes public at 17:00 UTC (10 PM PKT) the same day, after the 3-hour review window.
+    - cron: "37 5 * * *"
   workflow_dispatch:
     inputs:
       kind:
-        description: "auto (alternate by date) / long / short"
+        description: "auto (Shorts only, unless DAILY_MODE=alternate) / long / short"
         type: choice
         options: [auto, long, short]
         default: auto
@@ -48,15 +48,18 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt
 
-      - name: Decide today's video (alternating days)
+      - name: Decide today's video
         id: plan
         env:
           FORCE: ${{ inputs.kind }}
+          DAILY_MODE: ${{ vars.DAILY_MODE }}
         run: |
-          # Even day number (since 1970-01-01, UTC) = documentary, odd = Short.  2026-10-24 was a documentary day.
+          # Long-form documentaries are PAUSED: the channel posts Shorts only. Set DAILY_MODE=alternate (repo variable)
+          # to go back to alternating documentary / Short days.
           DAY=$(( $(date -u +%s) / 86400 ))
           if [ -n "$FORCE" ] && [ "$FORCE" != "auto" ]; then KIND="$FORCE"
-          elif [ $(( DAY % 2 )) -eq 0 ]; then KIND=long; else KIND=short; fi
+          elif [ "$DAILY_MODE" = "alternate" ] && [ $(( DAY % 2 )) -eq 0 ]; then KIND=long
+          else KIND=short; fi
           echo "kind=$KIND" >> "$GITHUB_OUTPUT"
           echo "Today's video: $KIND" | tee -a "$GITHUB_STEP_SUMMARY"
 
