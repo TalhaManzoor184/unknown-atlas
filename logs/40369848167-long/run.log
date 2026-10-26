@@ -1,0 +1,113 @@
+2026-10-26 17:47:28,853 INFO atlas: LONG-FORM: The Voynich Manuscript: The Book Nobody Can Read
+2026-10-26 17:47:29,678 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-26 17:47:29,682 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-26 17:47:59,841 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-26 17:47:59,842 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-10-26 17:48:06,324 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:48:06,325 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-26 17:48:41,301 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:48:41,302 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-10-26 17:48:58,213 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:48:58,214 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 3 in 32s
+2026-10-26 17:49:33,348 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:49:33,349 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 4 in 64s
+2026-10-26 17:50:39,099 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:50:39,100 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 5 in 120s
+2026-10-26 17:52:39,723 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:52:39,725 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 6 in 120s
+2026-10-26 17:54:47,150 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:54:47,152 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 7 in 120s
+2026-10-26 17:56:47,625 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-26 17:56:47,630 ERROR atlas: Pipeline failed
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 618, in create
+    return _speakeasy_parse_response(http_res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 534, in _speakeasy_parse_response
+    raise errors.CreateInteractionClientError(
+google.genai._gaos.errors.createinteraction.CreateInteractionClientError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
+    return client().interactions.create(**body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 291, in create
+    response = wrap_sdk_call(
+               ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 620, in create
+    response_helpers.raise_parse_error(
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
+    raise parse_error from exc
+google.genai._gaos.lib.compat_errors.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'code': 'too_many_requests'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 51, in research
+    return _grounded(topic)
+           ^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 64, in _grounded
+    text, cites = gemini.grounded_text(prompt, system=RESEARCH_SYSTEM)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 170, in grounded_text
+    it = _call(**body)
+         ^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 98, in _call
+    raise QuotaError(f"Google Search grounding quota [model={model}]: {e}") from e
+pipeline.gemini.QuotaError: Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'code': 'too_many_requests'}}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 618, in create
+    return _speakeasy_parse_response(http_res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 549, in _speakeasy_parse_response
+    raise errors.CreateInteractionServerError(
+google.genai._gaos.errors.createinteraction.CreateInteractionServerError: gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
+    return client().interactions.create(**body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 291, in create
+    response = wrap_sdk_call(
+               ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 620, in create
+    response_helpers.raise_parse_error(
+  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
+    raise parse_error from exc
+google.genai._gaos.lib.compat_errors.InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 297, in main
+    out = run_long(args) if args.mode == "long" else run_short(args)
+          ^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 151, in run_long
+    research = tq.cached_research(slug) or research_mod.research(topic)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 54, in research
+    return _wikipedia(topic)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 131, in _wikipedia
+    brief = gemini.text(prompt, system=RESEARCH_SYSTEM.replace("Use Google Search. ", ""))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 223, in text
+    return _output_text(_call(**body))
+                        ^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 91, in _call
+    raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
+RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
