@@ -1,113 +1,122 @@
-2026-10-26 17:47:28,853 INFO atlas: LONG-FORM: The Voynich Manuscript: The Book Nobody Can Read
-2026-10-26 17:47:29,678 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
-2026-10-26 17:47:29,682 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
-2026-10-26 17:47:59,841 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
-2026-10-26 17:47:59,842 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
-2026-10-26 17:48:06,324 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:48:06,325 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
-2026-10-26 17:48:41,301 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:48:41,302 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
-2026-10-26 17:48:58,213 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:48:58,214 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 3 in 32s
-2026-10-26 17:49:33,348 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:49:33,349 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 4 in 64s
-2026-10-26 17:50:39,099 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:50:39,100 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 5 in 120s
-2026-10-26 17:52:39,723 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:52:39,725 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 6 in 120s
-2026-10-26 17:54:47,150 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:54:47,152 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 7 in 120s
-2026-10-26 17:56:47,625 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-10-26 17:56:47,630 ERROR atlas: Pipeline failed
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 618, in create
-    return _speakeasy_parse_response(http_res)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 534, in _speakeasy_parse_response
-    raise errors.CreateInteractionClientError(
-google.genai._gaos.errors.createinteraction.CreateInteractionClientError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
-    return client().interactions.create(**body)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 291, in create
-    response = wrap_sdk_call(
-               ^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 620, in create
-    response_helpers.raise_parse_error(
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
-    raise parse_error from exc
-google.genai._gaos.lib.compat_errors.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'code': 'too_many_requests'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 51, in research
-    return _grounded(topic)
-           ^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 64, in _grounded
-    text, cites = gemini.grounded_text(prompt, system=RESEARCH_SYSTEM)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 170, in grounded_text
-    it = _call(**body)
-         ^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 98, in _call
-    raise QuotaError(f"Google Search grounding quota [model={model}]: {e}") from e
-pipeline.gemini.QuotaError: Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'code': 'too_many_requests'}}
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 618, in create
-    return _speakeasy_parse_response(http_res)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 549, in _speakeasy_parse_response
-    raise errors.CreateInteractionServerError(
-google.genai._gaos.errors.createinteraction.CreateInteractionServerError: gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
-    return client().interactions.create(**body)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 291, in create
-    response = wrap_sdk_call(
-               ^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 620, in create
-    response_helpers.raise_parse_error(
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
-    raise parse_error from exc
-google.genai._gaos.lib.compat_errors.InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 297, in main
-    out = run_long(args) if args.mode == "long" else run_short(args)
-          ^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 151, in run_long
-    research = tq.cached_research(slug) or research_mod.research(topic)
-                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 54, in research
-    return _wikipedia(topic)
-           ^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 131, in _wikipedia
-    brief = gemini.text(prompt, system=RESEARCH_SYSTEM.replace("Use Google Search. ", ""))
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 223, in text
-    return _output_text(_call(**body))
-                        ^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 91, in _call
-    raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
-RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
-::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.8-flash]: Error code: 503 - {'error': {'message': 'gemini-3.8-flash is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+2026-10-26 21:30:43,942 INFO atlas: LONG-FORM: The Voynich Manuscript: The Book Nobody Can Read
+2026-10-26 21:30:45,164 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-26 21:30:45,167 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-26 21:31:15,310 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-26 21:31:15,311 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-10-26 21:32:46,484 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-26 21:32:46,489 INFO pipeline.research: Wikipedia research brief: 8457 chars from Voynich manuscript — Wikipedia, Wilfrid Voynich — Wikipedia, Georg Baresch — Wikipedia
+2026-10-26 21:32:46,637 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-26 21:32:46,638 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-10-26 21:33:03,399 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-26 21:33:03,409 INFO pipeline.writer: Narration is 638 words (target 1000-1400); asking for one expand pass
+2026-10-26 21:33:15,181 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-26 21:33:16,721 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-26 21:33:16,725 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-10-26 21:33:16,726 INFO atlas: Script: 905 words, 14 scenes
+2026-10-26 21:33:16,726 INFO pipeline.voice: TTS: 14 scenes in 2 request(s)
+2026-10-26 21:33:16,727 INFO pipeline.voice: TTS chunk 1/2 (489 words, scenes 1-7)
+2026-10-26 21:33:55,851 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-26 21:33:57,179 INFO pipeline.voice: TTS chunk 2/2 (416 words, scenes 8-14)
+2026-10-26 21:34:35,364 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-26 21:34:38,719 INFO pipeline.voice: Narration: 399.8s across 14 scenes
+2026-10-26 21:34:40,373 INFO pipeline.visuals: Shot 'Beinecke Library manuscript' -> Wikimedia Commons image
+2026-10-26 21:34:41,371 INFO pipeline.visuals: Shot 'ancient library dust' -> Pixabay video
+2026-10-26 21:34:41,572 INFO pipeline.visuals: Shot 'Beinecke Library manuscript' -> Wikimedia Commons image
+2026-10-26 21:34:42,262 INFO pipeline.visuals: Shot 'Voynich manuscript botanical page' -> Wikimedia Commons image
+2026-10-26 21:34:43,341 INFO pipeline.visuals: Shot 'Voynich manuscript astrological chart' -> Wikimedia Commons image
+2026-10-26 21:34:43,614 INFO pipeline.visuals: Shot 'Voynich manuscript botanical page' -> Wikimedia Commons image
+2026-10-26 21:34:43,886 INFO pipeline.visuals: Shot 'Voynich manuscript astrological chart' -> Wikimedia Commons image
+2026-10-26 21:34:44,192 INFO pipeline.visuals: Shot 'Voynich manuscript botanical page' -> Wikimedia Commons image
+2026-10-26 21:34:44,525 INFO pipeline.visuals: Shot 'Voynich manuscript astrological chart' -> Wikimedia Commons image
+2026-10-26 21:34:44,803 INFO pipeline.visuals: Shot 'Voynich manuscript botanical page' -> Wikimedia Commons image
+2026-10-26 21:34:47,445 INFO pipeline.visuals: Shot 'University of Arizona campus map' -> Wikimedia Commons image
+2026-10-26 21:34:50,267 INFO pipeline.visuals: Shot 'parchment manuscript folio' -> Wikimedia Commons image
+2026-10-26 21:34:50,737 INFO pipeline.visuals: Shot 'University of Arizona campus map' -> Wikimedia Commons image
+2026-10-26 21:34:51,061 INFO pipeline.visuals: Shot 'parchment manuscript folio' -> Wikimedia Commons image
+2026-10-26 21:34:51,414 INFO pipeline.visuals: Shot 'University of Arizona campus map' -> Wikimedia Commons image
+2026-10-26 21:34:51,785 INFO pipeline.visuals: Shot 'parchment manuscript folio' -> Wikimedia Commons image
+2026-10-26 21:34:52,126 INFO pipeline.visuals: Shot 'University of Arizona campus map' -> Wikimedia Commons image
+2026-10-26 21:34:52,527 INFO pipeline.visuals: Shot 'quill pen writing parchment' -> Pixabay video
+2026-10-26 21:34:53,271 INFO pipeline.visuals: Shot 'multispectral imaging manuscript' -> Wikimedia Commons image
+2026-10-26 21:34:53,595 INFO pipeline.visuals: Shot 'quill pen writing parchment' -> Pixabay video
+2026-10-26 21:34:53,937 INFO pipeline.visuals: Shot 'multispectral imaging manuscript' -> Wikimedia Commons image
+2026-10-26 21:34:54,611 INFO pipeline.visuals: Shot 'quill pen writing parchment' -> Pixabay video
+2026-10-26 21:34:55,687 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-26 21:34:55,688 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-10-26 21:34:55,688 WARNING pipeline.visuals: _ai failed for 'Georg Baresch letter 1639': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 input tokens per minute on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-10-26 21:34:56,378 INFO pipeline.visuals: Shot 'Georg Baresch letter 1639' -> Pixabay image
+2026-10-26 21:34:58,417 INFO pipeline.visuals: Shot 'Prague historical map' -> Wikimedia Commons image
+2026-10-26 21:34:58,922 INFO pipeline.visuals: Shot 'Georg Baresch letter 1639' -> Pixabay image
+2026-10-26 21:34:59,228 INFO pipeline.visuals: Shot 'Prague historical map' -> Wikimedia Commons image
+2026-10-26 21:34:59,818 INFO pipeline.visuals: Shot 'Georg Baresch letter 1639' -> Pixabay image
+2026-10-26 21:35:00,112 INFO pipeline.visuals: Shot 'Prague historical map' -> Wikimedia Commons image
+2026-10-26 21:35:01,088 INFO pipeline.visuals: Shot 'Wilfrid Voynich portrait' -> Wikimedia Commons image
+2026-10-26 21:35:02,125 INFO pipeline.visuals: Shot 'Villa Mondragone Italy' -> Wikimedia Commons image
+2026-10-26 21:35:02,435 INFO pipeline.visuals: Shot 'Wilfrid Voynich portrait' -> Wikimedia Commons image
+2026-10-26 21:35:02,761 INFO pipeline.visuals: Shot 'Villa Mondragone Italy' -> Wikimedia Commons image
+2026-10-26 21:35:03,065 INFO pipeline.visuals: Shot 'Wilfrid Voynich portrait' -> Wikimedia Commons image
+2026-10-26 21:35:03,352 INFO pipeline.visuals: Shot 'Villa Mondragone Italy' -> Wikimedia Commons image
+2026-10-26 21:35:05,162 INFO pipeline.visuals: Shot 'hands turning medieval manuscript pages' -> Wikimedia Commons image
+2026-10-26 21:35:06,080 INFO pipeline.visuals: Shot 'Voynich manuscript page margins' -> Wikimedia Commons image
+2026-10-26 21:35:06,402 INFO pipeline.visuals: Shot 'hands turning medieval manuscript pages' -> Wikimedia Commons image
+2026-10-26 21:35:06,683 INFO pipeline.visuals: Shot 'Voynich manuscript page margins' -> Wikimedia Commons image
+2026-10-26 21:35:06,912 INFO pipeline.visuals: Shot 'hands turning medieval manuscript pages' -> Wikimedia Commons image
+2026-10-26 21:35:07,445 INFO pipeline.visuals: Shot 'digital data network graph' -> Pixabay video
+2026-10-26 21:35:08,220 INFO pipeline.visuals: Shot 'Voynich manuscript text close up' -> Wikimedia Commons image
+2026-10-26 21:35:08,499 INFO pipeline.visuals: Shot 'digital data network graph' -> Pixabay video
+2026-10-26 21:35:08,856 INFO pipeline.visuals: Shot 'Voynich manuscript text close up' -> Wikimedia Commons image
+2026-10-26 21:35:09,154 INFO pipeline.visuals: Shot 'digital data network graph' -> Pixabay video
+2026-10-26 21:35:11,007 INFO pipeline.visuals: Shot 'cryptanalysts codebreakers wartime' -> Wikimedia Commons image
+2026-10-26 21:35:11,745 INFO pipeline.visuals: Shot 'Voynich manuscript handwriting flow' -> Wikimedia Commons image
+2026-10-26 21:35:11,984 INFO pipeline.visuals: Shot 'cryptanalysts codebreakers wartime' -> Wikimedia Commons image
+2026-10-26 21:35:12,301 INFO pipeline.visuals: Shot 'Voynich manuscript handwriting flow' -> Wikimedia Commons image
+2026-10-26 21:35:13,063 INFO pipeline.visuals: Shot 'cryptanalysts codebreakers wartime' -> Pixabay image
+2026-10-26 21:35:14,863 INFO pipeline.visuals: Shot 'Italy Renaissance map' -> Wikimedia Commons image
+2026-10-26 21:35:17,131 INFO pipeline.visuals: Shot 'ancient Chinese text scroll' -> Wikimedia Commons image
+2026-10-26 21:35:17,366 INFO pipeline.visuals: Shot 'Italy Renaissance map' -> Wikimedia Commons image
+2026-10-26 21:35:17,742 INFO pipeline.visuals: Shot 'ancient Chinese text scroll' -> Wikimedia Commons image
+2026-10-26 21:35:18,057 INFO pipeline.visuals: Shot 'Italy Renaissance map' -> Wikimedia Commons image
+2026-10-26 21:35:18,444 INFO pipeline.visuals: Shot 'ancient Chinese text scroll' -> Wikimedia Commons image
+2026-10-26 21:35:19,252 INFO pipeline.visuals: Shot 'Voynich manuscript nude figure illustration' -> Wikimedia Commons image
+2026-10-26 21:35:23,637 INFO pipeline.visuals: Shot 'German medieval manuscript text' -> Wikimedia Commons image
+2026-10-26 21:35:23,909 INFO pipeline.visuals: Shot 'Voynich manuscript nude figure illustration' -> Wikimedia Commons image
+2026-10-26 21:35:24,110 INFO pipeline.visuals: Shot 'German medieval manuscript text' -> Wikimedia Commons image
+2026-10-26 21:35:24,385 INFO pipeline.visuals: Shot 'Voynich manuscript nude figure illustration' -> Wikimedia Commons image
+2026-10-26 21:35:36,837 INFO pipeline.visuals: Shot 'German medieval manuscript text' -> Wikimedia Commons image
+2026-10-26 21:35:38,302 INFO pipeline.visuals: Shot 'Beinecke Library exterior Yale' -> Wikimedia Commons image
+2026-10-26 21:35:38,712 INFO pipeline.visuals: Shot 'computer screen digital archive' -> Pixabay video
+2026-10-26 21:35:39,007 INFO pipeline.visuals: Shot 'Beinecke Library exterior Yale' -> Wikimedia Commons image
+2026-10-26 21:35:39,317 INFO pipeline.visuals: Shot 'computer screen digital archive' -> Pixabay video
+2026-10-26 21:35:39,542 INFO pipeline.visuals: Shot 'Beinecke Library exterior Yale' -> Wikimedia Commons image
+2026-10-26 21:35:40,283 INFO pipeline.visuals: Shot 'Voynich manuscript closed cover' -> Wikimedia Commons image
+2026-10-26 21:35:40,818 INFO pipeline.visuals: Shot 'dusty library shelves dim light' -> Pixabay video
+2026-10-26 21:35:41,063 INFO pipeline.visuals: Shot 'Voynich manuscript closed cover' -> Wikimedia Commons image
+2026-10-26 21:35:41,359 INFO pipeline.visuals: Shot 'dusty library shelves dim light' -> Pixabay video
+2026-10-26 21:35:41,636 INFO pipeline.visuals: Shot 'Voynich manuscript closed cover' -> Wikimedia Commons image
+2026-10-26 21:35:42,189 INFO pipeline.visuals: Shot 'world atlas globe turning' -> Pixabay video
+2026-10-26 21:35:44,457 INFO pipeline.visuals: Shot 'ancient map parchment background' -> Wikimedia Commons image
+2026-10-26 21:35:44,797 INFO pipeline.visuals: Shot 'world atlas globe turning' -> Pixabay video
+2026-10-26 21:35:45,014 INFO pipeline.render: Caption self-test passed
+2026-10-26 21:43:02,544 INFO pipeline.render: Rendered 74 shot segments
+2026-10-26 21:43:05,496 INFO pipeline.render: Music: atlas-tension.mp3
+2026-10-26 21:47:55,258 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/long-voynich-manuscript/voynich-manuscript.mp4 (400.8s)
+2026-10-26 21:47:58,706 INFO pipeline.youtube: Upload 6%
+2026-10-26 21:47:58,855 INFO pipeline.youtube: Upload 12%
+2026-10-26 21:47:58,998 INFO pipeline.youtube: Upload 18%
+2026-10-26 21:47:59,139 INFO pipeline.youtube: Upload 24%
+2026-10-26 21:47:59,291 INFO pipeline.youtube: Upload 31%
+2026-10-26 21:47:59,448 INFO pipeline.youtube: Upload 37%
+2026-10-26 21:47:59,624 INFO pipeline.youtube: Upload 43%
+2026-10-26 21:47:59,772 INFO pipeline.youtube: Upload 49%
+2026-10-26 21:47:59,916 INFO pipeline.youtube: Upload 55%
+2026-10-26 21:48:00,054 INFO pipeline.youtube: Upload 62%
+2026-10-26 21:48:00,193 INFO pipeline.youtube: Upload 68%
+2026-10-26 21:48:00,335 INFO pipeline.youtube: Upload 74%
+2026-10-26 21:48:00,478 INFO pipeline.youtube: Upload 80%
+2026-10-26 21:48:00,618 INFO pipeline.youtube: Upload 87%
+2026-10-26 21:48:00,762 INFO pipeline.youtube: Upload 93%
+2026-10-26 21:48:00,905 INFO pipeline.youtube: Upload 99%
+2026-10-26 21:48:01,322 INFO pipeline.youtube: Uploaded video GuBPLp-NtgE (private, publishAt 2026-10-27T20:00:00.000Z)
+2026-10-26 21:48:04,231 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-10-26 21:48:04,231 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/long-voynich-manuscript
