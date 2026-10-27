@@ -26,18 +26,32 @@ def _service():
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
+def _taken_slots() -> set[str]:
+    """publishAt times already used by scheduled uploads (so two videos never go public at the same minute)."""
+    from .topics import load_state
+
+    st = load_state()
+    return {v.get("publish_at", "")[:16] for group in ("long", "shorts") for v in st.get(group, {}).values()}
+
+
 def publish_time(kind: str, now: dt.datetime | None = None) -> dt.datetime | None:
-    """Next configured publish slot that leaves at least `min_review_hours` for review."""
+    """Earliest free configured slot that leaves at least `min_review_hours` for review."""
     p = cfg()["publishing"]
     if p["mode"] != "scheduled":
         return None
     now = now or dt.datetime.now(dt.timezone.utc)
-    hh, mm = map(int, p["long_publish_utc" if kind == "long" else "short_publish_utc"].split(":"))
+    raw = p["long_publish_utc"] if kind == "long" else p.get("short_publish_slots_utc") or [p["short_publish_utc"]]
+    slots = sorted(map(lambda x: tuple(map(int, x.split(":"))), raw if isinstance(raw, list) else [raw]))
     earliest = now + dt.timedelta(hours=float(p["min_review_hours"]))
-    slot = now.replace(hour=hh, minute=mm, second=0, microsecond=0)
-    while slot < earliest:
-        slot += dt.timedelta(days=1)
-    return slot
+    taken = _taken_slots()
+    day = now.replace(hour=0, minute=0, second=0, microsecond=0)
+    for _ in range(30):
+        for hh, mm in slots:
+            slot = day.replace(hour=hh, minute=mm)
+            if slot >= earliest and slot.strftime("%Y-%m-%dT%H:%M") not in taken:
+                return slot
+        day += dt.timedelta(days=1)
+    return earliest
 
 
 def upload(video_path, title: str, description: str, tags: list[str], kind: str,
