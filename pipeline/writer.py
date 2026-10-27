@@ -75,11 +75,11 @@ RESEARCH SOURCES (the only URLs you may cite):
 
 def write_short(angle: str, topic: dict, research: dict, long_title: str | None) -> ShortPackage:
     sh = cfg()["shorts"]
-    link_line = (
-        f'End by teasing the full documentary "{long_title}" (e.g. "The full story is on our channel.").'
-        if long_title
-        else "End with a line that makes viewers want to follow for more strange stories."
-    )
+    # Shorts stand on their own: never tell viewers to go find another video in the narration.
+    # (If a documentary exists, its link goes in the description and you can attach it as the Short's
+    # "Related video" in YouTube Studio.)
+    link_line = ("End with a satisfying payoff line, then a short natural line that makes viewers want to follow "
+                 "for more strange stories. Do NOT mention a full video, documentary, link, or 'our channel'.")
     prompt = f"""Write a vertical YouTube Short (20-45 seconds).
 
 TOPIC: {topic['title']}
