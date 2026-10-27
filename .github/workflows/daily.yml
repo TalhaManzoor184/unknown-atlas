@@ -33,6 +33,8 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref_name }}   # latest main, so queued runs see state committed by the previous run
 
       - uses: actions/setup-python@v6
         with:
