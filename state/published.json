@@ -29,6 +29,16 @@
       "seconds": 38,
       "parent": "dyatlov-pass",
       "at": "2026-10-25T16:54:28+00:00"
+    },
+    "dyatlov-pass#1": {
+      "title": "How Frozen’s Software Solved Dyatlov Pass",
+      "video_id": "KVhkvSsdXoI",
+      "url": "https://youtu.be/KVhkvSsdXoI",
+      "privacy": "private",
+      "publish_at": "2026-10-27T13:00:00.000Z",
+      "seconds": 34,
+      "parent": "dyatlov-pass",
+      "at": "2026-10-27T02:44:54+00:00"
     }
   }
 }
