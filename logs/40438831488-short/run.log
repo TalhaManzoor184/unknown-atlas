@@ -1,0 +1,39 @@
+2026-10-27 02:31:09,161 INFO atlas: SHORT: The Dyatlov Pass Incident: What Really Happened in 1959? — How animation software used for a famous animated film helped scientists model the avalanche theory (linked: True)
+2026-10-27 02:31:11,217 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-27 02:31:11,222 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-27 02:41:19,347 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-10-27 02:42:44,378 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-27 02:42:44,383 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-10-27 02:42:48,297 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-27 02:42:48,516 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-27 02:42:48,517 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-10-27 02:43:18,735 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-27 02:43:18,736 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-10-27 02:43:20,814 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-27 02:43:20,821 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-10-27 02:43:20,822 INFO pipeline.voice: TTS: 4 scenes in 1 request(s)
+2026-10-27 02:43:20,822 INFO pipeline.voice: TTS chunk 1/1 (73 words, scenes 1-4)
+2026-10-27 02:43:32,167 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-27 02:43:33,161 INFO pipeline.voice: Narration: 32.6s across 4 scenes
+2026-10-27 02:43:33,475 INFO pipeline.visuals: Shot 'snowy mountain night winter' -> Pixabay video
+2026-10-27 02:43:33,678 INFO pipeline.visuals: Shot 'snowy mountain night winter' -> Pixabay video
+2026-10-27 02:43:34,017 INFO pipeline.visuals: Shot 'winter tent snow storm' -> Pixabay video
+2026-10-27 02:43:34,225 INFO pipeline.visuals: Shot 'winter tent snow storm' -> Pixabay video
+2026-10-27 02:43:34,343 INFO pipeline.visuals: Shot 'winter tent snow storm' -> Pixabay video
+2026-10-27 02:43:34,570 INFO pipeline.visuals: Shot 'snow avalanche sliding mountain' -> Pixabay video
+2026-10-27 02:43:34,895 INFO pipeline.visuals: Shot 'snow avalanche sliding mountain' -> Pixabay video
+2026-10-27 02:43:35,237 INFO pipeline.visuals: Shot 'snow avalanche sliding mountain' -> Pixabay video
+2026-10-27 02:43:35,474 INFO pipeline.visuals: Shot 'snowy mountain peak drone' -> Pixabay video
+2026-10-27 02:43:35,647 INFO pipeline.visuals: Shot 'snowy mountain peak drone' -> Pixabay video
+2026-10-27 02:43:35,791 INFO pipeline.visuals: Shot 'snowy mountain peak drone' -> Pixabay video
+2026-10-27 02:43:35,928 INFO pipeline.render: Caption self-test passed
+2026-10-27 02:44:19,590 INFO pipeline.render: Rendered 11 shot segments
+2026-10-27 02:44:20,035 INFO pipeline.render: Music: atlas-tension.mp3
+2026-10-27 02:44:51,464 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-dyatlov-pass-s2/dyatlov-pass-s2.mp4 (33.6s)
+2026-10-27 02:44:53,737 INFO pipeline.youtube: Upload 32%
+2026-10-27 02:44:54,080 INFO pipeline.youtube: Upload 64%
+2026-10-27 02:44:54,225 INFO pipeline.youtube: Upload 97%
+2026-10-27 02:44:54,605 INFO pipeline.youtube: Uploaded video KVhkvSsdXoI (private, publishAt 2026-10-27T13:00:00.000Z)
+2026-10-27 02:44:54,642 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-10-27 02:44:54,642 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-dyatlov-pass-s2
