@@ -39,6 +39,16 @@
       "seconds": 34,
       "parent": "dyatlov-pass",
       "at": "2026-10-27T02:44:54+00:00"
+    },
+    "voynich-manuscript#0": {
+      "title": "When Was the Voynich Manuscript Really Made?",
+      "video_id": "LFu-HiDkLzg",
+      "url": "https://youtu.be/LFu-HiDkLzg",
+      "privacy": "private",
+      "publish_at": "2026-10-27T17:00:00.000Z",
+      "seconds": 38,
+      "parent": "voynich-manuscript",
+      "at": "2026-10-27T03:09:36+00:00"
     }
   }
 }
