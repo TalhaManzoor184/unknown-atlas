@@ -1,0 +1,54 @@
+2026-10-28 11:32:18,125 INFO atlas: SHORT: The Wow! Signal: 72 Seconds From Deep Space — The night an astronomer wrote "Wow!" on a computer printout (linked: False)
+2026-10-28 11:32:18,954 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-28 11:32:18,957 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-28 11:32:49,212 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-28 11:32:49,213 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-10-28 11:38:11,957 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-28 11:38:11,961 INFO pipeline.research: Wikipedia research brief: 9655 chars from Wow! signal — Wikipedia, The Wow! Signal (album) — Wikipedia, The Wow Signal — Wikipedia
+2026-10-28 11:38:14,926 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-28 11:38:14,927 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-28 11:40:45,222 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-28 11:44:40,718 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-28 11:44:40,721 INFO pipeline.writer: Fact-check round 1: verdict=revise, 3 serious / 3 total issues
+2026-10-28 11:45:58,295 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-28 11:45:58,850 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-28 11:45:58,851 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-28 11:46:07,509 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-28 11:46:07,510 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-10-28 11:46:24,022 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-28 11:46:24,023 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-10-28 11:46:25,600 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-28 11:46:25,603 INFO pipeline.writer: Fact-check round 2: verdict=pass, 0 serious / 0 total issues
+2026-10-28 11:46:25,604 INFO pipeline.voice: TTS: 6 scenes in 1 request(s)
+2026-10-28 11:46:25,604 INFO pipeline.voice: TTS chunk 1/1 (112 words, scenes 1-6)
+2026-10-28 11:46:40,685 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-28 11:46:41,865 INFO pipeline.voice: Narration: 52.9s across 6 scenes
+2026-10-28 11:46:42,878 INFO pipeline.visuals: Shot 'Wow! signal printout' -> Wikimedia Commons image
+2026-10-28 11:46:43,090 INFO pipeline.visuals: Shot 'Wow! signal printout' -> Wikimedia Commons image
+2026-10-28 11:46:43,918 INFO pipeline.visuals: Shot 'Wow! signal printout' -> Wikimedia Commons image
+2026-10-28 11:47:07,598 INFO pipeline.visuals: Shot 'Ohio State Big Ear radio telescope' -> Wikimedia Commons image
+2026-10-28 11:47:10,883 INFO pipeline.visuals: Shot 'Ohio State Big Ear radio telescope' -> Wikimedia Commons image
+2026-10-28 11:47:11,173 INFO pipeline.visuals: Shot 'vintage mainframe computer printer' -> Pixabay video
+2026-10-28 11:47:11,326 INFO pipeline.visuals: Shot 'vintage mainframe computer printer' -> Pixabay video
+2026-10-28 11:47:11,530 INFO pipeline.visuals: Shot 'vintage mainframe computer printer' -> Pixabay video
+2026-10-28 11:47:11,745 INFO pipeline.visuals: Shot 'vintage mainframe computer printer' -> Pixabay video
+2026-10-28 11:47:41,815 WARNING pipeline.visuals: _wikimedia failed for 'Wow! signal 6EQUJ5 detail': HTTPSConnectionPool(host='commons.wikimedia.org', port=443): Read timed out. (read timeout=30)
+2026-10-28 11:47:42,053 INFO pipeline.visuals: Shot 'Wow! signal 6EQUJ5 detail' -> Wikimedia Commons image
+2026-10-28 11:47:42,358 INFO pipeline.visuals: Shot 'Wow! signal 6EQUJ5 detail' -> Wikimedia Commons image
+2026-10-28 11:47:42,647 INFO pipeline.visuals: Shot 'night sky deep space stars' -> Pixabay video
+2026-10-28 11:47:43,351 INFO pipeline.visuals: Shot 'night sky deep space stars' -> Pixabay video
+2026-10-28 11:47:44,946 INFO pipeline.visuals: Shot 'night sky deep space stars' -> Pixabay video
+2026-10-28 11:47:52,416 INFO pipeline.visuals: Shot 'Wow! signal circled annotation' -> Wikimedia Commons image
+2026-10-28 11:47:52,732 INFO pipeline.visuals: Shot 'Wow! signal circled annotation' -> Wikimedia Commons image
+2026-10-28 11:47:53,009 INFO pipeline.visuals: Shot 'Wow! signal circled annotation' -> Wikimedia Commons image
+2026-10-28 11:47:53,376 INFO pipeline.visuals: Shot 'Wow! signal circled annotation' -> Wikimedia Commons image
+2026-10-28 11:47:53,513 INFO pipeline.render: Caption self-test passed
+2026-10-28 11:48:36,079 INFO pipeline.render: Rendered 18 shot segments
+2026-10-28 11:48:36,462 INFO pipeline.render: Music: atlas-discovery.mp3
+2026-10-28 11:49:02,895 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-wow-signal-s1/wow-signal-s1.mp4 (53.9s)
+2026-10-28 11:49:05,090 INFO pipeline.youtube: Upload 39%
+2026-10-28 11:49:05,253 INFO pipeline.youtube: Upload 79%
+2026-10-28 11:49:05,651 INFO pipeline.youtube: Uploaded video m21B1mAVTfU (private, publishAt 2026-10-28T17:00:00.000Z)
+2026-10-28 11:49:05,779 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-10-28 11:49:05,779 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-wow-signal-s1
