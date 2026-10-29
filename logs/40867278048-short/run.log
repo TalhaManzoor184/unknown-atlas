@@ -1,0 +1,46 @@
+2026-10-29 11:41:46,308 INFO atlas: SHORT: The Wow! Signal: 72 Seconds From Deep Space — The newer natural explanation for the Wow! signal and how scientists are testing it (linked: False)
+2026-10-29 11:41:51,755 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-29 11:41:51,758 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-29 11:45:09,917 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-29 11:45:10,120 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-29 11:45:10,122 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-29 11:45:40,380 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-29 11:45:40,381 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-10-29 11:45:46,763 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-29 11:45:46,764 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-29 11:45:59,373 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-29 11:45:59,375 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-10-29 11:46:18,365 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-29 11:46:18,366 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-10-29 11:46:23,415 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-29 11:46:23,422 INFO pipeline.writer: Fact-check round 1: verdict=revise, 1 serious / 1 total issues
+2026-10-29 11:46:28,195 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-29 11:46:30,944 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-29 11:46:30,947 INFO pipeline.writer: Fact-check round 2: verdict=pass, 0 serious / 0 total issues
+2026-10-29 11:46:30,948 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-10-29 11:46:30,948 INFO pipeline.voice: TTS chunk 1/1 (79 words, scenes 1-5)
+2026-10-29 11:46:40,687 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-29 11:46:41,836 INFO pipeline.voice: Narration: 32.0s across 5 scenes
+2026-10-29 11:46:43,296 INFO pipeline.visuals: Shot 'Wow signal printout Ehman' -> Wikimedia Commons image
+2026-10-29 11:46:43,743 INFO pipeline.visuals: Shot 'Wow signal printout Ehman' -> Wikimedia Commons image
+2026-10-29 11:46:49,746 INFO pipeline.visuals: Shot 'Big Ear radio observatory' -> Wikimedia Commons image
+2026-10-29 11:46:50,130 INFO pipeline.visuals: Shot 'Big Ear radio observatory' -> Wikimedia Commons image
+2026-10-29 11:46:50,954 INFO pipeline.visuals: Shot 'radio telescope observatory' -> Pixabay video
+2026-10-29 11:46:51,439 INFO pipeline.visuals: Shot 'radio telescope observatory' -> Pixabay video
+2026-10-29 11:46:51,613 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-29 11:46:51,615 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-10-29 11:46:51,615 WARNING pipeline.visuals: _ai failed for 'interstellar gas cloud flare': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 requests per day on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-10-29 11:46:52,914 INFO pipeline.visuals: Shot 'interstellar gas cloud flare' -> Wikimedia Commons image
+2026-10-29 11:46:53,376 INFO pipeline.visuals: Shot 'interstellar gas cloud flare' -> Wikimedia Commons image
+2026-10-29 11:46:53,990 INFO pipeline.visuals: Shot 'interstellar gas cloud flare' -> Wikimedia Commons image
+2026-10-29 11:46:54,936 INFO pipeline.visuals: Shot 'starfield deep space' -> Pixabay video
+2026-10-29 11:46:55,511 INFO pipeline.visuals: Shot 'starfield deep space' -> Pixabay video
+2026-10-29 11:46:55,642 INFO pipeline.render: Caption self-test passed
+2026-10-29 11:47:27,486 INFO pipeline.render: Rendered 11 shot segments
+2026-10-29 11:47:27,727 INFO pipeline.render: Music: atlas-discovery.mp3
+2026-10-29 11:47:47,636 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-wow-signal-s2/wow-signal-s2.mp4 (33.0s)
+2026-10-29 11:47:50,102 INFO pipeline.youtube: Upload 80%
+2026-10-29 11:47:51,013 INFO pipeline.youtube: Uploaded video _rQKIfWoMlE (private, publishAt 2026-10-29T17:00:00.000Z)
+2026-10-29 11:47:51,114 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-10-29 11:47:51,114 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-wow-signal-s2
