@@ -1,0 +1,41 @@
+2026-10-30 11:34:20,158 INFO atlas: SHORT: Death Valley's Moving Rocks: A Mystery Finally Solved — Rocks that leave trails across the desert — and nobody saw them move (linked: False)
+2026-10-30 11:34:21,468 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-30 11:34:21,472 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-30 11:34:51,691 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-30 11:34:51,693 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-10-30 11:36:42,959 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-30 11:36:42,967 INFO pipeline.research: Wikipedia research brief: 10155 chars from Sailing stones — Wikipedia, Death Valley National Park — Wikipedia, Death Valley — Wikipedia
+2026-10-30 11:39:46,253 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-30 11:42:33,956 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-30 11:42:33,962 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-10-30 11:42:33,963 INFO pipeline.voice: TTS: 6 scenes in 1 request(s)
+2026-10-30 11:42:33,963 INFO pipeline.voice: TTS chunk 1/1 (116 words, scenes 1-6)
+2026-10-30 11:42:47,001 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-30 11:42:48,798 INFO pipeline.voice: Narration: 48.9s across 6 scenes
+2026-10-30 11:42:50,482 INFO pipeline.visuals: Shot 'sailing stone racetrack playa trail' -> Wikimedia Commons image
+2026-10-30 11:42:50,747 INFO pipeline.visuals: Shot 'sailing stone racetrack playa trail' -> Wikimedia Commons image
+2026-10-30 11:42:52,421 INFO pipeline.visuals: Shot 'death valley cracked mud' -> Pixabay video
+2026-10-30 11:42:52,716 INFO pipeline.visuals: Shot 'death valley cracked mud' -> Pixabay video
+2026-10-30 11:42:54,698 INFO pipeline.visuals: Shot 'sliding rock mud furrow' -> Wikimedia Commons image
+2026-10-30 11:42:55,000 INFO pipeline.visuals: Shot 'sliding rock mud furrow' -> Wikimedia Commons image
+2026-10-30 11:42:55,301 INFO pipeline.visuals: Shot 'sliding rock mud furrow' -> Wikimedia Commons image
+2026-10-30 11:42:55,763 INFO pipeline.visuals: Shot 'timelapse camera desert winter' -> Pixabay video
+2026-10-30 11:42:55,913 INFO pipeline.visuals: Shot 'timelapse camera desert winter' -> Pixabay video
+2026-10-30 11:42:56,031 INFO pipeline.visuals: Shot 'timelapse camera desert winter' -> Pixabay video
+2026-10-30 11:42:56,333 INFO pipeline.visuals: Shot 'thin melting ice sheet' -> Pixabay video
+2026-10-30 11:42:56,887 INFO pipeline.visuals: Shot 'thin melting ice sheet' -> Pixabay video
+2026-10-30 11:42:57,014 INFO pipeline.visuals: Shot 'thin melting ice sheet' -> Pixabay video
+2026-10-30 11:42:58,418 INFO pipeline.visuals: Shot 'racetrack playa parallel stone tracks' -> Wikimedia Commons image
+2026-10-30 11:42:59,133 INFO pipeline.visuals: Shot 'racetrack playa parallel stone tracks' -> Wikimedia Commons image
+2026-10-30 11:42:59,369 INFO pipeline.visuals: Shot 'racetrack playa parallel stone tracks' -> Wikimedia Commons image
+2026-10-30 11:42:59,736 INFO pipeline.visuals: Shot 'racetrack playa parallel stone tracks' -> Wikimedia Commons image
+2026-10-30 11:43:00,015 INFO pipeline.render: Caption self-test passed
+2026-10-30 11:44:05,348 INFO pipeline.render: Rendered 16 shot segments
+2026-10-30 11:44:05,972 INFO pipeline.render: Music: atlas-discovery.mp3
+2026-10-30 11:44:46,947 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-sailing-stones-s1/sailing-stones-s1.mp4 (49.9s)
+2026-10-30 11:44:49,619 INFO pipeline.youtube: Upload 37%
+2026-10-30 11:44:49,892 INFO pipeline.youtube: Upload 75%
+2026-10-30 11:44:50,536 INFO pipeline.youtube: Uploaded video ivAesdubgLo (private, publishAt 2026-10-30T17:00:00.000Z)
+2026-10-30 11:44:50,569 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-10-30 11:44:50,569 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-sailing-stones-s1
