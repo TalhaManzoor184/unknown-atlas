@@ -89,6 +89,16 @@
       "seconds": 50,
       "parent": "sailing-stones",
       "at": "2026-10-30T11:44:50+00:00"
+    },
+    "sailing-stones#1": {
+      "title": "Death Valley's Moving Rocks Solved",
+      "video_id": "hEgQv1FpoJI",
+      "url": "https://youtu.be/hEgQv1FpoJI",
+      "privacy": "private",
+      "publish_at": "2026-10-31T17:00:00.000Z",
+      "seconds": 42,
+      "parent": "sailing-stones",
+      "at": "2026-10-31T11:18:50+00:00"
     }
   }
 }
