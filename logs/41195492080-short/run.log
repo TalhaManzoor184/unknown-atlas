@@ -1,0 +1,48 @@
+2026-10-31 11:07:25,238 INFO atlas: SHORT: Death Valley's Moving Rocks: A Mystery Finally Solved — The surprisingly simple mechanism scientists finally caught on camera (linked: False)
+2026-10-31 11:11:44,179 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-31 11:11:44,346 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-31 11:11:44,349 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-10-31 11:12:14,578 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-31 11:12:14,580 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-10-31 11:16:34,891 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-31 11:16:34,895 INFO pipeline.writer: Fact-check round 1: verdict=revise, 1 serious / 1 total issues
+2026-10-31 11:16:35,359 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-31 11:16:35,361 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-10-31 11:16:44,060 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-31 11:16:44,061 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-10-31 11:17:00,568 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-10-31 11:17:00,570 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-10-31 11:17:04,257 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-31 11:17:07,923 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-31 11:17:07,927 INFO pipeline.writer: Fact-check round 2: verdict=pass, 0 serious / 0 total issues
+2026-10-31 11:17:07,928 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-10-31 11:17:07,928 INFO pipeline.voice: TTS chunk 1/1 (105 words, scenes 1-5)
+2026-10-31 11:17:19,281 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-10-31 11:17:20,459 INFO pipeline.voice: Narration: 40.8s across 5 scenes
+2026-10-31 11:17:21,297 INFO pipeline.visuals: Shot 'Racetrack Playa sliding rock trail' -> Wikimedia Commons image
+2026-10-31 11:17:21,551 INFO pipeline.visuals: Shot 'Racetrack Playa sliding rock trail' -> Wikimedia Commons image
+2026-10-31 11:17:21,808 INFO pipeline.visuals: Shot 'Racetrack Playa sliding rock trail' -> Wikimedia Commons image
+2026-10-31 11:17:22,178 INFO pipeline.visuals: Shot 'cracked dry mud desert' -> Pixabay video
+2026-10-31 11:17:22,346 INFO pipeline.visuals: Shot 'cracked dry mud desert' -> Pixabay video
+2026-10-31 11:17:23,100 INFO pipeline.visuals: Shot 'thin ice pond winter' -> Pixabay video
+2026-10-31 11:17:23,952 INFO pipeline.visuals: Shot 'thin ice pond winter' -> Pixabay video
+2026-10-31 11:17:24,062 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-10-31 11:17:24,063 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-10-31 11:17:24,063 WARNING pipeline.visuals: _ai failed for 'thin melting ice pushing rock': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 input tokens per minute on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-10-31 11:17:25,417 INFO pipeline.visuals: Shot 'thin melting ice pushing rock' -> Pixabay image
+2026-10-31 11:17:25,840 INFO pipeline.visuals: Shot 'thin melting ice pushing rock' -> Pixabay image
+2026-10-31 11:17:26,229 INFO pipeline.visuals: Shot 'thin melting ice pushing rock' -> Pixabay image
+2026-10-31 11:17:26,687 INFO pipeline.visuals: Shot 'thin melting ice pushing rock' -> Pixabay image
+2026-10-31 11:17:27,872 INFO pipeline.visuals: Shot 'sailing stone track Racetrack Playa' -> Wikimedia Commons image
+2026-10-31 11:17:28,121 INFO pipeline.visuals: Shot 'sailing stone track Racetrack Playa' -> Wikimedia Commons image
+2026-10-31 11:17:28,329 INFO pipeline.visuals: Shot 'sailing stone track Racetrack Playa' -> Wikimedia Commons image
+2026-10-31 11:17:28,467 INFO pipeline.render: Caption self-test passed
+2026-10-31 11:18:15,333 INFO pipeline.render: Rendered 14 shot segments
+2026-10-31 11:18:15,822 INFO pipeline.render: Music: atlas-deep-field.mp3
+2026-10-31 11:18:48,205 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-sailing-stones-s2/sailing-stones-s2.mp4 (41.8s)
+2026-10-31 11:18:50,038 INFO pipeline.youtube: Upload 47%
+2026-10-31 11:18:50,237 INFO pipeline.youtube: Upload 94%
+2026-10-31 11:18:50,690 INFO pipeline.youtube: Uploaded video hEgQv1FpoJI (private, publishAt 2026-10-31T17:00:00.000Z)
+2026-10-31 11:18:50,784 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-10-31 11:18:50,784 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-sailing-stones-s2
