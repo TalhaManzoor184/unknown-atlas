@@ -1,0 +1,48 @@
+2026-11-01 11:59:20,406 INFO atlas: SHORT: The Lost Franklin Expedition: Arctic Ships Found After 170 Years — How Inuit oral history helped find the lost Franklin ships (linked: False)
+2026-11-01 11:59:21,689 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-01 11:59:21,693 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-01 11:59:51,923 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-01 11:59:51,925 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-01 12:02:05,969 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-01 12:02:05,977 INFO pipeline.research: Wikipedia research brief: 10115 chars from Franklin's lost expedition — Wikipedia, John Franklin — Wikipedia, Paul Watson (journalist) — Wikipedia
+2026-11-01 12:03:19,154 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-01 12:03:21,256 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-01 12:03:21,257 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-01 12:03:32,088 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-01 12:03:32,089 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-01 12:03:49,211 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-01 12:03:49,212 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-01 12:03:52,392 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-01 12:03:52,396 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-01 12:03:52,398 INFO pipeline.voice: TTS: 6 scenes in 1 request(s)
+2026-11-01 12:03:52,398 INFO pipeline.voice: TTS chunk 1/1 (96 words, scenes 1-6)
+2026-11-01 12:04:06,212 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-01 12:04:07,659 INFO pipeline.voice: Narration: 47.2s across 6 scenes
+2026-11-01 12:04:08,017 INFO pipeline.visuals: Shot 'arctic frozen ocean ice' -> Pixabay video
+2026-11-01 12:04:08,129 INFO pipeline.visuals: Shot 'arctic frozen ocean ice' -> Pixabay video
+2026-11-01 12:04:09,193 INFO pipeline.visuals: Shot 'HMS Erebus Terror ice' -> Wikimedia Commons image
+2026-11-01 12:04:09,793 INFO pipeline.visuals: Shot 'HMS Erebus Terror ice' -> Wikimedia Commons image
+2026-11-01 12:04:10,368 INFO pipeline.visuals: Shot 'HMS Erebus Terror ice' -> Wikimedia Commons image
+2026-11-01 12:04:10,718 INFO pipeline.visuals: Shot 'arctic tundra snow walking' -> Pixabay video
+2026-11-01 12:04:10,855 INFO pipeline.visuals: Shot 'arctic tundra snow walking' -> Pixabay video
+2026-11-01 12:04:12,588 INFO pipeline.visuals: Shot 'King William Island map' -> Wikimedia Commons image
+2026-11-01 12:04:13,140 INFO pipeline.visuals: Shot 'King William Island map' -> Wikimedia Commons image
+2026-11-01 12:04:13,577 INFO pipeline.visuals: Shot 'King William Island map' -> Wikimedia Commons image
+2026-11-01 12:04:14,181 INFO pipeline.visuals: Shot 'King William Island map' -> Wikimedia Commons image
+2026-11-01 12:04:14,356 INFO pipeline.visuals: Shot 'underwater shipwreck murky water' -> Pixabay video
+2026-11-01 12:04:14,644 INFO pipeline.visuals: Shot 'underwater shipwreck murky water' -> Pixabay video
+2026-11-01 12:04:14,775 INFO pipeline.visuals: Shot 'underwater shipwreck murky water' -> Pixabay video
+2026-11-01 12:04:14,995 INFO pipeline.visuals: Shot 'arctic sea horizon ice' -> Pixabay video
+2026-11-01 12:04:15,170 INFO pipeline.visuals: Shot 'arctic sea horizon ice' -> Pixabay video
+2026-11-01 12:04:15,364 INFO pipeline.visuals: Shot 'arctic sea horizon ice' -> Pixabay video
+2026-11-01 12:04:15,584 INFO pipeline.render: Caption self-test passed
+2026-11-01 12:05:21,019 INFO pipeline.render: Rendered 17 shot segments
+2026-11-01 12:05:21,572 INFO pipeline.render: Music: atlas-tension.mp3
+2026-11-01 12:06:05,202 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-franklin-expedition-s1/franklin-expedition-s1.mp4 (48.2s)
+2026-11-01 12:06:07,045 INFO pipeline.youtube: Upload 30%
+2026-11-01 12:06:07,373 INFO pipeline.youtube: Upload 61%
+2026-11-01 12:06:07,628 INFO pipeline.youtube: Upload 92%
+2026-11-01 12:06:08,075 INFO pipeline.youtube: Uploaded video ZkhvSsqPlX8 (private, publishAt 2026-11-01T17:00:00.000Z)
+2026-11-01 12:06:08,120 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-01 12:06:08,120 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-franklin-expedition-s1
