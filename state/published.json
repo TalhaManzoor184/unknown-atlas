@@ -99,6 +99,16 @@
       "seconds": 42,
       "parent": "sailing-stones",
       "at": "2026-10-31T11:18:50+00:00"
+    },
+    "franklin-expedition#0": {
+      "title": "The 170-Year Arctic Mystery Solved by Memory",
+      "video_id": "ZkhvSsqPlX8",
+      "url": "https://youtu.be/ZkhvSsqPlX8",
+      "privacy": "private",
+      "publish_at": "2026-11-01T17:00:00.000Z",
+      "seconds": 48,
+      "parent": "franklin-expedition",
+      "at": "2026-11-01T12:06:08+00:00"
     }
   }
 }
