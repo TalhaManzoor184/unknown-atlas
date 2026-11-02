@@ -1,0 +1,43 @@
+2026-11-02 13:46:46,479 INFO atlas: SHORT: The Lost Franklin Expedition: Arctic Ships Found After 170 Years — The Franklin Expedition officer identified by DNA more than 170 years later (linked: False)
+2026-11-02 13:46:47,545 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-02 13:46:47,548 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-02 13:46:56,452 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-02 13:46:56,453 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-02 13:47:13,065 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-02 13:47:13,066 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-02 13:47:17,579 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-02 13:47:17,721 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-02 13:47:17,722 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-02 13:47:47,863 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-02 13:47:47,864 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-02 13:47:50,882 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-02 13:47:50,885 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-02 13:47:50,886 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-02 13:47:50,886 INFO pipeline.voice: TTS chunk 1/1 (89 words, scenes 1-5)
+2026-11-02 13:49:14,835 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-02 13:49:15,734 INFO pipeline.voice: Narration: 40.4s across 5 scenes
+2026-11-02 13:49:16,680 INFO pipeline.visuals: Shot 'icy arctic ocean drone' -> Pixabay video
+2026-11-02 13:49:16,892 INFO pipeline.visuals: Shot 'icy arctic ocean drone' -> Pixabay video
+2026-11-02 13:49:17,188 INFO pipeline.visuals: Shot 'icy arctic ocean drone' -> Pixabay video
+2026-11-02 13:49:20,786 INFO pipeline.visuals: Shot 'hms erebus and terror' -> Wikimedia Commons image
+2026-11-02 13:49:21,061 INFO pipeline.visuals: Shot 'hms erebus and terror' -> Wikimedia Commons image
+2026-11-02 13:49:21,393 INFO pipeline.visuals: Shot 'hms erebus and terror' -> Wikimedia Commons image
+2026-11-02 13:49:24,379 INFO pipeline.visuals: Shot 'arctic canada map historical' -> Wikimedia Commons image
+2026-11-02 13:49:24,801 INFO pipeline.visuals: Shot 'arctic canada map historical' -> Wikimedia Commons image
+2026-11-02 13:49:25,355 INFO pipeline.visuals: Shot 'arctic canada map historical' -> Wikimedia Commons image
+2026-11-02 13:49:25,727 INFO pipeline.visuals: Shot 'underwater shipwreck flashlight' -> Pixabay video
+2026-11-02 13:49:26,179 INFO pipeline.visuals: Shot 'underwater shipwreck flashlight' -> Pixabay video
+2026-11-02 13:49:26,385 INFO pipeline.visuals: Shot 'underwater shipwreck flashlight' -> Pixabay video
+2026-11-02 13:49:26,761 INFO pipeline.visuals: Shot 'arctic bay ice' -> Pixabay video
+2026-11-02 13:49:27,419 INFO pipeline.visuals: Shot 'arctic bay ice' -> Pixabay video
+2026-11-02 13:49:27,642 INFO pipeline.visuals: Shot 'arctic bay ice' -> Pixabay video
+2026-11-02 13:49:27,754 INFO pipeline.render: Caption self-test passed
+2026-11-02 13:50:03,147 INFO pipeline.render: Rendered 15 shot segments
+2026-11-02 13:50:03,436 INFO pipeline.render: Music: atlas-discovery.mp3
+2026-11-02 13:50:26,928 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-franklin-expedition-s2/franklin-expedition-s2.mp4 (41.4s)
+2026-11-02 13:50:29,667 INFO pipeline.youtube: Upload 37%
+2026-11-02 13:50:30,319 INFO pipeline.youtube: Upload 74%
+2026-11-02 13:50:31,579 INFO pipeline.youtube: Uploaded video 4CLMTdFXpSQ (private, publishAt 2026-11-02T17:00:00.000Z)
+2026-11-02 13:50:31,771 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-02 13:50:31,771 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-franklin-expedition-s2
