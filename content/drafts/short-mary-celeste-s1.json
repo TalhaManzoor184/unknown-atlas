@@ -1,0 +1,119 @@
+{
+  "package": {
+    "title": "How Conan Doyle Invented The Mary Celeste Myth",
+    "scenes": [
+      {
+        "id": 1,
+        "section": "hook",
+        "narration": "You probably know the story of the abandoned ghost ship Mary Celeste.",
+        "on_screen_text": "The Mary Celeste",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "vintage ship illustration",
+            "ai_prompt": "Cinematic vertical shot of an old sailing ship at sea, dramatic lighting.",
+            "note": ""
+          }
+        ],
+        "sound_design": "low atmospheric hum",
+        "pronunciation": ""
+      },
+      {
+        "id": 2,
+        "section": "context",
+        "narration": "But its most famous details are complete fiction.",
+        "on_screen_text": "Pure Fiction",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "open ocean waves",
+            "ai_prompt": "Cinematic vertical shot of rough ocean waves.",
+            "note": ""
+          }
+        ],
+        "sound_design": "",
+        "pronunciation": ""
+      },
+      {
+        "id": 3,
+        "section": "evidence",
+        "narration": "In 1884, a young Arthur Conan Doyle published a fictional story about the ship.",
+        "on_screen_text": "Arthur Conan Doyle",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "Arthur Conan Doyle portrait",
+            "ai_prompt": "Portrait of a 19th-century writer at a desk.",
+            "note": ""
+          }
+        ],
+        "sound_design": "",
+        "pronunciation": ""
+      },
+      {
+        "id": 4,
+        "section": "twist",
+        "narration": "He even misspelled the name as Marie Celeste, cementing the error in the public mind.",
+        "on_screen_text": "Marie Celeste Error",
+        "visuals": [
+          {
+            "kind": "archival_image",
+            "query": "vintage book page",
+            "ai_prompt": "Close up of old book pages with handwritten text.",
+            "note": ""
+          }
+        ],
+        "sound_design": "",
+        "pronunciation": ""
+      },
+      {
+        "id": 5,
+        "section": "conclusion",
+        "narration": "A great story often overshadows history. Follow for more strange truths.",
+        "on_screen_text": "The World Is Stranger",
+        "visuals": [
+          {
+            "kind": "stock_video",
+            "query": "misty ocean horizon",
+            "ai_prompt": "Cinematic vertical shot of a foggy ocean horizon at sunset.",
+            "note": ""
+          }
+        ],
+        "sound_design": "",
+        "pronunciation": ""
+      }
+    ],
+    "description": "How Arthur Conan Doyle accidentally created the enduring myth of the ghost ship Mary Celeste through a fictional story.",
+    "tags": [
+      "Mary Celeste",
+      "Arthur Conan Doyle",
+      "history",
+      "mystery"
+    ],
+    "hashtags": [
+      "#shorts",
+      "#history",
+      "#mystery"
+    ],
+    "sources": [
+      {
+        "title": "Mary Celeste - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mary_Celeste",
+        "used_for": "Core details on Arthur Conan Doyle and the naming myth"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "Arthur Conan Doyle published a fictional short story about the ship in 1884 that popularized the Marie Celeste spelling.",
+        "status": "verified",
+        "source_url": "https://en.wikipedia.org/wiki/Mary_Celeste"
+      }
+    ]
+  },
+  "factcheck": [
+    {
+      "verdict": "pass",
+      "issues": []
+    }
+  ]
+}
