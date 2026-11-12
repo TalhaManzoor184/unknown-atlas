@@ -1,9 +1,9 @@
-2026-11-12 13:56:55,878 INFO atlas: SHORT: The Mary Celeste: The Ghost Ship Myth vs. The Real Story — How a young Arthur Conan Doyle accidentally created the Mary Celeste myth (linked: False)
-2026-11-12 13:56:55,879 INFO atlas: Reusing fact-checked draft short-mary-celeste-s1.json
-2026-11-12 13:56:55,885 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
-2026-11-12 13:56:55,885 INFO pipeline.voice: TTS chunk 1/1 (60 words, scenes 1-5)
-2026-11-12 13:56:56,929 INFO httpx2: HTTP Request: POST https://generativelanguage.googleapis.com/v1/interactions "HTTP/1.1 404 Not Found"
-2026-11-12 13:56:56,933 ERROR atlas: Pipeline failed
+2026-11-12 16:14:55,761 INFO atlas: SHORT: The Mary Celeste: The Ghost Ship Myth vs. The Real Story — How a young Arthur Conan Doyle accidentally created the Mary Celeste myth (linked: False)
+2026-11-12 16:14:55,763 INFO atlas: Reusing fact-checked draft short-mary-celeste-s1.json
+2026-11-12 16:14:55,771 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-12 16:14:55,771 INFO pipeline.voice: TTS chunk 1/1 (60 words, scenes 1-5)
+2026-11-12 16:14:56,845 INFO httpx2: HTTP Request: POST https://generativelanguage.googleapis.com/v1/interactions "HTTP/1.1 404 Not Found"
+2026-11-12 16:14:56,850 ERROR atlas: Pipeline failed
 Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 649, in create
     return _speakeasy_parse_response(http_res)
