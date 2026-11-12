@@ -1,31 +1,16 @@
-2026-11-05 13:27:09,446 INFO atlas: SHORT: The Mary Celeste: The Ghost Ship Myth vs. The Real Story — How a young Arthur Conan Doyle accidentally created the Mary Celeste myth (linked: False)
-2026-11-05 13:27:10,442 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
-2026-11-05 13:27:10,450 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
-2026-11-05 13:27:40,611 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
-2026-11-05 13:27:40,613 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
-2026-11-05 13:27:41,561 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:27:41,562 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
-2026-11-05 13:27:49,827 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:27:49,828 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
-2026-11-05 13:28:06,078 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:28:06,080 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
-2026-11-05 13:28:18,264 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:28:18,265 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 4 in 32s
-2026-11-05 13:28:55,884 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:28:55,889 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 5 in 64s
-2026-11-05 13:30:06,502 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:30:06,503 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 6 in 120s
-2026-11-05 13:32:08,871 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:32:08,873 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 7 in 120s
-2026-11-05 13:34:11,028 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
-2026-11-05 13:34:11,030 ERROR atlas: Pipeline failed
+2026-11-12 16:12:44,113 INFO atlas: SHORT: The Mary Celeste: The Ghost Ship Myth vs. The Real Story — How a young Arthur Conan Doyle accidentally created the Mary Celeste myth (linked: False)
+2026-11-12 16:12:44,114 INFO atlas: Reusing fact-checked draft short-mary-celeste-s1.json
+2026-11-12 16:12:44,117 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-12 16:12:44,117 INFO pipeline.voice: TTS chunk 1/1 (60 words, scenes 1-5)
+2026-11-12 16:12:44,878 INFO httpx2: HTTP Request: POST https://generativelanguage.googleapis.com/v1/interactions "HTTP/1.1 404 Not Found"
+2026-11-12 16:12:44,882 ERROR atlas: Pipeline failed
 Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 646, in create
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 649, in create
     return _speakeasy_parse_response(http_res)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 562, in _speakeasy_parse_response
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 565, in _speakeasy_parse_response
     raise errors.CreateInteractionClientError(
-google.genai._gaos.errors.createinteraction.CreateInteractionClientError: You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+google.genai._gaos.errors.createinteraction.CreateInteractionClientError: Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models
 
 The above exception was the direct cause of the following exception:
 
@@ -33,67 +18,20 @@ Traceback (most recent call last):
   File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
     return client().interactions.create(**body)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 376, in create
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 385, in create
     response = send_once()
                ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 431, in _send_create_once
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 440, in _send_create_once
     return wrap_sdk_call(
            ^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 372, in wrap_sdk_call
     return fn(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 648, in create
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 651, in create
     response_helpers.raise_parse_error(
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 97, in raise_parse_error
     raise parse_error from exc
-google.genai._gaos.lib.compat_errors.RateLimitError: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'code': 'too_many_requests'}}
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 51, in research
-    return _grounded(topic)
-           ^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 64, in _grounded
-    text, cites = gemini.grounded_text(prompt, system=RESEARCH_SYSTEM)
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 177, in grounded_text
-    it = _call(**body)
-         ^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 98, in _call
-    raise QuotaError(f"Google Search grounding quota [model={model}]: {e}") from e
-pipeline.gemini.QuotaError: Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. ', 'code': 'too_many_requests'}}
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 646, in create
-    return _speakeasy_parse_response(http_res)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 577, in _speakeasy_parse_response
-    raise errors.CreateInteractionServerError(
-google.genai._gaos.errors.createinteraction.CreateInteractionServerError: gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
-    return client().interactions.create(**body)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 376, in create
-    response = send_once()
-               ^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 431, in _send_create_once
-    return wrap_sdk_call(
-           ^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 648, in create
-    response_helpers.raise_parse_error(
-  File "/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
-    raise parse_error from exc
-google.genai._gaos.lib.compat_errors.InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+google.genai._gaos.lib.compat_errors.NotFoundError: Error code: 404 - {'error': {'message': "Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models", 'code': 'not_found'}}
 
 The above exception was the direct cause of the following exception:
 
@@ -101,19 +39,19 @@ Traceback (most recent call last):
   File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 297, in main
     out = run_long(args) if args.mode == "long" else run_short(args)
                                                      ^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 207, in run_short
-    research = tq.cached_research(topic["id"]) or research_mod.research(topic)
-                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 54, in research
-    return _wikipedia(topic)
-           ^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/research.py", line 131, in _wikipedia
-    brief = gemini.text(prompt, system=RESEARCH_SYSTEM.replace("Use Google Search. ", ""))
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 230, in text
-    return _output_text(_call(**body))
-                        ^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 220, in run_short
+    narration, timeline = voice.narrate(pkg.scenes, workdir, mock=args.mock)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/voice.py", line 136, in narrate
+    chunk.write_bytes(_tts_with_patience(text, vc["name"], style))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/voice.py", line 94, in _tts_with_patience
+    return gemini.tts(text, voice, style, model=model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 235, in tts
+    it = _call(
+         ^^^^^^
   File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 91, in _call
     raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
-RuntimeError: Gemini call failed [model=gemini-3.5-flash-lite]: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
-::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.5-flash-lite]: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+RuntimeError: Gemini call failed [model=gemini-3.8-flash-tts]: Error code: 404 - {'error': {'message': "Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models", 'code': 'not_found'}}
+::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.8-flash-tts]: Error code: 404 - {'error': {'message': "Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models", 'code': 'not_found'}}
