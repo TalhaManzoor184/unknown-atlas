@@ -1,0 +1,57 @@
+2026-11-14 12:26:54,214 INFO atlas: SHORT: The Mary Celeste: The Ghost Ship Myth vs. The Real Story — How a young Arthur Conan Doyle accidentally created the Mary Celeste myth (linked: False)
+2026-11-14 12:26:54,214 INFO atlas: Reusing fact-checked draft short-mary-celeste-s1.json
+2026-11-14 12:26:54,218 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-14 12:26:54,218 INFO pipeline.voice: TTS chunk 1/1 (60 words, scenes 1-5)
+2026-11-14 12:26:55,269 INFO httpx2: HTTP Request: POST https://generativelanguage.googleapis.com/v1/interactions "HTTP/1.1 404 Not Found"
+2026-11-14 12:26:55,272 ERROR atlas: Pipeline failed
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 649, in create
+    return _speakeasy_parse_response(http_res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 565, in _speakeasy_parse_response
+    raise errors.CreateInteractionClientError(
+google.genai._gaos.errors.createinteraction.CreateInteractionClientError: Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
+    return client().interactions.create(**body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 385, in create
+    response = send_once()
+               ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 440, in _send_create_once
+    return wrap_sdk_call(
+           ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 372, in wrap_sdk_call
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 651, in create
+    response_helpers.raise_parse_error(
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 97, in raise_parse_error
+    raise parse_error from exc
+google.genai._gaos.lib.compat_errors.NotFoundError: Error code: 404 - {'error': {'message': "Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models", 'code': 'not_found'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 297, in main
+    out = run_long(args) if args.mode == "long" else run_short(args)
+                                                     ^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 220, in run_short
+    narration, timeline = voice.narrate(pkg.scenes, workdir, mock=args.mock)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/voice.py", line 136, in narrate
+    chunk.write_bytes(_tts_with_patience(text, vc["name"], style))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/voice.py", line 94, in _tts_with_patience
+    return gemini.tts(text, voice, style, model=model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 235, in tts
+    it = _call(
+         ^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 91, in _call
+    raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
+RuntimeError: Gemini call failed [model=gemini-3.8-flash-tts]: Error code: 404 - {'error': {'message': "Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models", 'code': 'not_found'}}
+::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.8-flash-tts]: Error code: 404 - {'error': {'message': "Model 'gemini-3.8-flash-tts' not found. Please verify the model name against the supported list: https://ai.google.dev/gemini-api/docs/models", 'code': 'not_found'}}
