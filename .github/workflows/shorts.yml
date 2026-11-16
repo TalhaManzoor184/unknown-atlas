@@ -73,7 +73,7 @@ jobs:
             output/**/package.md
             output/**/description.txt
             output/*/captions.en.srt
-          retention-days: 14
+          retention-days: 1
           if-no-files-found: ignore
 
       - name: Save run log to run-logs branch
