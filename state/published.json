@@ -159,6 +159,16 @@
       "seconds": 36,
       "parent": "mary-celeste",
       "at": "2026-11-17T03:42:44+00:00"
+    },
+    "antikythera-mechanism#0": {
+      "title": "The Two Thousand Year Old Computer",
+      "video_id": "zb8AaMurnxo",
+      "url": "https://youtu.be/zb8AaMurnxo",
+      "privacy": "private",
+      "publish_at": "2026-11-18T13:00:00.000Z",
+      "seconds": 39,
+      "parent": "antikythera-mechanism",
+      "at": "2026-11-17T03:45:39+00:00"
     }
   }
 }
