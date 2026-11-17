@@ -83,3 +83,21 @@ python -m pipeline.main topics         # top up the topic queue
 - YouTube API: one upload uses one call from the upload quota (100 a day). This channel needs about 1 a day.
 - Custom thumbnails require a phone-verified channel. If thumbnail upload fails, the upload still succeeds.
 - YouTube's API can't pin comments. The workflow run summary shows the pinned comment ready to paste.
+
+## Facebook Page (daily Reel + image + Story)
+
+Every daily run also posts to the Facebook Page:
+- **Reel**: the day's Short, with a short caption and hashtags
+- **Image post**: a 4:5 "Did you know?" card built from the Short, with a caption that ends in a question to start comments
+- **Story**: a 9:16 teaser card ("Watch the reel")
+
+All Facebook text is written only from the fact-checked Short script. If one part fails, the other parts still post, and the YouTube upload is never affected. A warning shows on the run.
+
+Setup:
+1. Make a Meta app at developers.facebook.com (you must be an admin of the Page).
+2. In Graph API Explorer, generate a user token with `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`, and pick the Unknown Atlas Page.
+3. On your PC, run `python scripts/get_fb_page_token.py APP_ID APP_SECRET USER_TOKEN`.
+4. Add the secrets `FB_PAGE_ID` and `FB_PAGE_TOKEN`.
+5. Go to Actions → **Facebook setup check** → Run. It confirms the token works.
+
+To turn Facebook posting off, set the repo variable `FACEBOOK_POST=false`. Manual runs (`shorts.yml`, including catch-up batches) never post to Facebook.

@@ -73,6 +73,9 @@ jobs:
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FACEBOOK_POST: ${{ vars.FACEBOOK_POST || 'true' }}
           PUBLISH_MODE: ${{ inputs.publish_mode || vars.PUBLISH_MODE }}
           GEMINI_TEXT_MODEL: ${{ vars.GEMINI_TEXT_MODEL }}
           GEMINI_TTS_MODEL: ${{ vars.GEMINI_TTS_MODEL }}
@@ -100,6 +103,7 @@ jobs:
             output/**/package.json
             output/**/description.txt
             output/*/captions.en.srt
+            output/*/fb_*.jpg
           retention-days: 1
           if-no-files-found: ignore
 

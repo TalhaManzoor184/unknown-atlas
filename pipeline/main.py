@@ -239,6 +239,19 @@ def run_short(args):
         up = youtube.upload(video, pkg.title, desc, pkg.tags, "short", None, synthetic=synthetic, captions=srt)
         tq.record("short", key, {"title": pkg.title, **up, "seconds": round(total), "parent": topic["id"]})
         drop_draft(f"short-{slug}")
+        if os.getenv("FACEBOOK_POST", "").lower() in ("1", "true", "yes"):
+            from . import facebook
+
+            if facebook.enabled():
+                fb = facebook.post_daily(pkg, video, per_scene, workdir, up)
+                state = tq.load_state()
+                state["shorts"][key]["facebook"] = fb
+                tq.save_state(state)
+                summary(f"- Facebook: reel `{fb.get('reel_id', '—')}` ({fb.get('reel_state', 'failed')}), "
+                        f"image `{fb.get('photo_post_id', '—')}`, story `{fb.get('story_id', '—')}`"
+                        + (f" — problems: {'; '.join(fb['facebook_errors'])}" if fb.get('facebook_errors') else ""))
+            else:
+                log.info("Facebook posting skipped: FB_PAGE_ID / FB_PAGE_TOKEN not set")
 
     md = render_md(pkg, timeline, per_scene, report, "short", up)
     (workdir / "package.md").write_text(md)
@@ -280,7 +293,7 @@ def _archive(slug: str, kind: str, md: str, args):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Unknown Atlas pipeline")
-    ap.add_argument("mode", choices=["long", "short", "topics"])
+    ap.add_argument("mode", choices=["long", "short", "topics", "fbcheck"])
     ap.add_argument("--topic", help="force a topic id (long-form only)")
     ap.add_argument("--no-upload", action="store_true", help="render but do not upload")
     ap.add_argument("--mock", action="store_true", help="offline test with placeholder script/voice/visuals")
@@ -288,6 +301,11 @@ def main(argv=None):
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s", stream=sys.stdout)
 
     try:
+        if args.mode == "fbcheck":
+            from . import facebook
+
+            facebook.check()
+            return
         if not args.mock:
             preflight(upload=not args.no_upload)
         if args.mode == "topics":

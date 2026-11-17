@@ -77,3 +77,10 @@ publishing:
 
 quality:
   max_factcheck_rounds: 2   # revise script at most this many times; then fail instead of uploading
+
+facebook:
+  # Daily workflow posts the day's Short to the Facebook Page as a Reel, plus one "did you know" image post
+  # and one Story, all when the daily run finishes. Needs secrets FB_PAGE_ID + FB_PAGE_TOKEN.
+  # Turn off with repo variable FACEBOOK_POST=false.
+  graph_version: "v25.0"
+  reel_follows_youtube_time: false   # true = schedule the Reel for the same time the YouTube Short goes public
