@@ -199,6 +199,16 @@
       "seconds": 42,
       "parent": "roanoke-colony",
       "at": "2026-11-17T03:55:32+00:00"
+    },
+    "gobekli-tepe#0": {
+      "title": "The Stone Monument Older Than Civilization",
+      "video_id": "mBR4MrNSwhg",
+      "url": "https://youtu.be/mBR4MrNSwhg",
+      "privacy": "private",
+      "publish_at": "2026-11-20T13:00:00.000Z",
+      "seconds": 32,
+      "parent": "gobekli-tepe",
+      "at": "2026-11-17T03:58:25+00:00"
     }
   }
 }
