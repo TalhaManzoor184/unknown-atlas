@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 import logging
 import math
@@ -242,8 +243,14 @@ def run_short(args):
         if os.getenv("FACEBOOK_POST", "").lower() in ("1", "true", "yes"):
             from . import facebook
 
-            if facebook.enabled():
+            today = dt.datetime.now(dt.timezone.utc).date().isoformat()
+            already = any(v.get("facebook", {}).get("posted_on") == today and k != key
+                          for k, v in tq.load_state()["shorts"].items())
+            if already:
+                log.info("Facebook already posted today — skipping (one Reel/image/Story per day)")
+            elif facebook.enabled():
                 fb = facebook.post_daily(pkg, video, per_scene, workdir, up)
+                fb["posted_on"] = today
                 state = tq.load_state()
                 state["shorts"][key]["facebook"] = fb
                 tq.save_state(state)
