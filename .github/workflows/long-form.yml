@@ -70,6 +70,7 @@ jobs:
 
       - name: Keep video package as artifact
         if: always()
+        continue-on-error: true # a full artifact quota must not fail the run
         uses: actions/upload-artifact@v5
         with:
           name: documentary-${{ github.run_number }}
