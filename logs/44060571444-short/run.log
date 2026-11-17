@@ -1,0 +1,49 @@
+2026-11-17 09:59:48,685 INFO atlas: SHORT: Cahokia: The Lost American Metropolis Larger Than 13th-Century London — Why thousands of people suddenly abandoned Cahokia overnight. (linked: False)
+2026-11-17 09:59:49,667 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 09:59:49,672 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 09:59:57,844 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 09:59:57,846 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 10:00:14,009 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 10:00:14,013 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 10:00:20,807 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 10:00:20,918 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 10:00:20,919 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-17 10:00:51,032 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 10:00:51,033 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 10:00:58,593 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 10:00:58,595 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-17 10:01:08,907 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 10:01:08,912 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 10:01:08,913 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 10:01:08,913 INFO pipeline.voice: TTS chunk 1/1 (75 words, scenes 1-5)
+2026-11-17 10:01:20,604 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 10:01:21,596 INFO pipeline.voice: Narration: 40.2s across 5 scenes
+2026-11-17 10:01:22,061 INFO pipeline.visuals: Shot 'ancient earth mound' -> Pixabay video
+2026-11-17 10:01:22,296 INFO pipeline.visuals: Shot 'ancient earth mound' -> Pixabay video
+2026-11-17 10:01:22,509 INFO pipeline.visuals: Shot 'ancient earth mound' -> Pixabay video
+2026-11-17 10:01:23,566 INFO pipeline.visuals: Shot 'historic earthwork monument' -> Pixabay video
+2026-11-17 10:01:23,782 INFO pipeline.visuals: Shot 'historic earthwork monument' -> Pixabay video
+2026-11-17 10:01:24,366 INFO pipeline.visuals: Shot 'historic earthwork monument' -> Pixabay video
+2026-11-17 10:01:25,287 INFO pipeline.visuals: Shot 'ancient forest landscape' -> Pixabay video
+2026-11-17 10:01:25,841 INFO pipeline.visuals: Shot 'ancient forest landscape' -> Pixabay video
+2026-11-17 10:01:26,206 INFO pipeline.visuals: Shot 'ancient forest landscape' -> Pixabay video
+2026-11-17 10:01:27,189 INFO pipeline.visuals: Shot 'foggy ancient ruins' -> Pixabay video
+2026-11-17 10:01:27,362 INFO pipeline.visuals: Shot 'foggy ancient ruins' -> Pixabay video
+2026-11-17 10:01:27,546 INFO pipeline.visuals: Shot 'foggy ancient ruins' -> Pixabay video
+2026-11-17 10:01:28,104 INFO pipeline.visuals: Shot 'mysterious horizon fog' -> Pixabay video
+2026-11-17 10:01:28,321 INFO pipeline.visuals: Shot 'mysterious horizon fog' -> Pixabay video
+2026-11-17 10:01:28,465 INFO pipeline.render: Caption self-test passed
+2026-11-17 10:02:15,291 INFO pipeline.render: Rendered 14 shot segments
+2026-11-17 10:02:15,738 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-17 10:02:50,095 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-cahokia-mounds-s2/cahokia-mounds-s2.mp4 (41.2s)
+2026-11-17 10:02:52,870 INFO pipeline.youtube: Upload 25%
+2026-11-17 10:02:53,688 INFO pipeline.youtube: Upload 51%
+2026-11-17 10:02:54,507 INFO pipeline.youtube: Upload 77%
+2026-11-17 10:02:55,529 INFO pipeline.youtube: Uploaded video j2JVOVnazRM (private, publishAt 2026-11-23T17:00:00.000Z)
+2026-11-17 10:02:55,638 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 10:02:55,638 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+2026-11-17 10:03:03,839 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 10:03:52,590 INFO pipeline.facebook: Facebook Reel 4034719523502815 (published)
+2026-11-17 10:03:57,153 INFO pipeline.facebook: Facebook image post 111081986933784_1138152722284213
+2026-11-17 10:04:03,106 INFO pipeline.facebook: Facebook Story 5015731201987233
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-cahokia-mounds-s2
