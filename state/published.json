@@ -239,6 +239,16 @@
       "seconds": 42,
       "parent": "sonorium-of-the-sea",
       "at": "2026-11-17T04:06:29+00:00"
+    },
+    "fast-radio-bursts#0": {
+      "title": "The Cosmic Heartbeat From Deep Space",
+      "video_id": "mxXi687xta0",
+      "url": "https://youtu.be/mxXi687xta0",
+      "privacy": "private",
+      "publish_at": "2026-11-22T13:00:00.000Z",
+      "seconds": 33,
+      "parent": "fast-radio-bursts",
+      "at": "2026-11-17T04:09:10+00:00"
     }
   }
 }
