@@ -3,6 +3,9 @@ name: YouTube Short
 on:
   workflow_dispatch:
     inputs:
+      count:
+        description: "How many Shorts to make in this run (back-to-back; each takes the next free publish slot)"
+        default: "1"
       upload:
         description: "Upload to YouTube"
         type: boolean
@@ -21,7 +24,7 @@ permissions:
 jobs:
   short:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 340
     steps:
       - uses: actions/checkout@v5
         with:
@@ -56,12 +59,26 @@ jobs:
           VOICE_NAME: ${{ vars.VOICE_NAME }}
           AI_IMAGES: ${{ vars.AI_IMAGES }}
           UPLOAD: ${{ inputs.upload }}
+          COUNT: ${{ inputs.count }}
         run: |
           ARGS=(short)
           if [ "$UPLOAD" = "false" ]; then ARGS+=(--no-upload); fi
           mkdir -p output
           set -o pipefail
-          PYTHONUNBUFFERED=1 python -m pipeline.main "${ARGS[@]}" 2>&1 | tee output/run.log
+          git config user.name "unknown-atlas-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          N=$(( ${COUNT:-1} )); [ "$N" -ge 1 ] || N=1
+          for i in $(seq 1 "$N"); do
+            echo "=== Short $i of $N ===" | tee -a output/run.log
+            PYTHONUNBUFFERED=1 python -m pipeline.main "${ARGS[@]}" 2>&1 | tee -a output/run.log
+            # save progress after every Short, so a later failure or timeout never loses finished uploads
+            git add state content
+            if ! git diff --cached --quiet; then
+              git commit -qm "chore: publish log (short $i/$N) [skip ci]"
+              for t in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
+            fi
+            rm -rf output/short-*/segments output/short-*/assets
+          done
 
       - name: Keep Short as artifact
         if: always()
