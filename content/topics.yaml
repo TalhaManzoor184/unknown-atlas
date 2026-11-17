@@ -1,101 +1,153 @@
-# Topic queue — the pipeline takes the first long-form topic not yet in state/published.json.
-# Each topic has 2 Short angles; Shorts are made after the documentary is out so they can link to it.
-# Set `skip: true` to hold a topic. Add your own freely; when the queue runs out, Gemini proposes new ones.
-# Angles are briefs for the researcher, not facts to copy — every claim is re-verified with Google Search.
 topics:
 - id: dyatlov-pass
-  title: "The Dyatlov Pass Incident: What Really Happened in 1959?"
+  title: 'The Dyatlov Pass Incident: What Really Happened in 1959?'
   pillar: mysteries
-  angle: >-
-    Nine experienced hikers died in the northern Ural Mountains in February 1959 after leaving their tent in the night.
-    Walk through the evidence, the decades of wild theories, and how recent official reviews and a 2021 avalanche
-    modelling study changed the debate — while being honest about what is still argued.
+  angle: Nine experienced hikers died in the northern Ural Mountains in February 1959 after leaving their tent in
+    the night. Walk through the evidence, the decades of wild theories, and how recent official reviews and a 2021
+    avalanche modelling study changed the debate — while being honest about what is still argued.
   shorts:
   - Why the hikers' tent was cut open from the inside
   - How animation software used for a famous animated film helped scientists model the avalanche theory
 - id: voynich-manuscript
-  title: "The Voynich Manuscript: The Book Nobody Can Read"
+  title: 'The Voynich Manuscript: The Book Nobody Can Read'
   pillar: history
-  angle: >-
-    A medieval manuscript full of unknown script and strange plants, held at Yale's Beinecke Library. Cover its known
-    history, the radiocarbon dating of its vellum, the major decipherment claims, and why experts reject most of them.
+  angle: A medieval manuscript full of unknown script and strange plants, held at Yale's Beinecke Library. Cover
+    its known history, the radiocarbon dating of its vellum, the major decipherment claims, and why experts reject
+    most of them.
   shorts:
   - What radiocarbon dating revealed about when the Voynich vellum was made
   - The famous 'solutions' to the Voynich Manuscript and why experts reject them
 - id: wow-signal
-  title: "The Wow! Signal: 72 Seconds From Deep Space"
+  title: 'The Wow! Signal: 72 Seconds From Deep Space'
   pillar: places-space
-  angle: >-
-    In August 1977 Ohio State's Big Ear radio telescope recorded an unusually strong narrowband signal and an astronomer
-    circled it with "Wow!". Explain what was actually detected, why it was never seen again, and the newer natural
-    explanations proposed by researchers.
+  angle: In August 1977 Ohio State's Big Ear radio telescope recorded an unusually strong narrowband signal and
+    an astronomer circled it with "Wow!". Explain what was actually detected, why it was never seen again, and the
+    newer natural explanations proposed by researchers.
   shorts:
   - The night an astronomer wrote "Wow!" on a computer printout
   - The newer natural explanation for the Wow! signal and how scientists are testing it
 - id: sailing-stones
-  title: "Death Valley's Moving Rocks: A Mystery Finally Solved"
+  title: 'Death Valley''s Moving Rocks: A Mystery Finally Solved'
   pillar: places-space
-  angle: >-
-    Heavy rocks on Racetrack Playa left long trails across the desert floor, yet no one had seen them move.
-    Tell the story of the old theories and the field study with GPS-tracked stones and time-lapse cameras that
-    finally caught them in motion.
+  angle: Heavy rocks on Racetrack Playa left long trails across the desert floor, yet no one had seen them move.
+    Tell the story of the old theories and the field study with GPS-tracked stones and time-lapse cameras that finally
+    caught them in motion.
   shorts:
   - Rocks that leave trails across the desert — and nobody saw them move
   - The surprisingly simple mechanism scientists finally caught on camera
 - id: franklin-expedition
-  title: "The Lost Franklin Expedition: Arctic Ships Found After 170 Years"
+  title: 'The Lost Franklin Expedition: Arctic Ships Found After 170 Years'
   pillar: history
-  angle: >-
-    In 1845 Sir John Franklin's two Royal Navy ships, HMS Erebus and HMS Terror, vanished in the Canadian Arctic searching
-    for the Northwest Passage. Cover the disappearance, the evidence about the crew's fate, the role of Inuit testimony,
-    the discovery of the wrecks by Parks Canada and partners, and recent DNA identifications of crew members.
+  angle: In 1845 Sir John Franklin's two Royal Navy ships, HMS Erebus and HMS Terror, vanished in the Canadian Arctic
+    searching for the Northwest Passage. Cover the disappearance, the evidence about the crew's fate, the role of
+    Inuit testimony, the discovery of the wrecks by Parks Canada and partners, and recent DNA identifications of
+    crew members.
   shorts:
   - How Inuit oral history helped find the lost Franklin ships
   - The Franklin Expedition officer identified by DNA more than 170 years later
 - id: tunguska-event
-  title: "The Tunguska Event: The Explosion That Left No Crater"
+  title: 'The Tunguska Event: The Explosion That Left No Crater'
   pillar: science
-  angle: >-
-    In June 1908 a massive explosion flattened forest over a huge area of remote Siberia. Explain the eyewitness reports,
-    the first scientific expedition decades later, why there is no crater, and what scientists think caused it.
+  angle: In June 1908 a massive explosion flattened forest over a huge area of remote Siberia. Explain the eyewitness
+    reports, the first scientific expedition decades later, why there is no crater, and what scientists think caused
+    it.
   shorts:
   - The giant explosion in Siberia that left no crater
   - The strangely bright night skies seen across Europe after Tunguska
 - id: mary-celeste
-  title: "The Mary Celeste: The Ghost Ship Myth vs. The Real Story"
+  title: 'The Mary Celeste: The Ghost Ship Myth vs. The Real Story'
   pillar: mysteries
-  angle: >-
-    In December 1872 the brigantine Mary Celeste was found drifting in the Atlantic with no one aboard. Separate the real
-    evidence from the myths (including those spread by fiction), and weigh the main explanations.
+  angle: In December 1872 the brigantine Mary Celeste was found drifting in the Atlantic with no one aboard. Separate
+    the real evidence from the myths (including those spread by fiction), and weigh the main explanations.
   shorts:
   - How a young Arthur Conan Doyle accidentally created the Mary Celeste myth
   - What the ship that found the Mary Celeste actually saw on board
 - id: antikythera-mechanism
-  title: "The Antikythera Mechanism: An Ancient Greek Computer"
+  title: 'The Antikythera Mechanism: An Ancient Greek Computer'
   pillar: science
-  angle: >-
-    Sponge divers found corroded bronze fragments in an ancient shipwreck off the Greek island of Antikythera.
-    Explain how modern imaging revealed a geared astronomical calculator, what it could predict, and what
-    researchers are still reconstructing.
+  angle: Sponge divers found corroded bronze fragments in an ancient shipwreck off the Greek island of Antikythera.
+    Explain how modern imaging revealed a geared astronomical calculator, what it could predict, and what researchers
+    are still reconstructing.
   shorts:
   - The 2,000-year-old device that could predict eclipses
   - How X-ray CT scans revealed hidden text inside the Antikythera fragments
 - id: roanoke-colony
-  title: "The Lost Colony of Roanoke: One Word Carved in Wood"
+  title: 'The Lost Colony of Roanoke: One Word Carved in Wood'
   pillar: history
-  angle: >-
-    More than a hundred English colonists vanished from Roanoke Island after John White sailed back to England. Cover
-    the delayed return, the carved word CROATOAN, the leading theories, and what modern archaeology has (and hasn't) found.
+  angle: More than a hundred English colonists vanished from Roanoke Island after John White sailed back to England.
+    Cover the delayed return, the carved word CROATOAN, the leading theories, and what modern archaeology has (and
+    hasn't) found.
   shorts:
   - The single word carved at the abandoned Roanoke settlement
   - Virginia Dare, the first English child born in the Americas, and what happened to her
 - id: gobekli-tepe
-  title: "Göbekli Tepe: The Temple Older Than Civilization"
+  title: 'Göbekli Tepe: The Temple Older Than Civilization'
   pillar: history
-  angle: >-
-    In southeastern Turkey, massive carved stone pillars were raised by hunter-gatherers thousands of years before
-    Stonehenge or the pyramids. Explain the dating, the discoveries, why it challenged ideas about the origins of
-    civilization, and which popular claims about it are not supported by evidence.
+  angle: In southeastern Turkey, massive carved stone pillars were raised by hunter-gatherers thousands of years
+    before Stonehenge or the pyramids. Explain the dating, the discoveries, why it challenged ideas about the origins
+    of civilization, and which popular claims about it are not supported by evidence.
   shorts:
   - The stone monument thousands of years older than Stonehenge
   - The carved animals on Göbekli Tepe's pillars and what they might mean
+- id: sonorium-of-the-sea
+  title: 'The Bloop: What Created the Ultra-Low Frequency Ocean Sound?'
+  pillar: mysteries
+  angle: Investigating the 1997 acoustic anomaly recorded across thousands of miles in the Pacific and its surprising
+    natural resolution.
+  why_now: Recent deep-ocean hydrophone arrays have mapped similar ice-calving sounds with unprecedented precision.
+  shorts:
+  - The loudest underwater sound ever recorded that wasn't a whale.
+  - How NOAA scientists finally cracked the mystery of the 1997 Bloop.
+  source: auto
+- id: fast-radio-bursts
+  title: 'Fast Radio Bursts: Decoding the Millisecond Messages from Deep Space'
+  pillar: science
+  angle: Examining the repeating cosmic signals puzzling astronomers and the magnetar origin theory.
+  why_now: The CHIME telescope in Canada recently cataloged hundreds of new localized bursts, narrowing down their
+    extragalactic sources.
+  shorts:
+  - A billion-light-year-away signal that repeats every few days.
+  - How a Canadian telescope is mapping mysterious cosmic explosions.
+  source: auto
+- id: cahokia-mounds
+  title: 'Cahokia: The Lost American Metropolis Larger Than 13th-Century London'
+  pillar: history
+  angle: Uncovering the rise and abrupt abandonment of North America's most sophisticated pre-Columbian city.
+  why_now: Recent advanced soil-core sampling and LiDAR mapping have revealed new insights into climate stress and
+    civic collapse.
+  shorts:
+  - The massive ancient American city bigger than medieval London.
+  - Why thousands of people suddenly abandoned Cahokia overnight.
+  source: auto
+- id: darvaza-gas-crater
+  title: 'The Door to Hell: Inside Turkmenistan''s 50-Year Burning Crater'
+  pillar: places-space
+  angle: The engineering accident that created an eternal desert inferno and the recent efforts to finally extinguish
+    it.
+  why_now: The Turkmen government recently announced new international scientific initiatives to seal the crater
+    for environmental reasons.
+  shorts:
+  - The accidental gas pit burning continuously since 1971.
+  - Why scientists are finally trying to put out the Door to Hell.
+  source: auto
+- id: the-taos-hum
+  title: 'The Taos Hum: Why Can Only Some People Hear the Persistent Low Drone?'
+  pillar: mysteries
+  angle: Exploring the psychological and physical reality of the low-frequency acoustic phenomenon plaguing small-town
+    residents.
+  why_now: Recent acoustic monitoring studies are utilizing crowdsourced smartphone data to finally isolate the
+    frequency.
+  shorts:
+  - The phantom noise that only a fraction of a town can hear.
+  - Is the Taos Hum a geological phenomenon or a mass psychological event?
+  source: auto
+- id: oumuamua-interstellar-visitor
+  title: 'Oumuamua: The Bizarre Physics of Our Solar System''s First Interstellar Visitor'
+  pillar: science
+  angle: Analyzing the unusual acceleration and flat geometry of the object that baffled astrophysicists.
+  why_now: NASA and ESA are actively planning the Comet Interceptor mission to catch future interstellar objects
+    before they pass.
+  shorts:
+  - The cigar-shaped rock from another star system that sped up inexplicably.
+  - Why scientists briefly thought an interstellar visitor was an alien probe.
+  source: auto
