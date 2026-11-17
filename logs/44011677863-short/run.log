@@ -1,0 +1,535 @@
+=== Short 1 of 12 ===
+2026-11-17 03:39:34,973 INFO atlas: SHORT: The Mary Celeste: The Ghost Ship Myth vs. The Real Story — What the ship that found the Mary Celeste actually saw on board (linked: False)
+2026-11-17 03:39:36,445 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:39:36,451 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 03:39:44,638 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:39:44,640 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 03:40:00,838 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:40:00,842 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 03:40:04,723 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:40:04,878 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:40:04,879 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-17 03:40:35,048 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:40:35,050 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 03:40:39,841 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:40:39,847 INFO pipeline.writer: Fact-check round 1: verdict=revise, 2 serious / 2 total issues
+2026-11-17 03:40:41,667 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:40:41,671 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-17 03:40:52,798 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:40:54,310 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:40:54,317 INFO pipeline.writer: Fact-check round 2: verdict=pass, 0 serious / 0 total issues
+2026-11-17 03:40:54,318 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 03:40:54,318 INFO pipeline.voice: TTS chunk 1/1 (81 words, scenes 1-5)
+2026-11-17 03:41:04,847 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:41:05,862 INFO pipeline.voice: Narration: 35.2s across 5 scenes
+2026-11-17 03:41:06,311 INFO pipeline.visuals: Shot 'abandoned ship ocean' -> Pixabay video
+2026-11-17 03:41:06,550 INFO pipeline.visuals: Shot 'abandoned ship ocean' -> Pixabay video
+2026-11-17 03:41:06,822 INFO pipeline.visuals: Shot 'empty ship deck' -> Pixabay video
+2026-11-17 03:41:06,993 INFO pipeline.visuals: Shot 'empty ship deck' -> Pixabay video
+2026-11-17 03:41:07,159 INFO pipeline.visuals: Shot 'empty ship deck' -> Pixabay video
+2026-11-17 03:41:07,374 INFO pipeline.visuals: Shot 'wooden barrels cargo hold' -> Pixabay video
+2026-11-17 03:41:07,463 INFO pipeline.visuals: Shot 'wooden barrels cargo hold' -> Pixabay video
+2026-11-17 03:41:07,570 INFO pipeline.visuals: Shot 'wooden barrels cargo hold' -> Pixabay video
+2026-11-17 03:41:08,014 INFO pipeline.visuals: Shot 'empty davits ship' -> Pixabay video
+2026-11-17 03:41:08,124 INFO pipeline.visuals: Shot 'empty davits ship' -> Pixabay video
+2026-11-17 03:41:08,391 INFO pipeline.visuals: Shot 'open ocean horizon' -> Pixabay video
+2026-11-17 03:41:09,380 INFO pipeline.visuals: Shot 'open ocean horizon' -> Pixabay video
+2026-11-17 03:41:09,829 INFO pipeline.visuals: Shot 'open ocean horizon' -> Pixabay video
+2026-11-17 03:41:10,007 INFO pipeline.render: Caption self-test passed
+2026-11-17 03:42:01,336 INFO pipeline.render: Rendered 13 shot segments
+2026-11-17 03:42:01,810 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-17 03:42:41,644 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-mary-celeste-s2/mary-celeste-s2.mp4 (36.2s)
+2026-11-17 03:42:43,871 INFO pipeline.youtube: Upload 24%
+2026-11-17 03:42:44,151 INFO pipeline.youtube: Upload 48%
+2026-11-17 03:42:44,319 INFO pipeline.youtube: Upload 73%
+2026-11-17 03:42:44,460 INFO pipeline.youtube: Upload 97%
+2026-11-17 03:42:44,953 INFO pipeline.youtube: Uploaded video mlmztqr2fQk (private, publishAt 2026-11-17T17:00:00.000Z)
+2026-11-17 03:42:44,976 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 03:42:44,976 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-mary-celeste-s2
+=== Short 2 of 12 ===
+2026-11-17 03:42:46,864 INFO atlas: SHORT: The Antikythera Mechanism: An Ancient Greek Computer — The 2,000-year-old device that could predict eclipses (linked: False)
+2026-11-17 03:42:47,743 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:42:47,748 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-17 03:43:17,891 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:43:17,892 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-17 03:43:18,821 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:43:18,822 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 03:43:27,016 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:43:27,018 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 03:43:43,213 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:43:43,214 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 03:43:53,656 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:43:53,661 INFO pipeline.research: Wikipedia research brief: 6200 chars from Antikythera mechanism — Wikipedia, Antikythera — Wikipedia, Antikythera wreck — Wikipedia
+2026-11-17 03:43:57,681 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:43:59,230 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:43:59,235 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 03:43:59,236 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 03:43:59,237 INFO pipeline.voice: TTS chunk 1/1 (78 words, scenes 1-5)
+2026-11-17 03:44:10,714 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:44:11,737 INFO pipeline.voice: Narration: 38.2s across 5 scenes
+2026-11-17 03:44:12,907 INFO pipeline.visuals: Shot 'Antikythera mechanism fragment bronze' -> Wikimedia Commons image
+2026-11-17 03:44:12,967 INFO pipeline.visuals: Shot 'Antikythera mechanism fragment bronze' -> Wikimedia Commons image
+2026-11-17 03:44:13,118 INFO pipeline.visuals: Shot 'Antikythera mechanism fragment bronze' -> Wikimedia Commons image
+2026-11-17 03:44:13,246 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:44:13,248 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-11-17 03:44:13,248 WARNING pipeline.visuals: _ai failed for 'ancient bronze gear mechanism': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 input tokens per minute on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-11-17 03:44:13,937 INFO pipeline.visuals: Shot 'ancient bronze gear mechanism' -> Wikimedia Commons image
+2026-11-17 03:44:14,072 INFO pipeline.visuals: Shot 'ancient bronze gear mechanism' -> Wikimedia Commons image
+2026-11-17 03:44:14,421 INFO pipeline.visuals: Shot 'ancient bronze gear mechanism' -> Pixabay image
+2026-11-17 03:44:15,036 INFO pipeline.visuals: Shot 'Antikythera mechanism X-ray scan' -> Wikimedia Commons image
+2026-11-17 03:44:15,164 INFO pipeline.visuals: Shot 'Antikythera mechanism X-ray scan' -> Wikimedia Commons image
+2026-11-17 03:44:15,307 INFO pipeline.visuals: Shot 'Antikythera mechanism X-ray scan' -> Wikimedia Commons image
+2026-11-17 03:44:15,505 INFO pipeline.visuals: Shot 'ancient medieval clock gears' -> Pixabay video
+2026-11-17 03:44:15,599 INFO pipeline.visuals: Shot 'ancient medieval clock gears' -> Pixabay video
+2026-11-17 03:44:15,852 INFO pipeline.visuals: Shot 'ancient bronze artifact museum' -> Pixabay video
+2026-11-17 03:44:15,980 INFO pipeline.visuals: Shot 'ancient bronze artifact museum' -> Pixabay video
+2026-11-17 03:44:16,057 INFO pipeline.render: Caption self-test passed
+2026-11-17 03:45:01,345 INFO pipeline.render: Rendered 13 shot segments
+2026-11-17 03:45:01,720 INFO pipeline.render: Music: atlas-deep-field.mp3
+2026-11-17 03:45:35,495 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-antikythera-mechanism-s1/antikythera-mechanism-s1.mp4 (39.2s)
+2026-11-17 03:45:38,461 INFO pipeline.youtube: Upload 55%
+2026-11-17 03:45:39,032 INFO pipeline.youtube: Uploaded video zb8AaMurnxo (private, publishAt 2026-11-18T13:00:00.000Z)
+2026-11-17 03:45:39,056 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 03:45:39,056 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-antikythera-mechanism-s1
+=== Short 3 of 12 ===
+2026-11-17 03:45:41,008 INFO atlas: SHORT: The Antikythera Mechanism: An Ancient Greek Computer — How X-ray CT scans revealed hidden text inside the Antikythera fragments (linked: False)
+2026-11-17 03:45:41,958 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:45:41,963 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 03:45:50,139 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:45:50,141 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 03:46:06,324 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:46:06,328 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 03:46:09,782 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:46:09,896 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:46:09,897 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-17 03:46:40,037 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:46:40,038 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 03:46:42,450 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:46:42,460 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 03:46:42,461 INFO pipeline.voice: TTS: 4 scenes in 1 request(s)
+2026-11-17 03:46:42,461 INFO pipeline.voice: TTS chunk 1/1 (60 words, scenes 1-4)
+2026-11-17 03:46:51,977 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:46:52,811 INFO pipeline.voice: Narration: 31.9s across 4 scenes
+2026-11-17 03:46:53,416 INFO pipeline.visuals: Shot 'Antikythera mechanism fragment' -> Wikimedia Commons image
+2026-11-17 03:46:54,047 INFO pipeline.visuals: Shot 'Antikythera mechanism fragment' -> Wikimedia Commons image
+2026-11-17 03:46:54,274 INFO pipeline.visuals: Shot 'scientific laboratory scanner' -> Pixabay video
+2026-11-17 03:46:54,391 INFO pipeline.visuals: Shot 'scientific laboratory scanner' -> Pixabay video
+2026-11-17 03:46:54,501 INFO pipeline.visuals: Shot 'scientific laboratory scanner' -> Pixabay video
+2026-11-17 03:46:54,641 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:46:54,642 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-11-17 03:46:54,642 WARNING pipeline.visuals: _ai failed for 'bronze gears mechanism': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 input tokens per minute on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-11-17 03:46:55,408 INFO pipeline.visuals: Shot 'bronze gears mechanism' -> Wikimedia Commons image
+2026-11-17 03:46:55,481 INFO pipeline.visuals: Shot 'bronze gears mechanism' -> Wikimedia Commons image
+2026-11-17 03:46:55,563 INFO pipeline.visuals: Shot 'bronze gears mechanism' -> Wikimedia Commons image
+2026-11-17 03:46:55,652 INFO pipeline.visuals: Shot 'ancient bronze artifact museum' -> Pixabay video
+2026-11-17 03:46:55,765 INFO pipeline.visuals: Shot 'ancient bronze artifact museum' -> Pixabay video
+2026-11-17 03:46:55,870 INFO pipeline.visuals: Shot 'ancient bronze artifact museum' -> Pixabay video
+2026-11-17 03:46:55,950 INFO pipeline.render: Caption self-test passed
+2026-11-17 03:47:38,504 INFO pipeline.render: Rendered 11 shot segments
+2026-11-17 03:47:38,809 INFO pipeline.render: Music: atlas-discovery.mp3
+2026-11-17 03:48:12,943 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-antikythera-mechanism-s2/antikythera-mechanism-s2.mp4 (32.9s)
+2026-11-17 03:48:14,366 INFO pipeline.youtube: Upload 49%
+2026-11-17 03:48:14,494 INFO pipeline.youtube: Upload 99%
+2026-11-17 03:48:14,855 INFO pipeline.youtube: Uploaded video LcHNmyb-nkM (private, publishAt 2026-11-18T17:00:00.000Z)
+2026-11-17 03:48:14,877 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 03:48:14,877 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-antikythera-mechanism-s2
+=== Short 4 of 12 ===
+2026-11-17 03:48:16,515 INFO atlas: SHORT: The Lost Colony of Roanoke: One Word Carved in Wood — The single word carved at the abandoned Roanoke settlement (linked: False)
+2026-11-17 03:48:17,404 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:48:17,409 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-17 03:48:47,563 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:48:47,564 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-17 03:48:48,232 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:48:48,234 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 03:48:56,427 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:48:56,429 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 03:49:12,610 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:49:12,611 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 03:49:21,430 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:49:21,437 INFO pipeline.research: Wikipedia research brief: 5534 chars from Roanoke Colony — Wikipedia, Roanoke Island — Wikipedia, Croatan — Wikipedia
+2026-11-17 03:49:24,755 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:49:26,792 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:49:26,793 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-17 03:49:39,876 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:49:39,877 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 2 in 16s
+2026-11-17 03:49:59,849 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:49:59,859 INFO pipeline.writer: Fact-check round 1: verdict=revise, 1 serious / 1 total issues
+2026-11-17 03:50:02,993 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:50:07,408 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:50:07,414 INFO pipeline.writer: Fact-check round 2: verdict=revise, 1 serious / 1 total issues
+2026-11-17 03:50:10,625 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:50:14,936 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:50:14,942 INFO pipeline.writer: Fact-check round 3: verdict=pass, 0 serious / 0 total issues
+2026-11-17 03:50:14,943 INFO pipeline.voice: TTS: 4 scenes in 1 request(s)
+2026-11-17 03:50:14,943 INFO pipeline.voice: TTS chunk 1/1 (68 words, scenes 1-4)
+2026-11-17 03:50:24,445 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:50:25,299 INFO pipeline.voice: Narration: 33.3s across 4 scenes
+2026-11-17 03:50:33,027 INFO pipeline.visuals: Shot 'abandoned forest settlement' -> Pixabay video
+2026-11-17 03:50:34,504 INFO pipeline.visuals: Shot 'abandoned forest settlement' -> Pixabay video
+2026-11-17 03:50:34,716 INFO pipeline.visuals: Shot 'abandoned forest settlement' -> Pixabay video
+2026-11-17 03:50:35,040 INFO pipeline.visuals: Shot 'empty forest clearing' -> Pixabay video
+2026-11-17 03:50:35,218 INFO pipeline.visuals: Shot 'empty forest clearing' -> Pixabay video
+2026-11-17 03:50:35,436 INFO pipeline.visuals: Shot 'carving in wood tree' -> Pixabay video
+2026-11-17 03:50:35,564 INFO pipeline.visuals: Shot 'carving in wood tree' -> Pixabay video
+2026-11-17 03:50:35,824 INFO pipeline.visuals: Shot 'carving in wood tree' -> Pixabay video
+2026-11-17 03:50:36,771 INFO pipeline.visuals: Shot 'historic map outer banks' -> Wikimedia Commons image
+2026-11-17 03:50:36,860 INFO pipeline.visuals: Shot 'historic map outer banks' -> Wikimedia Commons image
+2026-11-17 03:50:37,037 INFO pipeline.visuals: Shot 'historic map outer banks' -> Wikimedia Commons image
+2026-11-17 03:50:37,114 INFO pipeline.render: Caption self-test passed
+2026-11-17 03:51:20,424 INFO pipeline.render: Rendered 11 shot segments
+2026-11-17 03:51:20,824 INFO pipeline.render: Music: atlas-tension.mp3
+2026-11-17 03:51:55,189 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-roanoke-colony-s1/roanoke-colony-s1.mp4 (34.3s)
+2026-11-17 03:51:57,216 INFO pipeline.youtube: Upload 33%
+2026-11-17 03:51:57,365 INFO pipeline.youtube: Upload 66%
+2026-11-17 03:51:57,699 INFO pipeline.youtube: Uploaded video 8cJ7sgpSh6I (private, publishAt 2026-11-19T13:00:00.000Z)
+2026-11-17 03:51:57,718 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 03:51:57,719 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-roanoke-colony-s1
+=== Short 5 of 12 ===
+2026-11-17 03:51:59,577 INFO atlas: SHORT: The Lost Colony of Roanoke: One Word Carved in Wood — Virginia Dare, the first English child born in the Americas, and what happened to her (linked: False)
+2026-11-17 03:52:00,557 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:52:00,563 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 03:52:08,741 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:52:08,742 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 03:52:24,939 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:52:24,943 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 03:52:26,397 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:52:26,399 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 4 in 32s
+2026-11-17 03:53:02,166 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:53:02,322 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:53:02,323 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-17 03:53:32,475 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:53:32,476 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 03:53:34,388 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:53:34,397 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 03:53:34,398 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 03:53:34,398 INFO pipeline.voice: TTS chunk 1/1 (84 words, scenes 1-5)
+2026-11-17 03:53:46,157 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:53:47,189 INFO pipeline.voice: Narration: 40.9s across 5 scenes
+2026-11-17 03:53:48,585 INFO pipeline.visuals: Shot 'vintage map outer banks' -> Wikimedia Commons image
+2026-11-17 03:53:48,683 INFO pipeline.visuals: Shot 'vintage map outer banks' -> Wikimedia Commons image
+2026-11-17 03:53:48,809 INFO pipeline.visuals: Shot 'vintage map outer banks' -> Wikimedia Commons image
+2026-11-17 03:53:50,147 INFO pipeline.visuals: Shot 'empty forest fog' -> Pixabay video
+2026-11-17 03:53:50,282 INFO pipeline.visuals: Shot 'empty forest fog' -> Pixabay video
+2026-11-17 03:53:50,391 INFO pipeline.visuals: Shot 'empty forest fog' -> Pixabay video
+2026-11-17 03:53:50,519 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:53:50,520 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-11-17 03:53:50,520 WARNING pipeline.visuals: _ai failed for 'carved wood text': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 requests per day on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-11-17 03:53:51,564 INFO pipeline.visuals: Shot 'carved wood text' -> Wikimedia Commons image
+2026-11-17 03:53:51,656 INFO pipeline.visuals: Shot 'carved wood text' -> Wikimedia Commons image
+2026-11-17 03:53:51,909 INFO pipeline.visuals: Shot 'waves crashing shore' -> Pixabay video
+2026-11-17 03:53:52,095 INFO pipeline.visuals: Shot 'waves crashing shore' -> Pixabay video
+2026-11-17 03:53:52,255 INFO pipeline.visuals: Shot 'waves crashing shore' -> Pixabay video
+2026-11-17 03:53:52,425 INFO pipeline.visuals: Shot 'waves crashing shore' -> Pixabay video
+2026-11-17 03:53:52,618 INFO pipeline.visuals: Shot 'old book pages turning' -> Pixabay video
+2026-11-17 03:53:52,705 INFO pipeline.visuals: Shot 'old book pages turning' -> Pixabay video
+2026-11-17 03:53:52,784 INFO pipeline.render: Caption self-test passed
+2026-11-17 03:54:45,573 INFO pipeline.render: Rendered 14 shot segments
+2026-11-17 03:54:46,095 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-17 03:55:30,127 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-roanoke-colony-s2/roanoke-colony-s2.mp4 (41.9s)
+2026-11-17 03:55:32,044 INFO pipeline.youtube: Upload 39%
+2026-11-17 03:55:32,186 INFO pipeline.youtube: Upload 78%
+2026-11-17 03:55:32,762 INFO pipeline.youtube: Uploaded video u7PHbQvOS1o (private, publishAt 2026-11-19T17:00:00.000Z)
+2026-11-17 03:55:32,781 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 03:55:32,781 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-roanoke-colony-s2
+=== Short 6 of 12 ===
+2026-11-17 03:55:34,517 INFO atlas: SHORT: Göbekli Tepe: The Temple Older Than Civilization — The stone monument thousands of years older than Stonehenge (linked: False)
+2026-11-17 03:55:35,413 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:55:35,418 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-17 03:56:05,587 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:56:05,588 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-17 03:56:06,317 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:56:06,319 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 03:56:14,539 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:56:14,541 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 03:56:30,745 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:56:30,747 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 03:56:40,771 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:56:40,781 INFO pipeline.research: Wikipedia research brief: 5190 chars from Göbekli Tepe — Wikipedia, Karahan Tepe — Wikipedia, Çayönü — Wikipedia
+2026-11-17 03:56:45,800 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:56:47,267 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:56:47,282 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 03:56:47,283 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 03:56:47,283 INFO pipeline.voice: TTS chunk 1/1 (70 words, scenes 1-5)
+2026-11-17 03:56:56,397 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:56:57,413 INFO pipeline.voice: Narration: 31.5s across 5 scenes
+2026-11-17 03:56:57,639 INFO pipeline.visuals: Shot 'ancient stone pillar carving' -> Pixabay video
+2026-11-17 03:56:57,762 INFO pipeline.visuals: Shot 'ancient stone pillar carving' -> Pixabay video
+2026-11-17 03:56:58,009 INFO pipeline.visuals: Shot 'archaeological site ruins' -> Pixabay video
+2026-11-17 03:56:58,185 INFO pipeline.visuals: Shot 'archaeological site ruins' -> Pixabay video
+2026-11-17 03:56:58,390 INFO pipeline.visuals: Shot 'stone sculpture animal relief' -> Pixabay video
+2026-11-17 03:57:00,023 INFO pipeline.visuals: Shot 'stone sculpture animal relief' -> Pixabay video
+2026-11-17 03:57:00,261 INFO pipeline.visuals: Shot 'ancient stone ruins walls' -> Pixabay video
+2026-11-17 03:57:00,683 INFO pipeline.visuals: Shot 'ancient stone ruins walls' -> Pixabay video
+2026-11-17 03:57:01,171 INFO pipeline.visuals: Shot 'ancient stone ruins walls' -> Pixabay video
+2026-11-17 03:57:01,364 INFO pipeline.visuals: Shot 'archaeologist dig site' -> Pixabay video
+2026-11-17 03:57:01,493 INFO pipeline.visuals: Shot 'archaeologist dig site' -> Pixabay video
+2026-11-17 03:57:01,570 INFO pipeline.render: Caption self-test passed
+2026-11-17 03:57:47,904 INFO pipeline.render: Rendered 11 shot segments
+2026-11-17 03:57:48,420 INFO pipeline.render: Music: atlas-discovery.mp3
+2026-11-17 03:58:23,291 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-gobekli-tepe-s1/gobekli-tepe-s1.mp4 (32.5s)
+2026-11-17 03:58:25,026 INFO pipeline.youtube: Upload 24%
+2026-11-17 03:58:25,173 INFO pipeline.youtube: Upload 48%
+2026-11-17 03:58:25,303 INFO pipeline.youtube: Upload 73%
+2026-11-17 03:58:25,429 INFO pipeline.youtube: Upload 97%
+2026-11-17 03:58:25,797 INFO pipeline.youtube: Uploaded video mBR4MrNSwhg (private, publishAt 2026-11-20T13:00:00.000Z)
+2026-11-17 03:58:25,815 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 03:58:25,815 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-gobekli-tepe-s1
+=== Short 7 of 12 ===
+2026-11-17 03:58:27,553 INFO atlas: SHORT: Göbekli Tepe: The Temple Older Than Civilization — The carved animals on Göbekli Tepe's pillars and what they might mean (linked: False)
+2026-11-17 03:58:28,472 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:58:28,477 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 03:58:36,647 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 03:58:36,649 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 03:58:52,755 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:58:52,760 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 03:58:56,366 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:58:56,500 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:58:56,502 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-17 03:59:26,651 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 03:59:26,652 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 03:59:31,017 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:59:31,022 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 03:59:31,023 INFO pipeline.voice: TTS: 4 scenes in 1 request(s)
+2026-11-17 03:59:31,023 INFO pipeline.voice: TTS chunk 1/1 (58 words, scenes 1-4)
+2026-11-17 03:59:40,124 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:59:40,975 INFO pipeline.voice: Narration: 30.4s across 4 scenes
+2026-11-17 03:59:41,238 INFO pipeline.visuals: Shot 'ancient stone carvings' -> Pixabay video
+2026-11-17 03:59:41,397 INFO pipeline.visuals: Shot 'ancient stone carvings' -> Pixabay video
+2026-11-17 03:59:42,099 INFO pipeline.visuals: Shot 'Gobekli Tepe pillars' -> Wikimedia Commons image
+2026-11-17 03:59:42,144 INFO pipeline.visuals: Shot 'Gobekli Tepe pillars' -> Wikimedia Commons image
+2026-11-17 03:59:42,184 INFO pipeline.visuals: Shot 'Gobekli Tepe pillars' -> Wikimedia Commons image
+2026-11-17 03:59:42,500 INFO pipeline.visuals: Shot 'ancient stone quarry' -> Pixabay video
+2026-11-17 03:59:42,824 INFO pipeline.visuals: Shot 'ancient stone quarry' -> Pixabay video
+2026-11-17 03:59:43,044 INFO pipeline.visuals: Shot 'stone pillar silhouette' -> Pixabay video
+2026-11-17 03:59:43,514 INFO pipeline.visuals: Shot 'stone pillar silhouette' -> Pixabay video
+2026-11-17 03:59:43,635 INFO pipeline.visuals: Shot 'stone pillar silhouette' -> Pixabay video
+2026-11-17 03:59:43,712 INFO pipeline.render: Caption self-test passed
+2026-11-17 04:00:24,351 INFO pipeline.render: Rendered 10 shot segments
+2026-11-17 04:00:24,760 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-17 04:00:56,390 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-gobekli-tepe-s2/gobekli-tepe-s2.mp4 (31.4s)
+2026-11-17 04:00:58,116 INFO pipeline.youtube: Upload 30%
+2026-11-17 04:00:58,259 INFO pipeline.youtube: Upload 60%
+2026-11-17 04:00:58,440 INFO pipeline.youtube: Upload 90%
+2026-11-17 04:00:58,864 INFO pipeline.youtube: Uploaded video qyMtXlqwPws (private, publishAt 2026-11-20T17:00:00.000Z)
+2026-11-17 04:00:59,024 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 04:00:59,024 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-gobekli-tepe-s2
+=== Short 8 of 12 ===
+2026-11-17 04:01:01,570 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:01:01,575 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-17 04:01:31,738 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:01:31,740 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 04:01:31,877 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:01:31,882 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 04:01:36,426 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:01:36,442 INFO pipeline.topics: Added 6 auto-generated topics
+2026-11-17 04:01:36,443 INFO atlas: SHORT: The Bloop: What Created the Ultra-Low Frequency Ocean Sound? — The loudest underwater sound ever recorded that wasn't a whale. (linked: False)
+2026-11-17 04:01:36,443 WARNING pipeline.research: Google Search grounding not available (Google Search grounding unavailable earlier in this run) — researching from Wikipedia instead
+2026-11-17 04:01:48,979 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:01:48,985 INFO pipeline.research: Wikipedia research brief: 5218 chars from Bloop — Wikipedia, List of unexplained sounds — Wikipedia, BlooP and FlooP — Wikipedia
+2026-11-17 04:01:49,964 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:01:49,966 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-17 04:02:01,634 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:02:03,122 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:02:03,129 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 04:02:03,130 INFO pipeline.voice: TTS: 6 scenes in 1 request(s)
+2026-11-17 04:02:03,130 INFO pipeline.voice: TTS chunk 1/1 (66 words, scenes 1-6)
+2026-11-17 04:02:12,482 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:02:13,664 INFO pipeline.voice: Narration: 31.9s across 6 scenes
+2026-11-17 04:02:13,912 INFO pipeline.visuals: Shot 'dark ocean waves' -> Pixabay video
+2026-11-17 04:02:14,040 INFO pipeline.visuals: Shot 'dark ocean waves' -> Pixabay video
+2026-11-17 04:02:14,576 INFO pipeline.visuals: Shot 'pacific ocean map' -> Wikimedia Commons image
+2026-11-17 04:02:14,664 INFO pipeline.visuals: Shot 'pacific ocean map' -> Wikimedia Commons image
+2026-11-17 04:02:14,896 INFO pipeline.visuals: Shot 'deep blue ocean' -> Pixabay video
+2026-11-17 04:02:14,996 INFO pipeline.visuals: Shot 'deep blue ocean' -> Pixabay video
+2026-11-17 04:02:15,190 INFO pipeline.visuals: Shot 'melting iceberg glacier' -> Pixabay video
+2026-11-17 04:02:15,297 INFO pipeline.visuals: Shot 'melting iceberg glacier' -> Pixabay video
+2026-11-17 04:02:15,484 INFO pipeline.visuals: Shot 'antarctic ice sheet' -> Pixabay video
+2026-11-17 04:02:15,614 INFO pipeline.visuals: Shot 'antarctic ice sheet' -> Pixabay video
+2026-11-17 04:02:16,412 INFO pipeline.visuals: Shot 'mysterious ocean fog' -> Pixabay video
+2026-11-17 04:02:16,566 INFO pipeline.visuals: Shot 'mysterious ocean fog' -> Pixabay video
+2026-11-17 04:02:16,643 INFO pipeline.render: Caption self-test passed
+2026-11-17 04:02:59,956 INFO pipeline.render: Rendered 11 shot segments
+2026-11-17 04:03:00,264 INFO pipeline.render: Music: atlas-tension.mp3
+2026-11-17 04:03:30,879 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-sonorium-of-the-sea-s1/sonorium-of-the-sea-s1.mp4 (32.9s)
+2026-11-17 04:03:33,804 INFO pipeline.youtube: Upload 55%
+2026-11-17 04:03:34,295 INFO pipeline.youtube: Uploaded video wo8KNLL5WDI (private, publishAt 2026-11-21T13:00:00.000Z)
+2026-11-17 04:03:34,313 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 04:03:34,313 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-sonorium-of-the-sea-s1
+=== Short 9 of 12 ===
+2026-11-17 04:03:36,250 INFO atlas: SHORT: The Bloop: What Created the Ultra-Low Frequency Ocean Sound? — How NOAA scientists finally cracked the mystery of the 1997 Bloop. (linked: False)
+2026-11-17 04:03:37,169 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:03:37,174 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 04:03:41,223 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:03:41,387 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:03:41,388 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-17 04:04:11,521 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:04:11,526 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 04:04:13,050 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:04:13,059 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 04:04:13,060 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 04:04:13,061 INFO pipeline.voice: TTS chunk 1/1 (101 words, scenes 1-5)
+2026-11-17 04:04:24,443 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:04:25,449 INFO pipeline.voice: Narration: 41.4s across 5 scenes
+2026-11-17 04:04:27,475 INFO pipeline.visuals: Shot 'dark ocean depths' -> Pixabay video
+2026-11-17 04:04:28,732 INFO pipeline.visuals: Shot 'dark ocean depths' -> Pixabay video
+2026-11-17 04:04:30,818 INFO pipeline.visuals: Shot 'dark ocean depths' -> Pixabay video
+2026-11-17 04:04:31,761 INFO pipeline.visuals: Shot 'south pacific ocean map' -> Wikimedia Commons image
+2026-11-17 04:04:31,923 INFO pipeline.visuals: Shot 'south pacific ocean map' -> Wikimedia Commons image
+2026-11-17 04:04:32,187 INFO pipeline.visuals: Shot 'south pacific ocean map' -> Wikimedia Commons image
+2026-11-17 04:04:32,366 INFO pipeline.visuals: Shot 'audio waveform screen' -> Pixabay video
+2026-11-17 04:04:32,497 INFO pipeline.visuals: Shot 'audio waveform screen' -> Pixabay video
+2026-11-17 04:04:32,658 INFO pipeline.visuals: Shot 'melting glacier iceberg' -> Pixabay video
+2026-11-17 04:04:32,750 INFO pipeline.visuals: Shot 'melting glacier iceberg' -> Pixabay video
+2026-11-17 04:04:33,001 INFO pipeline.visuals: Shot 'iceberg floating ocean' -> Pixabay video
+2026-11-17 04:04:33,111 INFO pipeline.visuals: Shot 'iceberg floating ocean' -> Pixabay video
+2026-11-17 04:04:33,199 INFO pipeline.visuals: Shot 'iceberg floating ocean' -> Pixabay video
+2026-11-17 04:04:33,278 INFO pipeline.render: Caption self-test passed
+2026-11-17 04:05:38,108 INFO pipeline.render: Rendered 13 shot segments
+2026-11-17 04:05:38,552 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-17 04:06:26,021 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-sonorium-of-the-sea-s2/sonorium-of-the-sea-s2.mp4 (42.4s)
+2026-11-17 04:06:28,213 INFO pipeline.youtube: Upload 23%
+2026-11-17 04:06:28,339 INFO pipeline.youtube: Upload 47%
+2026-11-17 04:06:28,479 INFO pipeline.youtube: Upload 71%
+2026-11-17 04:06:28,624 INFO pipeline.youtube: Upload 95%
+2026-11-17 04:06:29,215 INFO pipeline.youtube: Uploaded video CWTqC2jchoQ (private, publishAt 2026-11-21T17:00:00.000Z)
+2026-11-17 04:06:29,235 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 04:06:29,235 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-sonorium-of-the-sea-s2
+=== Short 10 of 12 ===
+2026-11-17 04:06:30,951 INFO atlas: SHORT: Fast Radio Bursts: Decoding the Millisecond Messages from Deep Space — A billion-light-year-away signal that repeats every few days. (linked: False)
+2026-11-17 04:06:31,834 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:06:31,840 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-17 04:07:01,979 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:07:01,981 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-17 04:07:02,624 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:07:02,625 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 04:07:10,839 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:07:10,840 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-17 04:07:27,004 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:07:27,005 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 04:07:34,405 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:07:34,411 INFO pipeline.research: Wikipedia research brief: 7154 chars from Fast radio burst — Wikipedia, Magnetar — Wikipedia, SGR 1935+2154 — Wikipedia
+2026-11-17 04:07:41,858 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:07:43,445 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:07:43,452 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 04:07:43,453 INFO pipeline.voice: TTS: 4 scenes in 1 request(s)
+2026-11-17 04:07:43,453 INFO pipeline.voice: TTS chunk 1/1 (69 words, scenes 1-4)
+2026-11-17 04:07:43,597 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:07:43,599 WARNING pipeline.voice: Daily TTS quota used up on gemini-3.8-flash-tts — trying next TTS model
+2026-11-17 04:07:49,170 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:07:50,005 INFO pipeline.voice: Narration: 31.8s across 4 scenes
+2026-11-17 04:07:50,330 INFO pipeline.visuals: Shot 'deep space stars' -> Pixabay video
+2026-11-17 04:07:50,415 INFO pipeline.visuals: Shot 'deep space stars' -> Pixabay video
+2026-11-17 04:07:50,639 INFO pipeline.visuals: Shot 'radio telescope dish' -> Pixabay video
+2026-11-17 04:07:50,763 INFO pipeline.visuals: Shot 'radio telescope dish' -> Pixabay video
+2026-11-17 04:07:50,855 INFO pipeline.visuals: Shot 'radio telescope dish' -> Pixabay video
+2026-11-17 04:07:51,004 INFO pipeline.visuals: Shot 'radio telescope dish' -> Pixabay video
+2026-11-17 04:07:51,162 INFO pipeline.visuals: Shot 'sun solar flare' -> Pixabay video
+2026-11-17 04:07:51,242 INFO pipeline.visuals: Shot 'sun solar flare' -> Pixabay video
+2026-11-17 04:07:51,521 INFO pipeline.visuals: Shot 'rotating neutron star' -> Pixabay video
+2026-11-17 04:07:51,650 INFO pipeline.visuals: Shot 'rotating neutron star' -> Pixabay video
+2026-11-17 04:07:51,809 INFO pipeline.visuals: Shot 'rotating neutron star' -> Pixabay video
+2026-11-17 04:07:51,890 INFO pipeline.render: Caption self-test passed
+2026-11-17 04:08:36,178 INFO pipeline.render: Rendered 11 shot segments
+2026-11-17 04:08:36,575 INFO pipeline.render: Music: atlas-discovery.mp3
+2026-11-17 04:09:08,073 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-fast-radio-bursts-s1/fast-radio-bursts-s1.mp4 (32.8s)
+2026-11-17 04:09:10,054 INFO pipeline.youtube: Upload 52%
+2026-11-17 04:09:10,437 INFO pipeline.youtube: Uploaded video mxXi687xta0 (private, publishAt 2026-11-22T13:00:00.000Z)
+2026-11-17 04:09:10,455 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 04:09:10,455 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-fast-radio-bursts-s1
+=== Short 11 of 12 ===
+2026-11-17 04:09:12,107 INFO atlas: SHORT: Fast Radio Bursts: Decoding the Millisecond Messages from Deep Space — How a Canadian telescope is mapping mysterious cosmic explosions. (linked: False)
+2026-11-17 04:09:13,028 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:09:13,034 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-17 04:09:21,177 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:09:21,178 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 04:09:21,393 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:09:21,395 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 3 in 16s
+2026-11-17 04:09:41,930 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:09:42,106 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:09:42,107 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-17 04:10:12,273 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:10:12,275 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-17 04:10:14,309 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:10:14,318 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 04:10:14,319 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 04:10:14,319 INFO pipeline.voice: TTS chunk 1/1 (86 words, scenes 1-5)
+2026-11-17 04:10:25,073 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:10:26,071 INFO pipeline.voice: Narration: 34.0s across 5 scenes
+2026-11-17 04:10:26,277 INFO pipeline.visuals: Shot 'deep space cosmos stars' -> Pixabay video
+2026-11-17 04:10:26,363 INFO pipeline.visuals: Shot 'deep space cosmos stars' -> Pixabay video
+2026-11-17 04:10:26,573 INFO pipeline.visuals: Shot 'sun solar flare space' -> Pixabay video
+2026-11-17 04:10:26,661 INFO pipeline.visuals: Shot 'sun solar flare space' -> Pixabay video
+2026-11-17 04:10:26,810 INFO pipeline.visuals: Shot 'moon night sky telescope' -> Pixabay video
+2026-11-17 04:10:26,916 INFO pipeline.visuals: Shot 'moon night sky telescope' -> Pixabay video
+2026-11-17 04:10:27,204 INFO pipeline.visuals: Shot 'neutron star pulsar space' -> Pixabay video
+2026-11-17 04:10:27,305 INFO pipeline.visuals: Shot 'neutron star pulsar space' -> Pixabay video
+2026-11-17 04:10:27,381 INFO pipeline.visuals: Shot 'neutron star pulsar space' -> Pixabay video
+2026-11-17 04:10:28,119 INFO pipeline.visuals: Shot 'rotating galaxy space' -> Pixabay video
+2026-11-17 04:10:28,558 INFO pipeline.visuals: Shot 'rotating galaxy space' -> Pixabay video
+2026-11-17 04:10:28,756 INFO pipeline.visuals: Shot 'rotating galaxy space' -> Pixabay video
+2026-11-17 04:10:28,836 INFO pipeline.render: Caption self-test passed
+2026-11-17 04:11:14,425 INFO pipeline.render: Rendered 12 shot segments
+2026-11-17 04:11:14,681 INFO pipeline.render: Music: atlas-deep-field.mp3
+2026-11-17 04:11:45,215 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-fast-radio-bursts-s2/fast-radio-bursts-s2.mp4 (35.0s)
+2026-11-17 04:11:46,644 INFO pipeline.youtube: Upload 50%
+2026-11-17 04:11:47,267 INFO pipeline.youtube: Uploaded video PAaIfreATkE (private, publishAt 2026-11-22T17:00:00.000Z)
+2026-11-17 04:11:47,290 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 04:11:47,290 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-fast-radio-bursts-s2
+=== Short 12 of 12 ===
+2026-11-17 04:11:48,859 INFO atlas: SHORT: Cahokia: The Lost American Metropolis Larger Than 13th-Century London — The massive ancient American city bigger than medieval London. (linked: False)
+2026-11-17 04:11:49,709 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:11:49,714 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-17 04:12:19,859 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:12:19,861 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-17 04:12:20,483 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-17 04:12:20,484 WARNING pipeline.gemini: Quota hit on gemini-3.8-flash — switching to fallback text model gemini-3.5-flash-lite
+2026-11-17 04:12:24,017 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:12:24,018 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 2 in 8s
+2026-11-17 04:12:34,194 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:12:34,196 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 3 in 16s
+2026-11-17 04:12:55,975 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-17 04:12:55,976 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 4 in 32s
+2026-11-17 04:14:00,934 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:14:00,944 INFO pipeline.research: Wikipedia research brief: 6395 chars from Cahokia — Wikipedia, Cahokia, Illinois — Wikipedia, Cahokia (disambiguation) — Wikipedia
+2026-11-17 04:14:04,701 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:14:14,400 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:14:14,405 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-17 04:14:14,406 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 04:14:14,406 INFO pipeline.voice: TTS chunk 1/1 (82 words, scenes 1-5)
+2026-11-17 04:14:25,543 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 04:14:26,596 INFO pipeline.voice: Narration: 36.4s across 5 scenes
+2026-11-17 04:14:26,907 INFO pipeline.visuals: Shot 'ancient earth mound drone' -> Pixabay video
+2026-11-17 04:14:27,015 INFO pipeline.visuals: Shot 'ancient earth mound drone' -> Pixabay video
+2026-11-17 04:14:27,154 INFO pipeline.visuals: Shot 'ancient earth mound drone' -> Pixabay video
+2026-11-17 04:14:27,945 INFO pipeline.visuals: Shot 'historical map North America' -> Wikimedia Commons image
+2026-11-17 04:14:28,227 INFO pipeline.visuals: Shot 'historical map North America' -> Wikimedia Commons image
+2026-11-17 04:14:30,753 INFO pipeline.visuals: Shot 'archaeological excavation earth mound' -> Wikimedia Commons image
+2026-11-17 04:14:30,856 INFO pipeline.visuals: Shot 'archaeological excavation earth mound' -> Wikimedia Commons image
+2026-11-17 04:14:30,948 INFO pipeline.visuals: Shot 'archaeological excavation earth mound' -> Wikimedia Commons image
+2026-11-17 04:14:31,178 INFO pipeline.visuals: Shot 'empty misty field grass' -> Pixabay video
+2026-11-17 04:14:31,264 INFO pipeline.visuals: Shot 'empty misty field grass' -> Pixabay video
+2026-11-17 04:14:31,402 INFO pipeline.visuals: Shot 'empty misty field grass' -> Pixabay video
+2026-11-17 04:14:31,603 INFO pipeline.visuals: Shot 'sunset over grassy plain' -> Pixabay video
+2026-11-17 04:14:31,748 INFO pipeline.visuals: Shot 'sunset over grassy plain' -> Pixabay video
+2026-11-17 04:14:31,825 INFO pipeline.render: Caption self-test passed
+2026-11-17 04:15:24,403 INFO pipeline.render: Rendered 13 shot segments
+2026-11-17 04:15:24,813 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-17 04:16:04,382 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-cahokia-mounds-s1/cahokia-mounds-s1.mp4 (37.4s)
+2026-11-17 04:16:06,006 INFO pipeline.youtube: Upload 31%
+2026-11-17 04:16:06,153 INFO pipeline.youtube: Upload 62%
+2026-11-17 04:16:06,305 INFO pipeline.youtube: Upload 93%
+2026-11-17 04:16:06,877 INFO pipeline.youtube: Uploaded video kts_dFkfDYY (private, publishAt 2026-11-23T13:00:00.000Z)
+2026-11-17 04:16:06,923 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 04:16:06,923 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-cahokia-mounds-s1
