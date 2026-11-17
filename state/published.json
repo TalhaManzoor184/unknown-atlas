@@ -209,6 +209,16 @@
       "seconds": 32,
       "parent": "gobekli-tepe",
       "at": "2026-11-17T03:58:25+00:00"
+    },
+    "gobekli-tepe#1": {
+      "title": "The Strange Carvings on the World's Oldest Temple",
+      "video_id": "qyMtXlqwPws",
+      "url": "https://youtu.be/qyMtXlqwPws",
+      "privacy": "private",
+      "publish_at": "2026-11-20T17:00:00.000Z",
+      "seconds": 31,
+      "parent": "gobekli-tepe",
+      "at": "2026-11-17T04:00:59+00:00"
     }
   }
 }
