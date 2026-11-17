@@ -169,6 +169,16 @@
       "seconds": 39,
       "parent": "antikythera-mechanism",
       "at": "2026-11-17T03:45:39+00:00"
+    },
+    "antikythera-mechanism#1": {
+      "title": "Secrets Inside the Ancient Greek Computer",
+      "video_id": "LcHNmyb-nkM",
+      "url": "https://youtu.be/LcHNmyb-nkM",
+      "privacy": "private",
+      "publish_at": "2026-11-18T17:00:00.000Z",
+      "seconds": 33,
+      "parent": "antikythera-mechanism",
+      "at": "2026-11-17T03:48:14+00:00"
     }
   }
 }
