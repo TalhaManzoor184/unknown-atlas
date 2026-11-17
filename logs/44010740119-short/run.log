@@ -1,0 +1,24 @@
+2026-11-17 03:31:28,594 INFO atlas: SHORT: The Mary Celeste: The Ghost Ship Myth vs. The Real Story — How a young Arthur Conan Doyle accidentally created the Mary Celeste myth (linked: False)
+2026-11-17 03:31:28,595 INFO atlas: Reusing fact-checked draft short-mary-celeste-s1.json
+2026-11-17 03:31:28,599 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-17 03:31:28,599 INFO pipeline.voice: TTS chunk 1/1 (60 words, scenes 1-5)
+2026-11-17 03:31:37,211 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-17 03:31:38,328 INFO pipeline.voice: Narration: 25.0s across 5 scenes
+2026-11-17 03:31:39,460 INFO pipeline.visuals: Shot 'vintage ship illustration' -> Wikimedia Commons image
+2026-11-17 03:31:40,031 INFO pipeline.visuals: Shot 'vintage ship illustration' -> Wikimedia Commons image
+2026-11-17 03:31:40,509 INFO pipeline.visuals: Shot 'open ocean waves' -> Pixabay video
+2026-11-17 03:31:41,455 INFO pipeline.visuals: Shot 'Arthur Conan Doyle portrait' -> Wikimedia Commons image
+2026-11-17 03:31:41,814 INFO pipeline.visuals: Shot 'Arthur Conan Doyle portrait' -> Wikimedia Commons image
+2026-11-17 03:31:43,615 INFO pipeline.visuals: Shot 'vintage book page' -> Wikimedia Commons image
+2026-11-17 03:31:44,074 INFO pipeline.visuals: Shot 'vintage book page' -> Wikimedia Commons image
+2026-11-17 03:31:44,541 INFO pipeline.visuals: Shot 'misty ocean horizon' -> Pixabay video
+2026-11-17 03:31:44,720 INFO pipeline.visuals: Shot 'misty ocean horizon' -> Pixabay video
+2026-11-17 03:31:44,806 INFO pipeline.render: Caption self-test passed
+2026-11-17 03:32:11,681 INFO pipeline.render: Rendered 9 shot segments
+2026-11-17 03:32:11,876 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-17 03:32:32,437 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-mary-celeste-s1/mary-celeste-s1.mp4 (26.0s)
+2026-11-17 03:32:34,610 INFO pipeline.youtube: Upload 51%
+2026-11-17 03:32:35,003 INFO pipeline.youtube: Uploaded video RWcmXhEmM1Q (private, publishAt 2026-11-17T13:00:00.000Z)
+2026-11-17 03:32:35,025 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-17 03:32:35,025 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-mary-celeste-s1
