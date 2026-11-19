@@ -298,6 +298,25 @@
       "seconds": 39,
       "parent": "darvaza-gas-crater",
       "at": "2026-11-17T14:58:10+00:00"
+    },
+    "darvaza-gas-crater#1": {
+      "title": "Why Turkmenistan Is Closing the Door to Hell",
+      "video_id": "ebhDv5f0MQI",
+      "url": "https://youtu.be/ebhDv5f0MQI",
+      "privacy": "private",
+      "publish_at": "2026-11-24T17:00:00.000Z",
+      "seconds": 39,
+      "parent": "darvaza-gas-crater",
+      "at": "2026-11-19T14:41:20+00:00",
+      "facebook": {
+        "reel_id": "1132422826049381",
+        "reel_state": "published",
+        "reel_publish_at": "",
+        "photo_post_id": "111081986933784_1140285695404249",
+        "story_id": "1739716943793622",
+        "facebook_errors": [],
+        "posted_on": "2026-11-19"
+      }
     }
   }
 }
