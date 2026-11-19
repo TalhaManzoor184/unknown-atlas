@@ -1,0 +1,49 @@
+2026-11-19 14:38:52,374 INFO atlas: SHORT: The Door to Hell: Inside Turkmenistan's 50-Year Burning Crater — Why scientists are finally trying to put out the Door to Hell. (linked: False)
+2026-11-19 14:38:53,935 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-19 14:38:53,940 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-19 14:39:05,071 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-19 14:39:05,073 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-19 14:39:28,819 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-19 14:39:28,822 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-19 14:39:42,386 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-19 14:39:42,500 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-19 14:39:42,501 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-19 14:40:12,617 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-19 14:40:12,618 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-19 14:40:22,803 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-19 14:40:22,810 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-19 14:40:22,811 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-19 14:40:22,811 INFO pipeline.voice: TTS chunk 1/1 (94 words, scenes 1-5)
+2026-11-19 14:40:33,948 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-19 14:40:34,784 INFO pipeline.voice: Narration: 37.5s across 5 scenes
+2026-11-19 14:40:35,092 INFO pipeline.visuals: Shot 'burning crater desert night' -> Pixabay video
+2026-11-19 14:40:35,221 INFO pipeline.visuals: Shot 'burning crater desert night' -> Pixabay video
+2026-11-19 14:40:35,901 INFO pipeline.visuals: Shot 'soviet map desert' -> Wikimedia Commons image
+2026-11-19 14:40:36,309 INFO pipeline.visuals: Shot 'soviet map desert' -> Wikimedia Commons image
+2026-11-19 14:40:36,632 INFO pipeline.visuals: Shot 'soviet map desert' -> Wikimedia Commons image
+2026-11-19 14:40:36,873 INFO pipeline.visuals: Shot 'desert sand landscape' -> Pixabay video
+2026-11-19 14:40:37,179 INFO pipeline.visuals: Shot 'desert sand landscape' -> Pixabay video
+2026-11-19 14:40:37,287 INFO pipeline.visuals: Shot 'desert sand landscape' -> Pixabay video
+2026-11-19 14:40:37,499 INFO pipeline.visuals: Shot 'methane gas flare' -> Pixabay video
+2026-11-19 14:40:37,588 INFO pipeline.visuals: Shot 'methane gas flare' -> Pixabay video
+2026-11-19 14:40:37,837 INFO pipeline.visuals: Shot 'fading fire embers' -> Pixabay video
+2026-11-19 14:40:38,012 INFO pipeline.visuals: Shot 'fading fire embers' -> Pixabay video
+2026-11-19 14:40:38,120 INFO pipeline.visuals: Shot 'fading fire embers' -> Pixabay video
+2026-11-19 14:40:38,201 INFO pipeline.render: Caption self-test passed
+2026-11-19 14:41:03,169 INFO pipeline.render: Rendered 13 shot segments
+2026-11-19 14:41:03,450 INFO pipeline.render: Music: atlas-deep-field.mp3
+2026-11-19 14:41:18,618 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-darvaza-gas-crater-s2/darvaza-gas-crater-s2.mp4 (38.5s)
+2026-11-19 14:41:20,184 INFO pipeline.youtube: Upload 40%
+2026-11-19 14:41:20,348 INFO pipeline.youtube: Upload 81%
+2026-11-19 14:41:20,788 INFO pipeline.youtube: Uploaded video ebhDv5f0MQI (private, publishAt 2026-11-24T17:00:00.000Z)
+2026-11-19 14:41:20,861 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-19 14:41:20,861 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+2026-11-19 14:41:28,388 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-19 14:41:28,389 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-19 14:41:44,191 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-19 14:41:44,192 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 2 in 16s
+2026-11-19 14:44:42,926 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-19 14:45:24,400 INFO pipeline.facebook: Facebook Reel 1132422826049381 (published)
+2026-11-19 14:45:28,247 INFO pipeline.facebook: Facebook image post 111081986933784_1140285695404249
+2026-11-19 14:45:33,403 INFO pipeline.facebook: Facebook Story 1739716943793622
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-darvaza-gas-crater-s2
