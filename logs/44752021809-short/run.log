@@ -1,0 +1,50 @@
+2026-11-20 14:18:44,303 INFO atlas: SHORT: The Taos Hum: Why Can Only Some People Hear the Persistent Low Drone? — The phantom noise that only a fraction of a town can hear. (linked: False)
+2026-11-20 14:18:45,382 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-20 14:18:45,386 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-20 14:19:15,517 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-20 14:19:15,518 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-20 14:19:36,705 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-20 14:19:36,706 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-20 14:19:45,518 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-20 14:19:45,519 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-20 14:20:03,003 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-20 14:20:03,004 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-20 14:20:19,583 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-20 14:20:19,588 INFO pipeline.research: Wikipedia research brief: 8549 chars from The Hum — Wikipedia, Taos, New Mexico — Wikipedia, Taos — Wikipedia
+2026-11-20 14:20:32,340 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-20 14:20:32,341 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-20 14:20:46,920 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-20 14:20:46,921 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 2 in 16s
+2026-11-20 14:21:31,946 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-20 14:21:38,814 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-20 14:21:38,822 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-20 14:21:38,823 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-20 14:21:38,823 INFO pipeline.voice: TTS chunk 1/1 (84 words, scenes 1-5)
+2026-11-20 14:21:49,079 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-20 14:21:49,916 INFO pipeline.voice: Narration: 34.0s across 5 scenes
+2026-11-20 14:21:50,235 INFO pipeline.visuals: Shot 'quiet empty desert night' -> Pixabay video
+2026-11-20 14:21:50,439 INFO pipeline.visuals: Shot 'quiet empty desert night' -> Pixabay video
+2026-11-20 14:21:51,638 INFO pipeline.visuals: Shot 'map of New Mexico' -> Wikimedia Commons image
+2026-11-20 14:21:51,806 INFO pipeline.visuals: Shot 'map of New Mexico' -> Wikimedia Commons image
+2026-11-20 14:21:51,974 INFO pipeline.visuals: Shot 'map of New Mexico' -> Wikimedia Commons image
+2026-11-20 14:21:52,420 INFO pipeline.visuals: Shot 'person listening anxiously indoors' -> Pixabay video
+2026-11-20 14:21:52,541 INFO pipeline.visuals: Shot 'person listening anxiously indoors' -> Pixabay video
+2026-11-20 14:21:52,870 INFO pipeline.visuals: Shot 'closed window rainy day' -> Pixabay video
+2026-11-20 14:21:53,013 INFO pipeline.visuals: Shot 'closed window rainy day' -> Pixabay video
+2026-11-20 14:21:53,404 INFO pipeline.visuals: Shot 'starry night sky horizon' -> Pixabay video
+2026-11-20 14:21:53,541 INFO pipeline.visuals: Shot 'starry night sky horizon' -> Pixabay video
+2026-11-20 14:21:53,726 INFO pipeline.visuals: Shot 'starry night sky horizon' -> Pixabay video
+2026-11-20 14:21:54,352 INFO pipeline.render: Caption self-test passed
+2026-11-20 14:22:16,102 INFO pipeline.render: Rendered 12 shot segments
+2026-11-20 14:22:16,361 INFO pipeline.render: Music: atlas-tension.mp3
+2026-11-20 14:22:29,079 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-the-taos-hum-s1/the-taos-hum-s1.mp4 (35.0s)
+2026-11-20 14:22:32,440 INFO pipeline.youtube: Upload 49%
+2026-11-20 14:22:32,593 INFO pipeline.youtube: Upload 99%
+2026-11-20 14:22:32,987 INFO pipeline.youtube: Uploaded video gpucifysXIM (private, publishAt 2026-11-25T13:00:00.000Z)
+2026-11-20 14:22:33,023 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-20 14:22:33,023 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+2026-11-20 14:22:53,244 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-20 14:23:33,783 INFO pipeline.facebook: Facebook Reel 1728858895425536 (published)
+2026-11-20 14:23:37,087 INFO pipeline.facebook: Facebook image post 111081986933784_1141309518635200
+2026-11-20 14:23:41,594 INFO pipeline.facebook: Facebook Story 1127713746635145
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-the-taos-hum-s1
