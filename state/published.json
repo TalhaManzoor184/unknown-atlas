@@ -355,6 +355,25 @@
         "facebook_errors": [],
         "posted_on": "2026-11-21"
       }
+    },
+    "oumuamua-interstellar-visitor#0": {
+      "title": "The Bizarre Physics of Oumuamua",
+      "video_id": "hbjb9G9WWUA",
+      "url": "https://youtu.be/hbjb9G9WWUA",
+      "privacy": "private",
+      "publish_at": "2026-11-26T13:00:00.000Z",
+      "seconds": 45,
+      "parent": "oumuamua-interstellar-visitor",
+      "at": "2026-11-22T14:29:49+00:00",
+      "facebook": {
+        "reel_id": "1770102110746352",
+        "reel_state": "published",
+        "reel_publish_at": "",
+        "photo_post_id": "111081986933784_1143514415081377",
+        "story_id": "1450265857289023",
+        "facebook_errors": [],
+        "posted_on": "2026-11-22"
+      }
     }
   }
 }
