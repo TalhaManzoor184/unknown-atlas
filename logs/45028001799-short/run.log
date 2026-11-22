@@ -1,0 +1,68 @@
+2026-11-22 13:32:43,374 INFO atlas: SHORT: Oumuamua: The Bizarre Physics of Our Solar System's First Interstellar Visitor — The cigar-shaped rock from another star system that sped up inexplicably. (linked: False)
+2026-11-22 13:32:44,332 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-22 13:32:44,338 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-22 13:33:14,444 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-22 13:33:14,445 WARNING pipeline.research: Google Search grounding not available (Google Search grounding quota [model=gemini-3.8-flash]: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and bil) — researching from Wikipedia instead
+2026-11-22 13:34:52,176 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 13:34:52,177 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-22 13:35:02,809 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 13:35:02,811 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-22 13:45:17,108 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 504 Gateway Timeout"
+2026-11-22 13:45:17,109 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 3 in 32s
+2026-11-22 13:55:47,319 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 504 Gateway Timeout"
+2026-11-22 13:55:47,320 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 4 in 64s
+2026-11-22 14:06:49,617 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 504 Gateway Timeout"
+2026-11-22 14:06:49,622 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 5 in 120s
+2026-11-22 14:16:15,036 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-22 14:16:15,042 INFO pipeline.research: Wikipedia research brief: 10052 chars from 1I/ʻOumuamua — Wikipedia, Avi Loeb — Wikipedia, Interstellar object — Wikipedia
+2026-11-22 14:16:17,776 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 14:16:17,777 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-22 14:16:30,776 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 14:16:30,778 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-22 14:26:44,977 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 504 Gateway Timeout"
+2026-11-22 14:26:44,979 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 3 in 32s
+2026-11-22 14:27:20,318 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 14:27:20,319 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-22 14:27:21,067 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 14:27:21,069 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 5 in 64s
+2026-11-22 14:28:36,188 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-22 14:28:37,727 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-22 14:28:37,733 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-22 14:28:37,734 INFO pipeline.voice: TTS: 5 scenes in 1 request(s)
+2026-11-22 14:28:37,734 INFO pipeline.voice: TTS chunk 1/1 (96 words, scenes 1-5)
+2026-11-22 14:28:50,513 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-22 14:28:51,492 INFO pipeline.voice: Narration: 44.5s across 5 scenes
+2026-11-22 14:28:51,959 INFO pipeline.visuals: Shot 'deep space starfield' -> Pixabay video
+2026-11-22 14:28:52,034 INFO pipeline.visuals: Shot 'deep space starfield' -> Pixabay video
+2026-11-22 14:28:52,124 INFO pipeline.visuals: Shot 'deep space starfield' -> Pixabay video
+2026-11-22 14:28:52,308 INFO pipeline.visuals: Shot 'asteroid tumbling space' -> Pixabay video
+2026-11-22 14:28:52,407 INFO pipeline.visuals: Shot 'asteroid tumbling space' -> Pixabay video
+2026-11-22 14:28:52,554 INFO pipeline.visuals: Shot 'asteroid tumbling space' -> Pixabay video
+2026-11-22 14:28:52,708 INFO pipeline.visuals: Shot 'sun solar flare' -> Pixabay video
+2026-11-22 14:28:52,788 INFO pipeline.visuals: Shot 'sun solar flare' -> Pixabay video
+2026-11-22 14:28:53,067 INFO pipeline.visuals: Shot 'ice crystal abstract' -> Pixabay video
+2026-11-22 14:28:53,159 INFO pipeline.visuals: Shot 'ice crystal abstract' -> Pixabay video
+2026-11-22 14:28:53,436 INFO pipeline.visuals: Shot 'ice crystal abstract' -> Pixabay video
+2026-11-22 14:28:53,524 INFO pipeline.visuals: Shot 'ice crystal abstract' -> Pixabay video
+2026-11-22 14:28:54,151 INFO pipeline.visuals: Shot 'galaxy rotation spinning' -> Pixabay video
+2026-11-22 14:28:54,228 INFO pipeline.visuals: Shot 'galaxy rotation spinning' -> Pixabay video
+2026-11-22 14:28:54,309 INFO pipeline.visuals: Shot 'galaxy rotation spinning' -> Pixabay video
+2026-11-22 14:28:54,437 INFO pipeline.visuals: Shot 'galaxy rotation spinning' -> Pixabay video
+2026-11-22 14:28:54,538 INFO pipeline.render: Caption self-test passed
+2026-11-22 14:29:26,017 INFO pipeline.render: Rendered 15 shot segments
+2026-11-22 14:29:26,349 INFO pipeline.render: Music: atlas-deep-field.mp3
+2026-11-22 14:29:47,018 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-oumuamua-interstellar-visitor-s1/oumuamua-interstellar-visitor-s1.mp4 (45.5s)
+2026-11-22 14:29:49,035 INFO pipeline.youtube: Upload 33%
+2026-11-22 14:29:49,164 INFO pipeline.youtube: Upload 67%
+2026-11-22 14:29:49,640 INFO pipeline.youtube: Uploaded video hbjb9G9WWUA (private, publishAt 2026-11-26T13:00:00.000Z)
+2026-11-22 14:29:49,660 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-22 14:29:49,661 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+2026-11-22 14:29:59,612 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 14:29:59,614 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-22 14:30:08,305 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-22 14:30:08,306 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 2 in 16s
+2026-11-22 14:30:26,122 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-22 14:31:21,625 INFO pipeline.facebook: Facebook Reel 1770102110746352 (published)
+2026-11-22 14:31:25,116 INFO pipeline.facebook: Facebook image post 111081986933784_1143514415081377
+2026-11-22 14:31:29,728 INFO pipeline.facebook: Facebook Story 1450265857289023
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-oumuamua-interstellar-visitor-s1
