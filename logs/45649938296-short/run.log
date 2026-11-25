@@ -1,0 +1,65 @@
+2026-11-25 15:57:46,810 INFO atlas: SHORT: Oumuamua: The Bizarre Physics of Our Solar System's First Interstellar Visitor — Why scientists briefly thought an interstellar visitor was an alien probe. (linked: False)
+2026-11-25 15:57:47,964 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 15:57:47,969 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-25 15:57:56,433 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 15:57:56,434 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-25 15:58:12,815 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 15:58:12,819 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-25 15:58:13,668 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 15:58:13,670 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 4 in 32s
+2026-11-25 15:58:46,376 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 15:58:46,377 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 5 in 64s
+2026-11-25 15:59:51,350 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 15:59:51,352 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 6 in 120s
+2026-11-25 16:02:26,075 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 16:02:26,076 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 7 in 120s
+2026-11-25 16:04:27,835 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-25 16:04:27,840 ERROR atlas: Pipeline failed
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 646, in create
+    return _speakeasy_parse_response(http_res)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 577, in _speakeasy_parse_response
+    raise errors.CreateInteractionServerError(
+google.genai._gaos.errors.createinteraction.CreateInteractionServerError: gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 78, in _call
+    return client().interactions.create(**body)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 376, in create
+    response = send_once()
+               ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/google_genai.py", line 431, in _send_create_once
+    return wrap_sdk_call(
+           ^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/lib/compat_errors.py", line 369, in wrap_sdk_call
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/interactions.py", line 648, in create
+    response_helpers.raise_parse_error(
+  File "/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/google/genai/_gaos/utils/response_helpers.py", line 94, in raise_parse_error
+    raise parse_error from exc
+google.genai._gaos.lib.compat_errors.InternalServerError: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 322, in main
+    out = run_long(args) if args.mode == "long" else run_short(args)
+                                                     ^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/main.py", line 214, in run_short
+    pkg = writer.write_short(angle, topic, research, long_entry["title"] if long_entry else None)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/writer.py", line 103, in write_short
+    pkg = gemini.structured(prompt, ShortPackage, system=WRITER_SYSTEM)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 198, in structured
+    it = _call(**body)
+         ^^^^^^^^^^^^^
+  File "/home/runner/work/unknown-atlas/unknown-atlas/pipeline/gemini.py", line 91, in _call
+    raise RuntimeError(f"Gemini call failed [model={model}{tool}]: {e}") from e
+RuntimeError: Gemini call failed [model=gemini-3.5-flash-lite]: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
+::error title=Unknown Atlas pipeline failed::RuntimeError: Gemini call failed [model=gemini-3.5-flash-lite]: Error code: 503 - {'error': {'message': 'gemini-3.5-flash-lite is currently experiencing high demand, spikes in demand are usually temporary. Please try again later.', 'code': 'service_unavailable'}}
