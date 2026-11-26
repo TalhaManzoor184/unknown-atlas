@@ -1,0 +1,49 @@
+2026-11-26 15:39:43,115 INFO atlas: SHORT: Oumuamua: The Bizarre Physics of Our Solar System's First Interstellar Visitor — Why scientists briefly thought an interstellar visitor was an alien probe. (linked: False)
+2026-11-26 15:40:08,236 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-26 15:40:08,241 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-26 15:40:16,585 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-26 15:40:16,587 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-26 15:40:32,892 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-26 15:40:32,896 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-26 15:40:38,897 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-26 15:40:38,901 INFO pipeline.writer: Narration is 123 words (target 55-110); asking for one tighten pass
+2026-11-26 15:40:44,130 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-26 15:40:44,317 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-26 15:40:44,318 WARNING pipeline.gemini: Gemini quota limit on gemini-3.5-flash-lite + google_search; retry 1 in 30s
+2026-11-26 15:41:14,560 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-26 15:41:14,562 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-26 15:41:17,177 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-26 15:41:17,182 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-26 15:41:17,183 INFO pipeline.voice: TTS: 4 scenes in 1 request(s)
+2026-11-26 15:41:17,183 INFO pipeline.voice: TTS chunk 1/1 (70 words, scenes 1-4)
+2026-11-26 15:41:28,656 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-26 15:41:29,585 INFO pipeline.voice: Narration: 34.5s across 4 scenes
+2026-11-26 15:41:30,256 INFO pipeline.visuals: Shot 'deep space starry night' -> Pixabay video
+2026-11-26 15:41:30,565 INFO pipeline.visuals: Shot 'deep space starry night' -> Pixabay video
+2026-11-26 15:41:31,816 INFO pipeline.visuals: Shot 'telescope observatory dome Hawaii' -> Wikimedia Commons image
+2026-11-26 15:41:32,276 INFO pipeline.visuals: Shot 'telescope observatory dome Hawaii' -> Wikimedia Commons image
+2026-11-26 15:41:32,483 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-26 15:41:32,485 ERROR pipeline.visuals: Gemini image generation failed 3 times — disabling AI images for this video
+2026-11-26 15:41:32,485 WARNING pipeline.visuals: _ai failed for 'abstract space object': Gemini quota [model=gemini-nano-banana-2.1]: Error code: 429 - {'error': {'message': 'Rate limit exceeded for model gemini-nano-banana-2.1 (limit: 0 requests per day on Free Tier). Please upgrade your tier at https://ai.dev/rate-limit.', 'code': 'too_many_requests'}}
+2026-11-26 15:41:33,942 INFO pipeline.visuals: Shot 'abstract space object' -> Wikimedia Commons image
+2026-11-26 15:41:34,307 INFO pipeline.visuals: Shot 'abstract space object' -> Wikimedia Commons image
+2026-11-26 15:41:34,839 INFO pipeline.visuals: Shot 'abstract space object' -> Wikimedia Commons image
+2026-11-26 15:41:35,281 INFO pipeline.visuals: Shot 'abstract space object' -> Wikimedia Commons image
+2026-11-26 15:41:36,097 INFO pipeline.visuals: Shot 'Green Bank Telescope' -> Wikimedia Commons image
+2026-11-26 15:41:36,378 INFO pipeline.visuals: Shot 'Green Bank Telescope' -> Wikimedia Commons image
+2026-11-26 15:41:36,813 INFO pipeline.visuals: Shot 'Green Bank Telescope' -> Wikimedia Commons image
+2026-11-26 15:41:36,990 INFO pipeline.render: Caption self-test passed
+2026-11-26 15:42:03,819 INFO pipeline.render: Rendered 11 shot segments
+2026-11-26 15:42:04,122 INFO pipeline.render: Music: atlas-deep-field.mp3
+2026-11-26 15:42:19,854 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-oumuamua-interstellar-visitor-s2/oumuamua-interstellar-visitor-s2.mp4 (35.5s)
+2026-11-26 15:42:21,863 INFO pipeline.youtube: Upload 80%
+2026-11-26 15:42:22,349 INFO pipeline.youtube: Uploaded video vfglFrJC1U0 (private, publishAt 2026-11-27T13:00:00.000Z)
+2026-11-26 15:42:22,391 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-26 15:42:22,391 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+2026-11-26 15:42:23,502 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-26 15:42:23,503 WARNING pipeline.gemini: Gemini transient error on gemini-3.5-flash-lite; retry 1 in 8s
+2026-11-26 15:42:35,667 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-26 15:43:14,803 INFO pipeline.facebook: Facebook Reel 2244951936361872 (published)
+2026-11-26 15:43:18,172 INFO pipeline.facebook: Facebook image post 111081986933784_1147903914642427
+2026-11-26 15:43:22,625 INFO pipeline.facebook: Facebook Story 2386547478747582
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-oumuamua-interstellar-visitor-s2
