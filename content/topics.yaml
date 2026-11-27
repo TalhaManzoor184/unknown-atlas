@@ -151,3 +151,64 @@ topics:
   - The cigar-shaped rock from another star system that sped up inexplicably.
   - Why scientists briefly thought an interstellar visitor was an alien probe.
   source: auto
+- id: ss-supertie
+  title: 'The SS Suerte: The Mystery of the Concrete Ship Graveyard'
+  pillar: mysteries
+  angle: Investigating why an entire fleet of experimental concrete vessels was abandoned and how some became unexpected
+    artificial islands.
+  why_now: Recent drone mapping has revealed new structural decay patterns and ecological reclamation of the hulls.
+  shorts:
+  - Why did they build ships out of concrete?
+  - Inside the eerie ghost fleet visible from space
+  source: auto
+- id: singing-sands
+  title: 'The Singing Sands: What Causes Desert Dunes to Boom and Hum?'
+  pillar: science
+  angle: Exploring the acoustic physics behind naturally occurring musical dunes that produce deep, bass-like resonances.
+  why_now: New acoustic field recordings have mapped the exact shear-wave frequencies required to trigger the phenomenon.
+  shorts:
+  - The physics of whispering deserts
+  - Can you hear a sand dune sing?
+  source: auto
+- id: cahokia-woodhenge
+  title: 'Cahokia''s Woodhenge: The Prehistoric Sun Calendar That Predates Stonehenge'
+  pillar: history
+  angle: Uncovering the astronomical sophistication of North America's largest ancient metropolis through its massive
+    post circles.
+  why_now: Recent non-invasive magnetometer surveys have mapped previously unknown structures surrounding the calendar
+    site.
+  shorts:
+  - The ancient American calendar hidden in plain sight
+  - How a lost metropolis tracked the cosmos
+  source: auto
+- id: derweze-crater
+  title: 'Mapping the Darvaza Crater: Inside the Endless Underground Fire'
+  pillar: places-space
+  angle: Examining the geology and recent containment efforts surrounding Turkmenistan's perpetually burning sinkhole.
+  why_now: Government proposals to finally extinguish or cap the crater have sparked renewed scientific interest.
+  shorts:
+  - Can we put out a 50-year-old gas crater fire?
+  - Descending into Earth's Door to Hell
+  source: auto
+- id: bahama-blue-holes
+  title: 'The Blue Holes of the Bahamas: Time Capsules of the Ice Age'
+  pillar: mysteries
+  angle: Diving into deep underwater vertical caves that preserve pristine prehistoric fossils and unique extremophile
+    ecosystems.
+  why_now: Recent deep-submersible expeditions have discovered entirely new microbial lifeforms inside the anoxic
+    layers.
+  shorts:
+  - What lies at the bottom of a blue hole?
+  - Finding Ice Age fossils underwater
+  source: auto
+- id: pols-aarhus
+  title: 'Bog Bodies of Northern Europe: Preserved Faces from 2,000 Years Ago'
+  pillar: history
+  angle: Analyzing the chemical preservation conditions and forensic facial reconstructions of Iron Age sacrificial
+    victims found in peat bogs.
+  why_now: Advanced DNA profiling and facial reconstruction tech have given us the most accurate portraits of these
+    ancient individuals yet.
+  shorts:
+  - Why do peat bogs preserve human skin for millennia?
+  - Meeting an Iron Age person face to face
+  source: auto
