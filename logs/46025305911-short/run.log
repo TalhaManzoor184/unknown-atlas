@@ -1,0 +1,47 @@
+2026-11-27 15:29:38,243 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-27 15:29:38,248 WARNING pipeline.gemini: Gemini quota limit on gemini-3.8-flash + google_search; retry 1 in 30s
+2026-11-27 15:30:08,386 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 429 Too Many Requests"
+2026-11-27 15:30:08,388 WARNING pipeline.gemini: Google Search grounding unavailable (quota / free tier) — continuing without search
+2026-11-27 15:30:08,518 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-27 15:30:08,522 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 1 in 8s
+2026-11-27 15:30:16,674 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-27 15:30:16,675 WARNING pipeline.gemini: Gemini transient error on gemini-3.8-flash; retry 2 in 16s
+2026-11-27 15:30:32,789 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 503 Service Unavailable"
+2026-11-27 15:30:32,791 WARNING pipeline.gemini: gemini-3.8-flash overloaded — switching to fallback text model gemini-3.5-flash-lite
+2026-11-27 15:30:36,797 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-27 15:30:36,812 INFO pipeline.topics: Added 6 auto-generated topics
+2026-11-27 15:30:36,813 INFO atlas: SHORT: The SS Suerte: The Mystery of the Concrete Ship Graveyard — Why did they build ships out of concrete? (linked: False)
+2026-11-27 15:30:36,813 WARNING pipeline.research: Google Search grounding not available (Google Search grounding unavailable earlier in this run) — researching from Wikipedia instead
+2026-11-27 15:30:43,243 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-27 15:30:43,249 INFO pipeline.research: Wikipedia research brief: 1571 chars from Shakira — Wikipedia, SubRip — Wikipedia, Carlos Gardel — Wikipedia
+2026-11-27 15:30:46,349 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-27 15:30:46,354 INFO pipeline.writer: Narration is 51 words (target 55-110); asking for one expand pass
+2026-11-27 15:30:49,685 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-27 15:30:51,641 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-27 15:30:51,648 INFO pipeline.writer: Fact-check round 1: verdict=pass, 0 serious / 0 total issues
+2026-11-27 15:30:51,648 INFO pipeline.voice: TTS: 4 scenes in 1 request(s)
+2026-11-27 15:30:51,648 INFO pipeline.voice: TTS chunk 1/1 (55 words, scenes 1-4)
+2026-11-27 15:31:00,283 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-27 15:31:01,026 INFO pipeline.voice: Narration: 27.6s across 4 scenes
+2026-11-27 15:31:02,914 INFO pipeline.visuals: Shot 'Shakira singer portrait' -> Wikimedia Commons image
+2026-11-27 15:31:03,345 INFO pipeline.visuals: Shot 'Shakira singer portrait' -> Wikimedia Commons image
+2026-11-27 15:31:03,700 INFO pipeline.visuals: Shot 'vintage microphone recording studio' -> Pixabay video
+2026-11-27 15:31:03,811 INFO pipeline.visuals: Shot 'vintage microphone recording studio' -> Pixabay video
+2026-11-27 15:31:04,150 INFO pipeline.visuals: Shot 'spanish text typography neon' -> Pixabay video
+2026-11-27 15:31:04,264 INFO pipeline.visuals: Shot 'spanish text typography neon' -> Pixabay video
+2026-11-27 15:31:04,571 INFO pipeline.visuals: Shot 'starry night sky timelapse' -> Pixabay video
+2026-11-27 15:31:05,120 INFO pipeline.visuals: Shot 'starry night sky timelapse' -> Pixabay video
+2026-11-27 15:31:05,251 INFO pipeline.visuals: Shot 'starry night sky timelapse' -> Pixabay video
+2026-11-27 15:31:05,394 INFO pipeline.render: Caption self-test passed
+2026-11-27 15:31:23,332 INFO pipeline.render: Rendered 9 shot segments
+2026-11-27 15:31:23,516 INFO pipeline.render: Music: atlas-unknown.mp3
+2026-11-27 15:31:36,685 INFO pipeline.render: Final video: /home/runner/work/unknown-atlas/unknown-atlas/output/short-ss-supertie-s1/ss-supertie-s1.mp4 (28.6s)
+2026-11-27 15:31:38,895 INFO pipeline.youtube: Upload 57%
+2026-11-27 15:31:39,601 INFO pipeline.youtube: Uploaded video Bb8Ens4gZ3o (private, publishAt 2026-11-28T13:00:00.000Z)
+2026-11-27 15:31:39,620 WARNING googleapiclient.http: Encountered 403 Forbidden with reason "insufficientPermissions"
+2026-11-27 15:31:39,620 WARNING pipeline.youtube: Caption upload failed: <HttpError 403 when requesting https://youtube.googleapis.com/upload/youtube/v3/captions?part=snippet&alt=json&uploadType=multipart returned "Request had insufficient authentication scopes.". Details: "[{'message': 'Insufficient Permission', 'domain': 'global', 'reason': 'insufficientPermissions'}]">
+2026-11-27 15:31:41,458 INFO httpx: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/interactions "HTTP/1.1 200 OK"
+2026-11-27 15:32:07,368 INFO pipeline.facebook: Facebook Reel 2205940416962534 (published)
+2026-11-27 15:32:10,713 INFO pipeline.facebook: Facebook image post 111081986933784_1148985661200919
+2026-11-27 15:32:16,866 INFO pipeline.facebook: Facebook Story 1161335510214330
+OUTPUT_DIR=/home/runner/work/unknown-atlas/unknown-atlas/output/short-ss-supertie-s1
